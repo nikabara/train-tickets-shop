@@ -1,22 +1,18 @@
-<aside>
+<aside [class.menu-toggled]="sideBarToggled">
     <section class="aside-top">
-        <img  class="aside-web-logo" src="https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg" alt="">
-        <div class="aside-top-content">
-            <h2 class="web-page-name">RailTickets</h2>
-            <p class="web-page-slogan">As Fast As The Trains Speed</p>
-        </div>
+        <button class="menu-toggler" (click)="toggleSideBar()"><i class="bi bi-list"></i></button>
     </section>
 
     <section class="aside-mid">
-        <a class="aside-mid-link" routerLink="/home"><i class="bi bi-house-fill"></i> Home</a>
-        <a class="aside-mid-link" routerLink="/search-trains"><i class="bi bi-train-front-fill"></i> Search Trains</a>
-        <a class="aside-mid-link" routerLink="/my-bookings"><i class="bi bi-ticket-perforated-fill"></i> My Booking</a>
-        <a class="aside-mid-link" routerLink="/history"><i class="bi bi-clock-history"></i> History</a>
+        <a [class.aside-link-hidden]="sideBarToggled" class="aside-mid-link" routerLink="/home"><i class="bi bi-house-fill"></i> <p>Home</p></a>
+        <a [class.aside-link-hidden]="sideBarToggled" class="aside-mid-link" routerLink="/search-trains"><i class="bi bi-train-front-fill"></i> <p>Search Trains</p></a>
+        <a [class.aside-link-hidden]="sideBarToggled" class="aside-mid-link" routerLink="/my-bookings"><i class="bi bi-ticket-perforated-fill"></i> <p>My Booking</p></a>
+        <a [class.aside-link-hidden]="sideBarToggled" class="aside-mid-link" routerLink="/history"><i class="bi bi-clock-history"></i> <p>History</p></a>
     </section>
 
     <section class="aside-bottom">
         <div class="aside-bottom-buttons">
-            <button class="customer-support aside-bottom-option"><i class="bi bi-life-preserver"></i> Customer Support</button>
+            <button [class.aside-link-hidden]="sideBarToggled" class="customer-support aside-bottom-option"><i class="bi bi-life-preserver"></i> <p>Customer Support</p></button>
         </div>
     </section>
 </aside>
