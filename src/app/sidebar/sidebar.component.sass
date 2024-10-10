@@ -16,8 +16,24 @@ $bi-hover: #195ce9
 
     .aside-mid
         align-items: center
+
         .aside-mid-link
-            text-align: center
+            font-family: Calibri-bold
+            font-weight: 600
+            text-decoration: none
+            color: $secondary-text
+            font-size: 18px
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 50px
+
+            &:hover
+                border-radius: 15px
+                color: $main-text
+                background-color: $dimmed-white-hover
+                padding-left: 0px !important
+                text-align: center
 
             .bi
                 margin-right: 0px
@@ -26,7 +42,47 @@ $bi-hover: #195ce9
         display: flex
         align-items: center
         justify-content: center
-        padding-left: 7px
+        padding-left: 0px !important
+        width: 100%
+
+        .aside-bottom-buttons
+            // background-color: aliceblue
+            height: 100px
+            display: flex
+            align-items: center
+            justify-content: center
+
+            .aside-bottom-option
+                border: none
+                background-color: transparent
+                font-family: Calibri-bold
+                font-size: 18px
+                width: 100%
+                display: flex
+                align-items: center
+                justify-content: center
+                height: 50px
+                width: 50px
+                
+                & > p
+                    color: $secondary-text
+                    font-weight: 600
+
+                .bi
+                    color: $secondary-text
+                    margin-right: 0px !important
+
+                &:hover
+                    background-color: $dimmed-white-hover
+                    padding-left: 0px !important
+                    border-radius: 15px
+
+                    & > p
+                        color: $main-text
+
+                    .bi
+                        color: $bi-hover
+                        margin-right: 0px !important
 
 
 .aside-link-hidden
@@ -103,7 +159,7 @@ aside
                 color: $main-text
                 // font-size: 20px
                 background-color: $dimmed-white-hover
-                // padding-left: 10px
+                padding-left: 10px
                 text-align: center
 
                 & > p
