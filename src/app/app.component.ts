@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import Swal from 'sweetalert2';
 import { SidebarComponent } from "./sidebar/sidebar.component";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-root',
