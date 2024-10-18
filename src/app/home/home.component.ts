@@ -15,6 +15,8 @@ export class HomeComponent {
 	constructor(private localStorageService: LocalStorageService) {}
 
 	btnClick() : void {
-		this.localStorageService.getVagon(5, 2);
+		// this.localStorageService.getTrainsByFromTo('თბილისი', 'ბათუმი');
+		// this.localStorageService.getVagonsByTrainId(15);
+		// this.localStorageService.getVagon(15, 'II კლასი');
 	}
 }
