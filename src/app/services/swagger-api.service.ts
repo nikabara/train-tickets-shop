@@ -6,6 +6,9 @@ import { Seat } from '../Interfaces/Seat.interface';
 import { Train } from '../Interfaces/Train.interface';
 import { Vagon } from '../Interfaces/Vagon.interface';
 import { Departure } from '../Interfaces/Departure.interface';
+import { Person } from '../Interfaces/Person.interface';
+import { Ticket } from '../Interfaces/Ticket.interface';
+import { RegisterTicket } from '../Interfaces/RegisterTicket.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +32,13 @@ export class SwaggerAPIService {
 
   getDepartures() : Observable<Departure[]> {
     return this.http.get<Departure[]>(`${this.apiURL}/departures`);
+  }
+
+  getTickets() : Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiURL}/tickets`);
+  }
+
+  postTicket(ticket: RegisterTicket) : Observable<RegisterTicket> {
+    return this.http.post<RegisterTicket>(`${this.apiURL}/tickets/register`, ticket);
   }
 }

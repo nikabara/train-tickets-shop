@@ -6,6 +6,7 @@ import { Station } from '../Interfaces/Station.interface';
 import { Train } from '../Interfaces/Train.interface';
 import { Vagon } from '../Interfaces/Vagon.interface';
 import { Departure } from '../Interfaces/Departure.interface';
+import { RegisterTicket } from '../Interfaces/RegisterTicket.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class LocalStorageService implements OnDestroy {
   putTrainsSubscription: Subscription | null = null;
   putVagonsSubscription: Subscription | null = null;
   putDeparturesSubscription: Subscription | null = null;
+  putTicketsSubscription: Subscription | null = null;
+  postTicketSubscription: Subscription | null = null;
 
   error: string | null = null;
 
@@ -23,10 +26,9 @@ export class LocalStorageService implements OnDestroy {
     this.putTrainsToLocalStorage();
     this.putVagonsToLocalStorage();
     this.putDeparturesToLocalStorage();
+    this.putTicketsToLocalStorage();
   }
 
-
-  
   private putStationsToLocalStorage() : void {
     if (!localStorage.getItem('stations')) {
       this.putStationsSubscription = this.swaggerApiService.getStations().subscribe(
@@ -78,6 +80,27 @@ export class LocalStorageService implements OnDestroy {
         }
       )
     }
+  }
+
+  private putTicketsToLocalStorage() : void {
+    if (!localStorage.getItem('tickets')) {
+      this.putTicketsSubscription = this.swaggerApiService.getTickets().subscribe(
+        (response) => {
+          localStorage.setItem('tickets', JSON.stringify(response));
+        },
+        (error) => {
+          this.error = `Failed to fetch .../api/tickets | ${error}`
+        }
+      )
+    }
+  }
+
+  public postTicket(ticket: RegisterTicket) : void {
+    this.putTicketsSubscription = this.swaggerApiService.postTicket(ticket).subscribe(
+      (error) => {
+        this.error = `Failed to post ticket | ${error}`
+      }
+    )
   }
 
   public getStations() : Station[] {
@@ -133,6 +156,12 @@ export class LocalStorageService implements OnDestroy {
     }
     if (this.putDeparturesSubscription){
       this.putDeparturesSubscription.unsubscribe();
+    }
+    if (this.putTicketsSubscription) {
+      this.putTicketsSubscription.unsubscribe();
+    }
+    if (this.postTicketSubscription) {
+      this.postTicketSubscription.unsubscribe();
     }
   }
 }
