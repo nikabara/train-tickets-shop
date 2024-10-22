@@ -1,4 +1,8 @@
-<main>
+<main [attr.color-theme]="colorTheme">
     <app-sidebar></app-sidebar>
-    <router-outlet></router-outlet>
+
+    <div class="content">
+        <app-navbar></app-navbar>
+        <router-outlet></router-outlet>
+    </div>
 </main>

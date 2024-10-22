@@ -1,219 +1,217 @@
-$main-text: #393939
-$secondary-text: #818da2
-$border-primary: #e8e8e8
-$dimmed-white: #F7F7F7
-$dimmed-white-hover: #edeae7
-$bi-hover: #195ce9
+// @import '../_styles/_themes'
+    
+// $main-text: #393939
+// $secondary-text: #818da2
+// $border-primary: #e8e8e8
+// $dimmed-white: #F7F7F7
+// $dimmed-white-hover: #edeae7
+// $bi-hover: #195ce9
 
 .menu-toggled
-    width: 70px
+  width: 70px
 
-    .aside-top
-        display: flex
-        align-items: center
-        justify-content: center
-        padding-left: 0px
+  .aside-top
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-left: 0px
 
-    .aside-mid
-        align-items: center
+  .aside-mid
+    align-items: center
 
-        .aside-mid-link
-            font-family: Calibri-bold
-            font-weight: 600
-            text-decoration: none
-            color: $secondary-text
-            font-size: 18px
-            display: flex
-            align-items: center
-            justify-content: center
-            width: 50px
+    .aside-mid-link
+      font-family: Calibri-bold
+      font-weight: 600
+      text-decoration: none
+      color: var(--secondary-text-color)
+      font-size: 18px
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 50px
 
-            &:hover
-                border-radius: 15px
-                color: $main-text
-                background-color: $dimmed-white-hover
-                padding-left: 0px !important
-                text-align: center
-
-            .bi
-                margin-right: 0px
-
-    .aside-bottom
-        display: flex
-        align-items: center
-        justify-content: center
+      &:hover
+        border-radius: 15px
+        color: var(--main-text-color)
+        background-color: var(--dimmed-white-hover-color)
         padding-left: 0px !important
-        width: 100%
-
-        .aside-bottom-buttons
-            // background-color: aliceblue
-            height: 100px
-            display: flex
-            align-items: center
-            justify-content: center
-
-            .aside-bottom-option
-                border: none
-                background-color: transparent
-                font-family: Calibri-bold
-                font-size: 18px
-                width: 100%
-                display: flex
-                align-items: center
-                justify-content: center
-                height: 50px
-                width: 50px
-                
-                & > p
-                    color: $secondary-text
-                    font-weight: 600
-
-                .bi
-                    color: $secondary-text
-                    margin-right: 0px !important
-
-                &:hover
-                    background-color: $dimmed-white-hover
-                    padding-left: 0px !important
-                    border-radius: 15px
-
-                    & > p
-                        color: $main-text
-
-                    .bi
-                        color: $bi-hover
-                        margin-right: 0px !important
-
-
-.aside-link-hidden
-    & > p
-        display: none
         text-align: center
 
-aside
-    background-color: $dimmed-white
-    display: grid
-    grid-template-rows: 1fr 10fr 1fr
-    grid-auto-columns: 1fr
-    height: 100vh
-    width: 270px
-    border-right: solid $border-primary 3px
-    transition: none
-    justify-content: center
+      .bi
+        margin-right: 0px
 
-    .aside-top
+  .aside-bottom
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-left: 0px !important
+    width: 100%
+
+    .aside-bottom-buttons
+      height: 100px
+      display: flex
+      align-items: center
+      justify-content: center
+
+      .aside-bottom-option
+        border: none
+        background-color: transparent
+        font-family: Calibri-bold
+        font-size: 18px
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        height: 50px
+        width: 50px
+
+        & > p
+          color: var(--secondary-text-color)
+          font-weight: 600
+
+        .bi
+          color: var(--secondary-text-color)
+          margin-right: 0px !important
+
+        &:hover
+          background-color: var(--dimmed-white-hover-color)
+          padding-left: 0px !important
+          border-radius: 15px
+
+          & > p
+            color: var(--main-text-color)
+
+          .bi
+            color: var(--bi-hover-color)
+            margin-right: 0px !important
+
+.aside-link-hidden
+  & > p
+    display: none
+    text-align: center
+
+aside
+  background-color: var(--dimmed-white-color)
+  display: grid
+  grid-template-rows: 1fr 10fr 1fr
+  grid-auto-columns: 1fr
+  height: 100vh
+  width: 270px
+  border-right: solid var(--border-color) 3px
+  transition: none
+  justify-content: center
+
+  .aside-top
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 15px
+    padding-left: 15px
+
+    .menu-toggler
+      border: none
+      background-color: transparent
+      font-size: 22px
+      font-weight: 700
+
+      .bi
+        color: var(--secondary-text-color)
+
+      &:hover
+        border-radius: 15px
+        color: var(--main-text-color)
+        background-color: var(--dimmed-white-hover-color)
+        padding: 5px 7px
+
+        .bi
+          color: var(--bi-hover-color)
+
+  .aside-mid
+    display: flex
+    flex-direction: column
+    padding-top: 10px
+    border-bottom: solid var(--border-color) 3px
+    border-top: solid var(--border-color) 3px
+
+    .aside-mid-link
+      font-family: Calibri-bold
+      font-weight: 600
+      text-decoration: none
+      color: var(--secondary-text-color)
+      font-size: 18px
+      height: 50px
+      display: flex
+      align-items: center
+      margin: 0px 15px
+
+      & > p
+        color: var(--secondary-text-color)
+
+      .bi
+        color: var(--secondary-text-color)
+        font-size: 18px
+        margin-right: 10px
+
+      &:hover
+        border-radius: 15px
+        color: var(--main-text-color)
+        background-color: var(--dimmed-white-hover-color)
+        padding-left: 10px
+        text-align: center
+
+        & > p
+          color: var(--main-text-color)
+
+        .bi
+          color: var(--bi-hover-color)
+
+  .aside-bottom
+    display: flex
+    flex-direction: column
+
+    .aside-bottom-buttons
+      height: 100px
+      display: flex
+      align-items: center
+      justify-content: center
+      padding: 0 15px
+
+      .aside-bottom-option
+        border: none
+        background-color: transparent
+        font-family: Calibri-bold
+        font-size: 18px
+        width: 100%
         display: flex
         align-items: center
         justify-content: flex-start
-        gap: 15px
-        padding-left: 15px
+        height: 50px
 
-        .menu-toggler
-            border: none
-            background-color: transparent
-            font-size: 22px
-            font-weight: 700
+        & > p
+          color: var(--secondary-text-color)
+          font-weight: 600
 
-            .bi
-                color: $secondary-text
+        .bi
+          color: var(--secondary-text-color)
+          margin-right: 10px
+          transform: rotate(0deg)
+          transition: 1s
 
-            &:hover
-                border-radius: 15px
-                color: $main-text
-                // font-size: 20px
-                background-color: $dimmed-white-hover
-                padding: 5px 7px
+        &:hover
+          background-color: var(--dimmed-white-hover-color)
+          padding-left: 10px
+          border-radius: 15px
 
-                .bi
-                    color: $bi-hover
+          & > p
+            color: var(--main-text-color)
 
-    .aside-mid
-        display: flex
-        flex-direction: column
-        padding-top: 10px
-        border-bottom: solid $border-primary 3px
-        border-top: solid $border-primary 3px
+          .bi
+            color: var(--bi-hover-color)
+            margin-right: 15px
+            transform: rotate(80deg)
 
-        .aside-mid-link
-            font-family: Calibri-bold
-            font-weight: 600
-            text-decoration: none
-            color: $secondary-text
-            font-size: 18px
-            height: 50px
-            display: flex
-            align-items: center
-            margin: 0px 15px
-
-            & > p
-                color: $secondary-text
-
-            .bi
-                color: $secondary-text
-                font-size: 18px
-                margin-right: 10px
-
-            &:hover
-                // padding-left: 18px
-                border-radius: 15px
-                color: $main-text
-                // font-size: 20px
-                background-color: $dimmed-white-hover
-                padding-left: 10px
-                text-align: center
-
-                & > p
-                    color: $main-text
-
-                .bi
-                    color: $bi-hover
-                    // margin-right: 15px
-
-    .aside-bottom
-        display: flex
-        flex-direction: column
-
-        .aside-bottom-buttons
-            // background-color: aliceblue
-            height: 100px
-            display: flex
-            align-items: center
-            justify-content: center
-            padding: 0 15px
-
-            .aside-bottom-option
-                border: none
-                background-color: transparent
-                font-family: Calibri-bold
-                font-size: 18px
-                width: 100%
-                display: flex
-                align-items: center
-                justify-content: flex-start
-                height: 50px
-
-                & > p
-                    color: $secondary-text
-                    font-weight: 600
-
-                .bi
-                    color: $secondary-text
-                    margin-right: 10px
-
-                &:hover
-                    background-color: $dimmed-white-hover
-                    padding-left: 10px
-                    border-radius: 15px
-
-                    & > p
-                        color: $main-text
-
-                    .bi
-                        color: $bi-hover
-                        margin-right: 15px
-
-        .profile
-            .profile-icon
-                width: 60px
-                height: 60px
-                border-radius: 15px
+    .profile
+      .profile-icon
+        width: 60px
+        height: 60px
+        border-radius: 15px

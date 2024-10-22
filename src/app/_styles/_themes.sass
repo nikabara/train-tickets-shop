@@ -1,0 +1,38 @@
+// Light theme colors
+$main-text: #393939
+$secondary-text: #818da2
+$border-primary: #e8e8e8
+$dimmed-white: #f7f7f7
+$dimmed-white-hover: #edeae7
+$bi-hover: #195ce9
+
+// Dark theme colors
+$main-text-dark: #f0f0f0            
+$secondary-text-dark: #b0b8c6      
+$border-primary-dark: #3a3a3a     
+$dimmed-white-dark: #2e2e2e        
+$dimmed-white-hover-dark: #3c3c3c   
+$bi-hover-dark: #4a90e2   
+
+@mixin light-theme 
+    --main-text-color: #{$main-text}
+    --secondary-text-color: #{$secondary-text}
+    --border-color: #{$border-primary}
+    --dimmed-white-color: #{$dimmed-white}
+    --dimmed-white-hover-color: #{$dimmed-white-hover}
+    --bi-hover-color: #{$bi-hover}
+
+@mixin dark-theme
+    --main-text-color: #{$main-text-dark}
+    --secondary-text-color: #{$secondary-text-dark}
+    --border-color: #{$border-primary-dark}
+    --dimmed-white-color: #{$dimmed-white-dark}
+    --dimmed-white-hover-color: #{$dimmed-white-hover-dark}
+    --bi-hover-color: #{$bi-hover-dark}
+
+
+[color-theme="light"]
+    @include light-theme
+
+[color-theme="dark"]
+    @include dark-theme

@@ -1,6 +1,6 @@
 import { RegisterTicket } from './../Interfaces/RegisterTicket.interface';
 import { People } from '../Interfaces/People.interface';
-import { LocalStorageService } from './../services/local-storage.service';
+import { SaveDataService } from '../services/save-data.service';
 import { SwaggerAPIService } from '../services/swagger-api.service';
 import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
@@ -9,14 +9,14 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
 	selector: 'app-home',
 	standalone: true,
 	imports: [HttpClientModule],
-	providers: [SwaggerAPIService, LocalStorageService],
+	providers: [SwaggerAPIService, SaveDataService],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.sass'
 })
 export class HomeComponent {
-	constructor(private localStorageService: LocalStorageService) {}
+	constructor(private saveDataService: SaveDataService) {}
 
-	peopleSeatData: People[] = [{
+	peopleSeatData: People[] = [{ 
 		seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
 		name: 'Nick',
 		surname: 'Bara',
@@ -34,10 +34,10 @@ export class HomeComponent {
 	}
 
 	btnClick() : void {
-		// this.localStorageService.getTrainsByFromTo('თბილისი', 'ბათუმი');
-		// this.localStorageService.getVagonsByTrainId(15);
-		// this.localStorageService.getVagon(15, 'II კლასი');
-		this.localStorageService.postTicket(this.ticketData);
-		console.log(this.ticketData);
+		// this.saveDataService.getTrainsByFromTo('თბილისი', 'ბათუმი');
+		// this.saveDataService.getVagonsByTrainId(15);
+		// this.saveDataService.getVagon(15, 'II კლასი');
+		// this.saveDataService.postTicket(this.ticketData);
+		this.saveDataService.confirmTicket("8fc2a0f3-e420-4db1-b8de-03c7b078a820");
 	}
 }

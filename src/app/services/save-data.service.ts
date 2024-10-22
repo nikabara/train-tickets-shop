@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SwaggerAPIService } from '../services/swagger-api.service';
+import { SwaggerAPIService } from './swagger-api.service';
 import { response } from 'express';
 import { Station } from '../Interfaces/Station.interface';
 import { Train } from '../Interfaces/Train.interface';
@@ -11,13 +11,19 @@ import { RegisterTicket } from '../Interfaces/RegisterTicket.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class LocalStorageService implements OnDestroy {
+export class SaveDataService implements OnDestroy {
   putStationsSubscription: Subscription | null = null;
   putTrainsSubscription: Subscription | null = null;
   putVagonsSubscription: Subscription | null = null;
   putDeparturesSubscription: Subscription | null = null;
   putTicketsSubscription: Subscription | null = null;
   postTicketSubscription: Subscription | null = null;
+  putTrainTicketSubscription: Subscription | null = null;
+  checkTicketStatusSubscription: Subscription | null = null;
+  confrirmTicketSubscription: Subscription | null = null;
+  cancelTicketSubscription: Subscription | null = null;
+  getSeatSubscription: Subscription | null = null;
+  cancelAllTicketsSubscription: Subscription | null = null;
 
   error: string | null = null;
 
@@ -28,7 +34,7 @@ export class LocalStorageService implements OnDestroy {
     this.putDeparturesToLocalStorage();
     this.putTicketsToLocalStorage();
   }
-
+    
   private putStationsToLocalStorage() : void {
     if (!localStorage.getItem('stations')) {
       this.putStationsSubscription = this.swaggerApiService.getStations().subscribe(
@@ -44,10 +50,10 @@ export class LocalStorageService implements OnDestroy {
 
   private putTrainsToLocalStorage() : void {
     console.log("yeah");
-    if (!localStorage.getItem('trains')) {
+    if (!sessionStorage.getItem('trains')) {
       this.putTrainsSubscription = this.swaggerApiService.getTrains().subscribe(
         (response) => {
-          localStorage.setItem('trains', JSON.stringify(response));
+          sessionStorage.setItem('trains', JSON.stringify(response));
         },
         (error) => {
           this.error = `Failed to fetch .../api/trains | ${error}`;
@@ -57,10 +63,10 @@ export class LocalStorageService implements OnDestroy {
   }
 
   private putVagonsToLocalStorage() : void {
-    if (!localStorage.getItem('vagons')) {
+    if (!sessionStorage.getItem('vagons')) {
       this.putVagonsSubscription = this.swaggerApiService.getVagons().subscribe(
         (response) => {
-          localStorage.setItem('vagons', JSON.stringify(response));
+          sessionStorage.setItem('vagons', JSON.stringify(response));
         },
         (error) => {
           this.error = `Failed to fetch .../api/vagons | ${error}`;
@@ -70,10 +76,10 @@ export class LocalStorageService implements OnDestroy {
   }
 
   private putDeparturesToLocalStorage() : void {
-    if (!localStorage.getItem('departures')) {
+    if (!sessionStorage.getItem('departures')) {
       this.putDeparturesSubscription = this.swaggerApiService.getDepartures().subscribe(
         (response) => {
-          localStorage.setItem('departures', JSON.stringify(response));
+          sessionStorage.setItem('departures', JSON.stringify(response));
         },
         (error) => {
           this.error = `Failed to fetch .../api/departures | ${error}`;
@@ -83,10 +89,10 @@ export class LocalStorageService implements OnDestroy {
   }
 
   private putTicketsToLocalStorage() : void {
-    if (!localStorage.getItem('tickets')) {
+    if (!sessionStorage.getItem('tickets')) {
       this.putTicketsSubscription = this.swaggerApiService.getTickets().subscribe(
         (response) => {
-          localStorage.setItem('tickets', JSON.stringify(response));
+          sessionStorage.setItem('tickets', JSON.stringify(response));
         },
         (error) => {
           this.error = `Failed to fetch .../api/tickets | ${error}`
@@ -109,19 +115,19 @@ export class LocalStorageService implements OnDestroy {
   }
 
   public getTrains() : Train[] {
-    let trains: Train[] = JSON.parse(localStorage.getItem('trains') ?? '');
+    let trains: Train[] = JSON.parse(sessionStorage.getItem('trains') ?? '');
     return trains;
   }
 
   public getTrain(id: number) : Train {
-    let train: Train = JSON.parse(localStorage.getItem('trains') ?? '')
+    let train: Train = JSON.parse(sessionStorage.getItem('trains') ?? '')
       .filter((x: Train) => x.id === id);
 
     return train;
   }
 
   public getTrainsByFromTo(from: string, to: string) : Train[] {
-    let trains: Train[] = JSON.parse(localStorage.getItem('trains') ?? '')
+    let trains: Train[] = JSON.parse(sessionStorage.getItem('trains') ?? '')
       .filter((train: Train) => train.from === from && train.to === to);
 
     console.log(trains);
@@ -129,7 +135,7 @@ export class LocalStorageService implements OnDestroy {
   }
 
   public getVagonsByTrainId(trainId: number) : Vagon[] {
-    let vagons: Vagon[] = JSON.parse(localStorage.getItem('vagons') ?? '')
+    let vagons: Vagon[] = JSON.parse(sessionStorage.getItem('vagons') ?? '')
       .filter((vagon: Vagon) => vagon.trainId === trainId);
 
     console.log(vagons);
@@ -137,12 +143,71 @@ export class LocalStorageService implements OnDestroy {
   }
 
   public getVagon(trainId: number, vagonName: string) : Vagon {
-    let vagon: Vagon = JSON.parse(localStorage.getItem('vagons') ?? '')
+    let vagon: Vagon = JSON.parse(sessionStorage.getItem('vagons') ?? '')
       .filter((_vagon: Vagon) => _vagon.trainId === trainId && _vagon.name === vagonName);
 
       console.log(vagon)
       return vagon;
   }
+  
+  public getTicketStatus(ticketId: string) : void {
+    this.checkTicketStatusSubscription = this.swaggerApiService.CheckTicketStatus(ticketId).subscribe(
+      (response) => {
+        console.log(response)
+        return response;
+      },
+      (error) => {
+        console.error(error);
+      }
+    )
+  }
+
+  public getSeat(seatId: string) : void {
+    this.getSeatSubscription = this.swaggerApiService.getSeat(seatId).subscribe(
+      (response) => {
+        return response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  public confirmTicket(ticketId: string) : void {
+    this.confrirmTicketSubscription = this.swaggerApiService.ConfirmTicket(ticketId).subscribe(
+      (response) => {
+        console.log(response.confirmed)
+        return response.confirmed;
+      },
+      (error) => {
+        console.log(error);
+        return null;
+      }
+    )
+  }
+
+  public cancelTicket(ticketId: string) : void{
+    this.cancelTicketSubscription = this.swaggerApiService.CancelTicket(ticketId).subscribe(
+      (response) => {
+        return response.confirmed;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  public cancelTicketAll() : void {
+    this.cancelAllTicketsSubscription = this.swaggerApiService.CancelAllTickets().subscribe(
+      (response) => {
+        return response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
 
   ngOnDestroy() : void {
     if (this.putStationsSubscription) {
@@ -162,6 +227,21 @@ export class LocalStorageService implements OnDestroy {
     }
     if (this.postTicketSubscription) {
       this.postTicketSubscription.unsubscribe();
+    }
+    if (this.checkTicketStatusSubscription){
+      this.checkTicketStatusSubscription.unsubscribe();
+    }
+    if (this.getSeatSubscription) {
+      this.getSeatSubscription.unsubscribe();
+    }
+    if (this.confrirmTicketSubscription){
+      this.confrirmTicketSubscription.unsubscribe();
+    }
+    if (this.cancelTicketSubscription) {
+      this.cancelTicketSubscription.unsubscribe();
+    }
+    if (this.cancelAllTicketsSubscription) {
+      this.cancelAllTicketsSubscription.unsubscribe();
     }
   }
 }

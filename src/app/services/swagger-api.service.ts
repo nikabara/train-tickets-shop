@@ -13,7 +13,7 @@ import { RegisterTicket } from '../Interfaces/RegisterTicket.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class SwaggerAPIService {
+  export class SwaggerAPIService {
   private apiURL = 'https://railway.stepprojects.ge/api';
   
   constructor(private http: HttpClient) { }
@@ -38,7 +38,27 @@ export class SwaggerAPIService {
     return this.http.get<Ticket[]>(`${this.apiURL}/tickets`);
   }
 
+  getSeat(seatId: string) : Observable<Seat> {
+    return this.http.get<Seat>(`${this.apiURL}/seat/${seatId}`)
+  }
+
   postTicket(ticket: RegisterTicket) : Observable<RegisterTicket> {
     return this.http.post<RegisterTicket>(`${this.apiURL}/tickets/register`, ticket);
+  }
+
+  CheckTicketStatus(ticketId: string) : Observable<any> {
+    return this.http.get<any>(`${this.apiURL}/tickets/checkstatus/${ticketId}`)
+  }
+
+  ConfirmTicket(ticketId: string) : Observable<Ticket> {
+    return this.http.get<Ticket>(`${this.apiURL}/tickets/confirm/${ticketId}`);
+  }
+
+  CancelTicket(ticketId: string) : Observable<Ticket> {
+    return this.http.delete<Ticket>(`${this.apiURL}/tickets/cancel/${ticketId}`);
+  }
+
+  CancelAllTickets() : Observable<any> {
+    return this.http.delete<any>(`${this.apiURL}/tickets/cancelAll`);
   }
 }
