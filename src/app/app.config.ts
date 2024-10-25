@@ -9,7 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'src/assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {

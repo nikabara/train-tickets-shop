@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
+  providers: [EventEmitter, Output],
   imports: [],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.sass'
@@ -11,7 +12,14 @@ export class SettingsComponent implements OnInit {
   chosenLanguage: string = "ENG";
   chosenTheme: string = "light";
 
+  // @Output() dataEmitter = new EventEmitter<string>();
+
+  // sendThemeData(data: string) {
+  //   this.dataEmitter.emit(data);
+  // }
+
   ngOnInit(): void {
+    
     if (localStorage.getItem('language')) {
       this.chosenLanguage = localStorage.getItem('language') ?? 'ENG';
 
