@@ -1,0 +1,7 @@
+<mat-form-field id="datepicker">
+    <mat-label>Choose a date</mat-label>
+    <!-- click() here if needed -->
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate"> 
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

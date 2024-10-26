@@ -1,8 +1,3 @@
-<!-- <h1>{{ 'TRAIN-SEARCH.TITLE' | translate }}</h1>
-
-<button (click)="switchLanguage('eng')">geo</button>
-<button (click)="switchLanguage('geo')">eng</button> -->
-
 <section class="main-sec">
     <form class="train-search-form" action="">
         <h2>Find Your Train Schedule</h2>
@@ -10,48 +5,24 @@
 
         <div class="form-options">
             <div class="from-to-buttons-wrapper">
-                <div class="from-btn-wrapper">
-                    <label for="dropdown">From</label>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
+
+                <div class="from-destination-wrapper">
+                  <app-destination-select id="app-destination-select-from"></app-destination-select>
                 </div>
-                  
-                <div class="to-btn-wrapper">
-                    <label for="dropdown">To</label>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
+                <div class="to-destination-wrapper">
+                  <app-destination-select id="app-destination-select-to"></app-destination-select>
                 </div>
-            </div>
-    
-            <div class="departure-wrapper">
-                <label for="departure">Departure</label>
-                <input type="date" name="" class="departure" id="">
-            </div>
-    
-            <div class="return-wrapper">
-                <label for="departure">Return</label>
-                <input type="date" name="" class="return" id="">
             </div>
 
-            <button type="submit">Search Train</button>
+            <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker> 
+            <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker> 
+
+
+            <button>Search Train</button>
         </div>
     </form>
+
+    <button (click)="onSubbmit()">Test ahh shit</button>
 
     <div class="response-trains"></div>
 </section>
