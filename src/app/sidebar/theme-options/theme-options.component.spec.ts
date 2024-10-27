@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LanguageOptionsComponent } from './language-options.component';
+import { ThemeOptionsComponent } from './theme-options.component';
 
 describe('LanguageOptionsComponent', () => {
-  let component: LanguageOptionsComponent;
-  let fixture: ComponentFixture<LanguageOptionsComponent>;
+  let component: ThemeOptionsComponent;
+  let fixture: ComponentFixture<ThemeOptionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LanguageOptionsComponent]
+      imports: [ThemeOptionsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LanguageOptionsComponent);
+    fixture = TestBed.createComponent(ThemeOptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

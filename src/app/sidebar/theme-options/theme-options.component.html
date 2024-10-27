@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-select [(value)]="selected" [(ngModel)]="selected">
+    <mat-option value="ENG" (click)="changeTheme('light')">Light</mat-option>
+    <mat-option value="GEO" (click)="changeTheme('dark')">Dark</mat-option>
+  </mat-select>
+</mat-form-field>

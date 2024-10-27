@@ -1,5 +1,5 @@
 <main [attr.color-theme]="colorTheme">
-    <app-sidebar></app-sidebar>
+    <app-sidebar (themeToMain)="onThemeChange($event)"></app-sidebar>
 
     <div class="content">
         <!-- <app-navbar></app-navbar> -->

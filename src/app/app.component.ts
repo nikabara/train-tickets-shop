@@ -19,10 +19,9 @@ export class AppComponent {
 
   colorTheme: string = 'light';
 
-  retrieveChildData(data: string) {
-    setTimeout(() => {
-      this.colorTheme = data;
-    }, 0);
+  onThemeChange(theme: string) {
+    console.log("Main " + theme + " Color theme " + this.colorTheme);
+    this.colorTheme = theme;
   }
 
 }
