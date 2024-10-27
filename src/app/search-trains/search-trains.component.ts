@@ -12,12 +12,13 @@ import { SaveDataService } from '../services/save-data.service';
 import { Subscription } from 'rxjs';
 import { response } from 'express';
 import { provideHttpClient } from '@angular/common/http';
+import { TrainTicketsComponent } from "../train-tickets/train-tickets.component";
 
 @Component({
   selector: 'app-search-trains',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, DatepickerComponent, DestinationSelectComponent, CommonModule],
+  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, DatepickerComponent, DestinationSelectComponent, CommonModule, TrainTicketsComponent],
   templateUrl: './search-trains.component.html',
   styleUrl: './search-trains.component.sass'
 })
