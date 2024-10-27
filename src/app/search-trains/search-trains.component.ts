@@ -1,12 +1,17 @@
+import { Train } from './../Interfaces/Train.interface';
 import { CommonModule } from '@angular/common';
 import { DatepickerComponent } from './datepicker-from/datepicker-from.component';
-import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { DestinationSelectComponent } from "./destination-select/destination-select.component";
+import { SaveDataService } from '../services/save-data.service';
+import { Subscription } from 'rxjs';
+import { response } from 'express';
+import { provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-search-trains',
@@ -16,7 +21,7 @@ import { DestinationSelectComponent } from "./destination-select/destination-sel
   templateUrl: './search-trains.component.html',
   styleUrl: './search-trains.component.sass'
 })
-export class SearchTrainsComponent implements AfterViewInit {
+export class SearchTrainsComponent implements AfterViewInit, OnInit, OnDestroy {
   selectedLanguage: string = localStorage.getItem('language') ?? 'ENG';
 
   @ViewChildren(DatepickerComponent) datepickers!: QueryList<DatepickerComponent>;
@@ -40,5 +45,28 @@ export class SearchTrainsComponent implements AfterViewInit {
     })
 
     alert(`Departure : ${this.departureDate}\nReturn : ${this.returnDate}`)
+  }
+
+  fetchTrainsSub: Subscription = new Subscription();
+
+  constructor(private saveDataService: SaveDataService) { }
+  
+  trains: Train[] = [];
+
+  ngOnInit(): void {
+    this.fetchTrainsSub = this.saveDataService.fetchTrainsFromAPI().subscribe(
+      (response) => {
+        this.trains = response;
+        console.log(this.trains)
+      },
+      (error) => {
+        throw new Error(`Failed assigning response to trains ${error}`);
+      }
+    )
+  }
+
+
+  ngOnDestroy(): void {
+    this.fetchTrainsSub.unsubscribe();
   }
 }

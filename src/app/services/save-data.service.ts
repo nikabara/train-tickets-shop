@@ -1,5 +1,5 @@
 import { Inject, Injectable, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { catchError, Observable, Subscription } from 'rxjs';
 import { SwaggerAPIService } from './swagger-api.service';
 import { response } from 'express';
 import { Station } from '../Interfaces/Station.interface';
@@ -35,7 +35,7 @@ export class SaveDataService implements OnDestroy {
     this.putTicketsToLocalStorage();
   }
     
-  private putStationsToLocalStorage() : void {
+  public putStationsToLocalStorage() : void {
     if (!localStorage.getItem('stations')) {
       this.putStationsSubscription = this.swaggerApiService.getStations().subscribe(
         (response) => {
@@ -48,7 +48,7 @@ export class SaveDataService implements OnDestroy {
     }
   }
 
-  private putTrainsToLocalStorage() : void {
+  public putTrainsToLocalStorage() : void {
     console.log("yeah");
     if (!sessionStorage.getItem('trains')) {
       this.putTrainsSubscription = this.swaggerApiService.getTrains().subscribe(
@@ -62,7 +62,15 @@ export class SaveDataService implements OnDestroy {
     }
   }
 
-  private putVagonsToLocalStorage() : void {
+  public fetchTrainsFromAPI() : Observable<Train[]> {
+    return this.swaggerApiService.getTrains().pipe(
+      catchError((error) => {
+        throw new Error(`Failed to fetch .../api/trains | ${error}`);
+      })
+    )
+  }
+
+  public putVagonsToLocalStorage() : void {
     if (!sessionStorage.getItem('vagons')) {
       this.putVagonsSubscription = this.swaggerApiService.getVagons().subscribe(
         (response) => {
@@ -75,7 +83,7 @@ export class SaveDataService implements OnDestroy {
     }
   }
 
-  private putDeparturesToLocalStorage() : void {
+  public putDeparturesToLocalStorage() : void {
     if (!sessionStorage.getItem('departures')) {
       this.putDeparturesSubscription = this.swaggerApiService.getDepartures().subscribe(
         (response) => {
@@ -88,7 +96,7 @@ export class SaveDataService implements OnDestroy {
     }
   }
 
-  private putTicketsToLocalStorage() : void {
+  public putTicketsToLocalStorage() : void {
     if (!sessionStorage.getItem('tickets')) {
       this.putTicketsSubscription = this.swaggerApiService.getTickets().subscribe(
         (response) => {

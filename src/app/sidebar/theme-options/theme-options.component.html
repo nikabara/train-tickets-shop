@@ -1,6 +1,10 @@
-<mat-form-field>
-  <mat-select [(value)]="selected" [(ngModel)]="selected">
-    <mat-option value="ENG" (click)="changeTheme('light')">Light</mat-option>
-    <mat-option value="GEO" (click)="changeTheme('dark')">Dark</mat-option>
-  </mat-select>
-</mat-form-field>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ selected }}
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" (click)="selected = 'Light'" (click)="changeTheme('light')">Light</a></li>
+    <li><a class="dropdown-item" (click)="selected = 'Dark'" (click)="changeTheme('dark')">Dark</a></li>
+  </ul>
+</div>

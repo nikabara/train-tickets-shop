@@ -14,7 +14,7 @@ import { EventEmitter } from '@angular/core';
   styleUrl: './theme-options.component.sass'
 })
 export class ThemeOptionsComponent implements OnInit {
-  selected: string | null = null;
+  selected: string | null | undefined = null;
 
   @Output() themeToSidebar = new EventEmitter<string>();
 
@@ -24,7 +24,8 @@ export class ThemeOptionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selected = localStorage.getItem("language");
+    const theme = localStorage.getItem("theme");
+    this.selected = theme ? `${theme[0].toUpperCase()}${theme.slice(1)}` : '';
   }
 
 }
