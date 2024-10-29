@@ -7,6 +7,7 @@ $light-white: #fefefe
 $dimmed-white-hover: #edeae7
 $ticket-price-light: #f05f29
 $bi-hover: #195ce9
+$body-background-color-light: #ffffff
 
 // Dark theme colors
 $main-text-dark: #f0f0f0            
@@ -15,7 +16,8 @@ $border-primary-dark: #3a3a3a
 $dimmed-white-dark: #2e2e2e        
 $dimmed-white-hover-dark: #3c3c3c   
 $ticket-price-dark: #c34c22
-$bi-hover-dark: #4a90e2   
+$bi-hover-dark: #4a90e2 
+$body-background-color-dark: #1e1e1e
 
 @mixin light-theme 
     --main-text-color: #{$main-text}
@@ -26,6 +28,7 @@ $bi-hover-dark: #4a90e2
     --dimmed-white-hover-color: #{$dimmed-white-hover}
     --ticket-price-color: #{$ticket-price-light}
     --bi-hover-color: #{$bi-hover}
+    --body-background-color: #{$body-background-color-light}
 
 @mixin dark-theme
     --main-text-color: #{$main-text-dark}
@@ -35,6 +38,7 @@ $bi-hover-dark: #4a90e2
     --dimmed-white-hover-color: #{$dimmed-white-hover-dark}
     --ticket-price-color: #{$ticket-price-dark}
     --bi-hover-color: #{$bi-hover-dark}
+    --body-background-color: #{$body-background-color-dark}
 
 
 [color-theme="light"]
