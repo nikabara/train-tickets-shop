@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Train } from '../Interfaces/Train.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-train-tickets',
@@ -20,6 +21,8 @@ export class TrainTicketsComponent implements OnInit {
   departureTo: string | null = null;
   trainNumber: string | null = null;
 
+  constructor(private router: Router) { }
+
   public calculateTravelDuration(departure: string, arrival: string) : string {
     let departureTimeSplit:number[] = departure.split(':').map(x => Number(x));
     let arrivalTimeSplit:number[] = arrival.split(':').map(x => Number(x));
@@ -28,6 +31,17 @@ export class TrainTicketsComponent implements OnInit {
     let minuteTimeDifference: number = Math.max(departureTimeSplit[1], arrivalTimeSplit[1]) - Math.min(departureTimeSplit[1], arrivalTimeSplit[1]);
   
     return `${hourTimeDiference}hr ${minuteTimeDifference}min`;
+  }
+
+  @Output() selectTicket = new EventEmitter();
+
+  public onSelectTicket() : void {
+    this.selectTicket.emit(this.trainData);
+  }
+
+  passSelectedTicketData() : void {
+    const serializedData: string = JSON.stringify(this.trainData);
+    this.router.navigate(['/book-train-seats'], { queryParams: {data: serializedData} })
   }
 
   ngOnInit(): void {

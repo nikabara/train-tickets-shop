@@ -1,4 +1,4 @@
-<form action="" class="ticket">
+<div class="ticket">
     <div class="ticket-left">
       <img class="train-manufactorer-logo" src="/stadler.png" alt="">
       <div class="details">
@@ -27,8 +27,8 @@
 
       <div class="train-details">
           <h6 class="train-type"><span>Fast</span>, 2 storey #{{ trainNumber }}</h6>
-          <button id="select_train_ticket" type="submit">Select</button>
+          <button (click)="passSelectedTicketData()" id="select_train_ticket" type="submit">Select</button>
       </div>
     </div>
-</form>
+</div>
 

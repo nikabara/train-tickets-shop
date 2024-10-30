@@ -1,0 +1,8 @@
+<mat-form-field id="destination_select_btn">
+    <mat-label>{{ purpose }}</mat-label>
+    <mat-select [(ngModel)]="selection" (selectionChange)="onSelectionChange($event); onDayChange()">
+      @for (day of days; track day) {
+        <mat-option [value]="day.value">{{day.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>

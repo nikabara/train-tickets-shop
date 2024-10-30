@@ -18,9 +18,9 @@ export class DestinationSelectComponent {
   selection!: string;
 
   cities: any[] = [
-    { value: 'Tbilisi', viewValue: 'Tbilisi' },
-    { value: 'Batumi', viewValue: 'Batumi' },
-    { value: 'Foti', viewValue: 'Foti' },
+    { value: 'თბილისი', viewValue: 'თბილისი' },
+    { value: 'ბათუმი', viewValue: 'ბათუმი' },
+    { value: 'ფოთი', viewValue: 'ფოთი' },
   ];
 
   onSelectionChange(event: any) : void {

@@ -1,32 +1,36 @@
 <section class="main-sec">
-    <form class="train-search-form">
-        <h2>Find Your Train Schedule</h2>
+  <div class="train-search-form">
+    <h2>Find Your Train Schedule</h2>
 
 
-        <div class="form-options">
-            <div class="from-to-buttons-wrapper">
+    <div class="form-options">
+      <div class="from-to-buttons-wrapper">
 
-                <div class="from-destination-wrapper">
-                  <app-destination-select (cityChange)="getCity($event, 'From')" #destinationFrom [purpose]="'From'" id="app-destination-select-from"></app-destination-select>
-                </div>
-                <div class="to-destination-wrapper">
-                  <app-destination-select (cityChange)="getCity($event, 'To')" #destinationTo [purpose]="'To'" id="app-destination-select-to"></app-destination-select>
-                </div>
-            </div>
-          
-            <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker> 
-            <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker> 
+        <div class="from-destination-wrapper">
+          <app-destination-select (cityChange)="getCity($event, 'From')" #destinationFrom [purpose]="'From'"
+            id="app-destination-select-from"></app-destination-select>
+        </div>
+        <div class="to-destination-wrapper">
+          <app-destination-select (cityChange)="getCity($event, 'To')" #destinationTo [purpose]="'To'"
+            id="app-destination-select-to"></app-destination-select>
+        </div>
+      </div>
 
-
-            <button (click)="shishk()">Search Train</button>
-          </div>
-          <!-- <button (click)="onSubbmit()">Test ahh shit</button> -->
-        </form>
+      <app-week-day-select (dayChange)="getDepartureDay($event)" [purpose]="'Departure day'"></app-week-day-select>
+      <!-- <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker>
+      <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker> -->
 
 
-    <div class="response-trains">
-      @for (train of trains; track $index) {
-        <app-train-tickets [trainData]="train"></app-train-tickets>
-      }
+      <button (click)="onSubbmit()">Search Train</button>
     </div>
+    <!-- <button (click)="onSubbmit()">Test ahh shit</button> -->
+  </div>
+
+
+  <div class="response-trains">
+    <!-- @for (train of trains; track $index) {
+    <app-train-tickets [trainData]="train"></app-train-tickets>
+    } -->
+    <app-train-tickets *ngFor="let train of filteredTrains" [trainData]="train"></app-train-tickets>
+  </div>
 </section>
