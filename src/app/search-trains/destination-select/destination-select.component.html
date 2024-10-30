@@ -1,6 +1,6 @@
 <mat-form-field id="destination_select_btn">
   <mat-label>{{ purpose }}</mat-label>
-  <mat-select [(ngModel)]="selection" (selectionChange)="onSelectionChange($event)">
+  <mat-select [(ngModel)]="selection" (selectionChange)="onSelectionChange($event); onCityChange()">
     @for (city of cities; track city) {
       <mat-option [value]="city.value">{{city.viewValue}}</mat-option>
     }

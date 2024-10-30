@@ -49,12 +49,14 @@ export class SearchTrainsComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   getCity(city: any, purpose: string) : void {
+    console.log(city, 'city')
     if (purpose === "From") {
-      this.cityFrom = city.value;
+      this.cityFrom = city;
     }
     else if (purpose === "To") {
-      this.cityTo = city.value;
+      this.cityTo = city;
     }
+    console.log(this.cityFrom);
   }
 
   // trainForm!: FormGroup;
@@ -74,7 +76,7 @@ export class SearchTrainsComponent implements AfterViewInit, OnInit, OnDestroy {
     // }
 
     // console.log(this.trainForm.value);
-    // alert(`Departure : ${this.departureDate}\nReturn : ${this.returnDate}`)
+    alert(`Departure : ${this.departureDate}\nReturn : ${this.arrivalDate}`)
   }
 
   shishk() {

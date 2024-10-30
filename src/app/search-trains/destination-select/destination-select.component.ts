@@ -31,6 +31,7 @@ export class DestinationSelectComponent {
   @Output() cityChange = new EventEmitter();
 
   onCityChange() {
+    console.log(this.selection, "selection")
     this.cityChange.emit(this.selection);
   }
 }

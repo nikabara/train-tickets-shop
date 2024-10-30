@@ -7,10 +7,10 @@
             <div class="from-to-buttons-wrapper">
 
                 <div class="from-destination-wrapper">
-                  <app-destination-select (onCityChange)="getCity($event, 'From')" [purpose]="'From'" id="app-destination-select-from"></app-destination-select>
+                  <app-destination-select (cityChange)="getCity($event, 'From')" #destinationFrom [purpose]="'From'" id="app-destination-select-from"></app-destination-select>
                 </div>
                 <div class="to-destination-wrapper">
-                  <app-destination-select (onCityChange)="getCity($event, 'To')" [purpose]="'To'" id="app-destination-select-to"></app-destination-select>
+                  <app-destination-select (cityChange)="getCity($event, 'To')" #destinationTo [purpose]="'To'" id="app-destination-select-to"></app-destination-select>
                 </div>
             </div>
           
@@ -18,10 +18,10 @@
             <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker> 
 
 
+            <button (click)="shishk()">Search Train</button>
           </div>
           <!-- <button (click)="onSubbmit()">Test ahh shit</button> -->
         </form>
-        <button (click)="shishk()">Search Train</button>
 
 
     <div class="response-trains">
