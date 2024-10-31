@@ -1,0 +1,80 @@
+.book-train-wrapper
+    width: 100%
+    height: 100vh
+    background-color: #f6f6f6
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .book-train
+        width: 95%
+        height: 95%
+        padding: 25px
+        background-color: #f6f6f6
+        border: solid var(--border-color)
+        border-radius: 15px
+        display: flex
+        flex-direction: column
+
+        .row-1
+            width: 100%
+            display: flex
+            align-items: center
+            justify-content: space-between
+
+            .filler-text
+                h2
+                    color: #249df4
+
+                h5
+                    color: #afafaf
+                
+                background-color: #fafafa
+                width: 75%
+                padding: 10px 15px
+                border-radius: 15px
+
+            .ticket-price-wrapper
+                background-color: #fafafa
+                width: 24.5%
+                padding: 10px 15px
+                border-radius: 15px
+
+                h6
+                    color: #afafaf
+
+        .row-2
+            margin-top: 15px
+            width: 100%
+            height: 100%
+            display: flex
+            justify-content: space-between
+            
+            .selection-info
+                width: 30%
+                // border: solid black 1px
+
+                .train-id
+                    color: #838383
+
+
+                .selected-seats
+                    margin-top: 15px
+                    width: 100%
+
+
+                    .selected-seat
+                        display: flex
+                        align-items: center
+                        justify-content: space-between
+                        border: solid var(--border-color)
+                        border-radius: 10px
+                        padding: 10px 10px
+
+                        .place
+                            color: #afafaf
+
+        
+            .book-seats
+                width: 65%
+                background-color: #fafafa

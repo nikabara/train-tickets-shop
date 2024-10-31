@@ -1,6 +1,9 @@
+import { SwaggerAPIService } from './../services/swagger-api.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Seat } from '../Interfaces/Seat.interface';
+import { Vagon } from '../Interfaces/Vagon.interface';
 
 @Component({
   selector: 'app-book-train-seat',
@@ -11,10 +14,13 @@ import { Subscription } from 'rxjs';
 })
 export class BookTrainSeatComponent implements OnInit, OnDestroy {
   private activatedRoutSubscription!: Subscription;
+  private getVagonSeatsSubscription!: Subscription;
 
   private _queryParams!: any; 
 
-  constructor(private activatedRout: ActivatedRoute) { }
+  private vagon!: Vagon[];
+
+  constructor(private activatedRout: ActivatedRoute, private swaggerAPIService: SwaggerAPIService) { }
 
   ngOnInit(): void {
     this.activatedRoutSubscription = this.activatedRout.queryParamMap.subscribe(
@@ -29,9 +35,24 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
         }
       }
     )
+
+    this.getSeatsByVagonId(this._queryParams.id);
+  }
+
+  private getSeatsByVagonId(_trainId: number) {
+    this.getVagonSeatsSubscription = this.swaggerAPIService.getVagons().subscribe(
+      (response) => {
+        this.vagon = response.filter((x: Vagon) => x.trainId === _trainId);
+        console.log(this.vagon);
+      },
+      (error) => {
+        throw new Error(`Error fetching vagon/seat data to book-train-seat component ${error}`);
+      }
+    )
   }
 
   ngOnDestroy(): void {
     this.activatedRoutSubscription.unsubscribe();
+    this.getVagonSeatsSubscription.unsubscribe();
   }
 }
