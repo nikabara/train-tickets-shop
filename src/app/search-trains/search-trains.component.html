@@ -1,6 +1,6 @@
 <section class="main-sec">
   <div class="train-search-form">
-    <h2>Find Your Train Schedule</h2>
+    <h2 class="train-search-title">Find Your Train Schedule</h2>
 
 
     <div class="form-options">
@@ -17,11 +17,11 @@
       </div>
 
       <app-week-day-select (dayChange)="getDepartureDay($event)" [purpose]="'Departure day'"></app-week-day-select>
-      <!-- <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker>
-      <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker> -->
+      <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker>
+      <!-- <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker> -->
 
 
-      <button (click)="onSubbmit()">Search Train</button>
+      <button class="submit-btn" (click)="onSubbmit()">Search Train</button>
     </div>
     <!-- <button (click)="onSubbmit()">Test ahh shit</button> -->
   </div>

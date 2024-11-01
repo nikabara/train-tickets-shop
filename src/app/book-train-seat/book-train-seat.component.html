@@ -3,25 +3,30 @@
         <div class="row-1">
             <div class="filler-text">
                 <h2>Window or corridor?</h2>
-                <h5>Book in advance so you won't be dissapointed  later.</h5>
+                <h5>Book in advance so you won't be dissapointed later.</h5>
             </div>
     
             <div class="ticket-price-wrapper">
-                <h2 id="selected-ticket-price">GEL 19</h2>
+                <h2 id="selected-ticket-price">GEL {{ seatPrice }}</h2>
                 <h6>Currently selected</h6>
             </div>
+
+            
         </div>
         <div class="row-2">
             <div class="selection-info">
-                <h6 class="train-id">Train #812</h6>
-                <h3 class="train-from-to-info">Tbilisi - Batumi</h3>
+                <h6 class="train-id">Train #{{ _queryParams.number }}</h6>
+                <h3 class="train-from-to-info">{{ _queryParams.name }}</h3>
 
                 <div class="selected-seats">
                     <div class="selected-seat">
-                        <h5 class="user">User</h5>
-                        <h5 class="place">Place: </h5>
+                        <h5 class="user">Chosen</h5>
+                        <h5 class="place">Place: {{ seatNumber }}</h5>
                     </div>
                 </div>
+
+                <button id="place_reservation">Confirm seats reservation</button>
+
             </div>
             <div class="book-seats">
                 <div class="seat-row-numbers">

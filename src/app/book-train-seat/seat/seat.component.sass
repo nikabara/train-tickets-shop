@@ -1,8 +1,24 @@
+
+    
 .seat
     width: 70px
     height: 70px
     // border: solid var(--border-color)
     border-radius: 15px
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+
+    .selected-overlay
+        width: 100%
+        height: 100%
+        display: none
+        position: absolute
+        top: 0
+        left: 0
+        border-radius: inherit
+        background-color: #ededed3e
 
 .BSN
     background-color: #b667f4
@@ -11,7 +27,18 @@
     background-color: #f5ac3f
 
 .II
-    background-color: #3fa9f5 
+    background-color: #3fa9f5
 
 .occupied
     background-color: #eeeeee !important
+    pointer-events: none
+
+.isShown
+    display: flex !important
+    color: #cccccc
+    font-size: 50px
+
+.isChecked
+    display: flex !important
+    color: #ffffff
+    font-size: 40px

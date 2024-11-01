@@ -15,6 +15,14 @@ export class SeatComponent {
 
   @Output() onSeatData: EventEmitter<Seat> = new EventEmitter();
 
+
+  seatChecked: boolean = false;
+
+  toggleSeatCheck() : void {
+    this.seatChecked = !this.seatChecked;
+  }
+
+
   public emitSeatData() : void {
     this.onSeatData.emit(this.seatInfo);
   }

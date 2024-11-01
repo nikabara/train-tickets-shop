@@ -21,7 +21,7 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   private activatedRoutSubscription!: Subscription;
   private getVagonSeatsSubscription!: Subscription;
 
-  private _queryParams!: any;
+  _queryParams!: any;
 
   // vagon!: Vagon[];
 
@@ -115,11 +115,16 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     )
   }
 
+
   clickedSeatData!: Seat;
+
+  seatPrice: number = 0;
+  seatNumber: string = "";
 
   getSeatData(data: Seat): void {
     this.clickedSeatData = data;
-    console.log(data);
+    this.seatPrice = data.price;
+    this.seatNumber = data.number;
   }
 
   ngOnDestroy(): void {
