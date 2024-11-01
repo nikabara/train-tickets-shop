@@ -19,12 +19,79 @@
                 <div class="selected-seats">
                     <div class="selected-seat">
                         <h5 class="user">User</h5>
-                        <h5 class="place">Place: 7F</h5>
+                        <h5 class="place">Place: </h5>
                     </div>
                 </div>
             </div>
             <div class="book-seats">
+                <div class="seat-row-numbers">
+                    <div class="business-class-rows number-rows">
+                        <h4 class="vagon-seat vagon-seat1">1</h4>
+                        <h4 class="vagon-seat vagon-seat2">2</h4>
+                        <h4 class="vagon-seat vagon-seat3">3</h4>
+                        <h4 class="vagon-seat vagon-seat4">4</h4>
+                        <h4 class="vagon-seat vagon-seat5">5</h4>
+                        <h4 class="vagon-seat vagon-seat6">6</h4>
+                        <h4 class="vagon-seat vagon-seat7">7</h4>
+                        <h4 class="vagon-seat vagon-seat8">8</h4>
+                        <h4 class="vagon-seat vagon-seat9">9</h4>
+                        <h4 class="vagon-seat vagon-seat10">10</h4>
+                    </div>
+                    <div class="first-class-rows number-rows">
+                        <h4 class="vagon-seat vagon-seat11">11</h4>
+                        <h4 class="vagon-seat vagon-seat12">12</h4>
+                        <h4 class="vagon-seat vagon-seat13">13</h4>
+                        <h4 class="vagon-seat vagon-seat14">14</h4>
+                        <h4 class="vagon-seat vagon-seat15">15</h4>
+                        <h4 class="vagon-seat vagon-seat16">16</h4>
+                        <h4 class="vagon-seat vagon-seat17">17</h4>
+                        <h4 class="vagon-seat vagon-seat18">18</h4>
+                        <h4 class="vagon-seat vagon-seat19">19</h4>
+                        <h4 class="vagon-seat vagon-seat20">20</h4>
+                    </div>
+                    <div class="second-class-rows number-rows">
+                        <h4 class="vagon-seat vagon-seat21">21</h4>
+                        <h4 class="vagon-seat vagon-seat22">22</h4>
+                        <h4 class="vagon-seat vagon-seat23">23</h4>
+                        <h4 class="vagon-seat vagon-seat24">24</h4>
+                        <h4 class="vagon-seat vagon-seat25">25</h4>
+                        <h4 class="vagon-seat vagon-seat26">26</h4>
+                        <h4 class="vagon-seat vagon-seat27">27</h4>
+                        <h4 class="vagon-seat vagon-seat28">28</h4>
+                        <h4 class="vagon-seat vagon-seat29">29</h4>
+                        <h4 class="vagon-seat vagon-seat30">30</h4>
+                    </div>
+                </div>
 
+
+                <!-- Business class -->
+                <h3 class="vagon-class-name vagon-class-business">Business Class</h3>
+                
+                <div class="seat-alphabetic-names">
+                    <h4 class="column-alp column-alp1">A</h4>
+                    <h4 class="column-alp column-alp2">B</h4>
+                    <h4 class="column-alp column-alp3">C</h4>
+                    <h4 class="column-alp column-alp4">D</h4>
+                </div>
+                
+                <div class="business-class-wrapper vagon-class-wrapper">
+                    <app-seat *ngFor="let seat of businessClassSeats" [vagonClass]="'BSN'" [seatInfo]="seat" (onSeatData)="getSeatData($event)">
+                    </app-seat>
+                </div>
+
+                <!-- Economy I class -->
+                <h3 class="vagon-class-name vagon-class-first">I Class</h3>
+                <div class="first-class-wrapper vagon-class-wrapper">
+                    <app-seat *ngFor="let seat of firstClassSeats" [vagonClass]="'I'" [seatInfo]="seat" (onSeatData)="getSeatData($event)">
+                    </app-seat>
+                </div>
+
+                <!-- Economy II class -->
+                <h3 class="vagon-class-name vagon-class-second">II Class</h3>
+                <div class="second-class-wrapper vagon-class-wrapper">
+                    <app-seat *ngFor="let seat of secondClassSeats" [vagonClass]="'II'" [seatInfo]="seat" (onSeatData)="getSeatData($event)">
+                    </app-seat>
+                </div>
             </div>
         </div>
     </div>
