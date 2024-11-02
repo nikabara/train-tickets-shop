@@ -1,3 +1,5 @@
+$web-padding: 0px 40px
+
 /* The div container */
 .qrcodeImage
     display: flex
@@ -8,3 +10,151 @@
     display: flex
     flex: 1
     justify-content: center
+
+a
+    text-decoration: none
+    color: black
+
+nav
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    height: 74px
+    padding: $web-padding
+
+    .webpage-logo
+        width: 170px
+
+    .nav-options
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        gap: 40px
+        width: 500px
+
+        .log-in, .contact-us
+            color: black
+            font-size: 20px
+            font-weight: 600
+            text-align: center
+            color: black
+
+            i.bi
+                margin-right: 5px
+
+            &:hover
+                color: var(--bi-hover-color)
+
+                i.bi
+                    color: var(--bi-hover-color)
+
+.section-1
+    background-color: beige
+    margin: 30px 40px 0px 40px
+    height: 500px
+    border-radius: 15px
+    overflow: hidden
+
+.slide
+    width: 100%
+    height: 100%
+
+    .carousel-inner
+        width: 100%
+        height: 100%
+
+        .carousel-item
+            width: 100%
+            height: 100%
+            background-size: cover
+            background-position: center
+            background-repeat: no-repeat
+
+    
+            h3
+                // backdrop-filter: blur(10px)
+                width: 100%
+                text-align: center
+                margin-top: 0px
+                padding-right: 20px
+                padding-top: 3px
+                padding-bottom: 3px
+                font-size: 25px
+                color: white
+                background-color: #e6e6e61d
+                transition: 0.5s ease-in-out
+
+        .item1
+            background-image: url('/tbilisi.jpg')
+
+        .item2
+            background-image: url('/batumi3.jpg')
+
+        .item3
+            background-image: url('/foti.jpg')
+
+.slogan
+    width: 100%
+    height: 50px
+    text-align: center
+    margin-top: 40px
+    padding-right: 15px
+
+.slogan2
+    margin-top: 65px
+    margin-bottom: 15px
+    text-align: start !important
+    padding-left: 40px
+
+
+
+.advantages-section
+    // background-color: beige
+    height: 280px
+    margin: 0 40px
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    column-gap: 20px
+    grid-auto-rows: 1fr
+    margin-bottom: 100px
+
+    .advantage-card
+        border: solid #f0eeee 1px
+        border-radius: 15px
+        
+        display: grid
+        grid-auto-columns: 1fr
+        grid-auto-rows: 4fr 1fr
+
+        &:hover
+            box-shadow: #989898 0px 0px 10px -5px
+
+        .background-divs
+            background-color: beige
+            margin: 10px 10px 0 10px
+            border-radius: 13px 13px 0 0
+            background-size: cover
+            background-repeat: no-repeat
+            background-position: center
+
+        .background-div1
+            background-image: url('/safe.png')
+
+        .background-div2
+            background-image: url('/quick.png')
+
+        .background-div3
+            background-image: url('/cheap.png')
+
+        .background-div4
+            background-image: url('/comfortable.png')
+
+        .advantage-type
+            margin: 10px 10px 0 10px
+
+        .about-advantage
+            margin: 10px 10px 0 10px
+            color: rgb(113, 113, 113)
+            font-size: 18px

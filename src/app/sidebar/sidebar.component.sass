@@ -59,6 +59,9 @@ p
       align-items: center
       justify-content: center
 
+      app-theme-options
+        display: none
+
       .aside-bottom-option
         border: none
         background-color: transparent
@@ -99,7 +102,7 @@ p
 aside
   background-color: var(--dimmed-white-color)
   display: grid
-  grid-template-rows: 1fr 10fr 1fr
+  grid-template-rows: 1fr 10fr 2.5fr
   grid-auto-columns: 1fr
   height: 100vh
   width: 270px
@@ -174,13 +177,19 @@ aside
   .aside-bottom
     display: flex
     flex-direction: column
+    justify-content: center
 
     .aside-bottom-buttons
       height: 100px
       display: flex
-      align-items: center
+      flex-direction: column
+      align-items: flex-start
       justify-content: flex-start
       padding: 0 15px
+      margin-top: 10px
+
+      app-theme-options
+        margin-bottom: 15px
 
       .aside-bottom-option
         border: none

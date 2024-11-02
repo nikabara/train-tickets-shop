@@ -1,9 +1,123 @@
 nav
-    background-color: var(--dimmed-white-color)
-    border-bottom: solid #f4f4f4 2px 
-    height: 120px
+    // background-color: var(--dimmed-white-color)
+    background-color: #f4f4f4ae
+    border-bottom: solid #f4f4f4 2px
+    height: 60px
 
-/* From Uiverse.io by Galahhad
-/* radio settings 👇
+    padding: 0 30px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    position: sticky
+    top: 0
+    left: 0
+    z-index: 5
 
-    
+    &:before
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        backdrop-filter: blur(10px)
+        z-index: -1
+
+    .aside-bottom-option
+        border: none
+        background-color: transparent
+        font-family: Calibri-bold
+        font-size: 18px
+        width: 45px
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+        height: 45px
+        border-radius: 10px
+
+        .bi
+            color: var(--secondary-text-color)
+
+        &:hover
+            background-color: var(--dimmed-white-hover-color)
+            
+            .bi
+                color: var(--bi-hover-color)
+                transform: rotate(40deg)
+                transition: ease-in-out 0.5s
+
+    .menu-toggler
+        border: none
+        background-color: transparent
+        font-family: Calibri-bold
+        font-size: 25px
+        font-weight: 800
+        width: 45px
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+        height: 45px
+        border-radius: 10px
+
+        .bi
+            color: var(--secondary-text-color)
+
+        &:hover
+            background-color: var(--dimmed-white-hover-color)
+            
+            .bi
+                color: var(--bi-hover-color)
+                transition: ease-in-out 0.5s
+
+
+
+    .navbar-mid-options
+        // border: solid black 1px
+        width: 500px
+        max-width: 800px
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 0px 10px
+
+        .aside-mid-link
+            font-family: Calibri-bold
+            font-weight: 600
+            text-decoration: none
+            color: var(--secondary-text-color)
+            font-size: 18px
+            height: 45px
+            width: 45px
+            display: flex
+            align-items: center
+            justify-content: center
+            border-radius: 10px
+
+            .bi
+                color: var(--secondary-text-color)
+
+            &:hover
+                background-color: var(--dimmed-white-hover-color)
+            
+                .bi
+                    color: var(--bi-hover-color)
+                    transition: ease-in-out 0.5s
+
+
+
+.options
+    position: fixed
+    left: 0
+    top: -100%
+    width: 100%
+    height: calc(100% - 60px)
+    border-top: solid var(--secondary-text-color) 2px 
+    background-color: #f4f4f4ae
+    z-index: 8888
+    backdrop-filter: blur(10px)
+
+.navbar-toggled
+    top: calc( 0% + 60px ) !important

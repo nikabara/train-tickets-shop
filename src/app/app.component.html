@@ -1,8 +1,11 @@
+<div *ngIf="loaderService.isLoading | async" class="loader-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
 <main [attr.color-theme]="colorTheme">
-    <app-sidebar (themeToMain)="onThemeChange($event)"></app-sidebar>
+    <app-sidebar [class.isHidden]="!isBarHidden" (themeToMain)="onThemeChange($event)"></app-sidebar>
 
     <div class="content">
-        <!-- <app-navbar></app-navbar> -->
+        <app-navbar [class.isHidden]="isBarHidden"></app-navbar>
         <router-outlet></router-outlet>
     </div>
 </main>

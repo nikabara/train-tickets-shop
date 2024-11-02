@@ -4,11 +4,13 @@ import { provideRouter } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), importProvidersFrom(BrowserAnimationsModule),
-    provideHttpClient()
+    provideHttpClient(),
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
   ]
 };
 

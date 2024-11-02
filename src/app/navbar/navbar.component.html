@@ -1,4 +1,19 @@
 <nav>
+    <button class="menu-toggler" (click)="toggleSideBar()"><i class="bi bi-list"></i></button>
 
+    <div class="navbar-mid-options">
+        <a class="aside-mid-link" routerLink="/home"><i class="bi bi-house-fill"></i></a>
+        <a class="aside-mid-link" routerLink="/search-trains"><i class="bi bi-train-front-fill"></i></a>
+        <a class="aside-mid-link" routerLink="/search-plains"><i class="bi bi-airplane-fill"></i></a>
+        <a class="aside-mid-link" routerLink="/search-bus"><i class="bi bi-bus-front"></i></a>
+        <a class="aside-mid-link" routerLink="/my-bookings"><i class="bi bi-ticket-perforated-fill"></i></a>
+        <a class="aside-mid-link" routerLink="/history"><i class="bi bi-clock-history"></i></a>
+    </div> 
+
+    <button routerLink="/settings" class="settings aside-bottom-option"><i class="bi bi-gear-fill"></i></button>
+
+
+
+    <div class="options" [class.navbar-toggled]="navbarToggled"></div>
 </nav>
 

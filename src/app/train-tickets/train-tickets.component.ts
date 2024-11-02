@@ -1,3 +1,4 @@
+import { SwaggerAPIService } from './../services/swagger-api.service';
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Train } from '../Interfaces/Train.interface';
@@ -21,7 +22,7 @@ export class TrainTicketsComponent implements OnInit {
   departureTo: string | null = null;
   trainNumber: string | null = null;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private swaggerAPIService: SwaggerAPIService) { }
 
   public calculateTravelDuration(departure: string, arrival: string) : string {
     let departureTimeSplit:number[] = departure.split(':').map(x => Number(x));
