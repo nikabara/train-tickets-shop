@@ -116,8 +116,22 @@ export class SearchTrainsComponent implements AfterViewInit, OnInit, OnDestroy {
     console.log(this.filteredTrains, 'filtered');
   }
 
+  listenToPlayBack(delaySeconds: number, video: HTMLVideoElement) {
+    video.addEventListener('ended', () => {
+      setTimeout(() => {
+        video.currentTime = 0; // Reset to the beginning
+        video.play(); // Play the video again
+      }, delaySeconds * 1000); // Convert seconds to milliseconds
+    });
+  }
+
   ngOnInit(): void {
     this.fetchTrains();
+
+    const videoElement = document.querySelector('.train-go-video') as HTMLVideoElement;
+    if (videoElement) {
+      this.listenToPlayBack(1, videoElement); // Pass 1 second delay
+    }
   }
 
 

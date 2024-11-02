@@ -18,7 +18,7 @@
 
       <app-week-day-select (dayChange)="getDepartureDay($event)" [purpose]="'Departure day'"></app-week-day-select>
       <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker>
-      <!-- <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker> -->
+      <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker>
 
 
       <button class="submit-btn" (click)="onSubbmit()"><i class="bi bi-search"></i></button>
@@ -26,11 +26,27 @@
     <!-- <button (click)="onSubbmit()">Test ahh shit</button> -->
   </div>
 
-
-  <div class="response-trains">
-    <!-- @for (train of trains; track $index) {
-    <app-train-tickets [trainData]="train"></app-train-tickets>
+  <!-- @for (train of trains; track $index) {
+      <app-train-tickets [trainData]="train"></app-train-tickets>
     } -->
-    <app-train-tickets *ngFor="let train of filteredTrains" [trainData]="train"></app-train-tickets>
-  </div>
+  
+  <ng-container *ngIf="filteredTrains.length == 0; then noTrainsFound else foundTrains"></ng-container>
+
+  <ng-template #foundTrains>
+    <div class="response-trains">
+      <app-train-tickets *ngFor="let train of filteredTrains" [trainData]="train">
+      </app-train-tickets>
+    </div>
+  </ng-template>
+
+  <ng-template #noTrainsFound>
+    <div class="nothing-found-div">
+      <h1 class="trains-not-found">No trains found yet...</h1>
+
+      <video class="train-go-video" autoplay loop>
+        <source class="heree" src="/train-go-animation.webm" type="video/webm">
+      </video>
+    </div>
+  </ng-template>
+
 </section>
