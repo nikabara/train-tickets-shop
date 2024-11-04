@@ -1,5 +1,4 @@
 <!-- <button (click)="btnClick()">CLick me</button> -->
-
 <nav>
     <a href=""><img class="webpage-logo" src="/gr-logo.svg" alt=""></a>
 
@@ -7,8 +6,11 @@
         <a class="contact-us" href="https://mail.google.com/mail/?view=cm&fs=1&to=baratashvilinick@gmail.com&su=Hello&body=Hi%20there,%20I%20wanted%20to%20reach%20out%20to%20you%20about : " target="_blank">
             <i class="bi bi-envelope-at-fill"></i> Contact Us</a>
             
-        <a class="log-in" href="">
-            <i class="bi bi-person-circle"></i> Log In</a>
+          <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()" >
+            <i class="bi bi-person-circle"></i> Sign In</a>
+
+          <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
+            <i class="bi bi-person-circle"></i></a>
     </div>
 </nav>
 
