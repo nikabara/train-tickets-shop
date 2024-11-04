@@ -111,7 +111,7 @@ export class HomeComponent implements OnInit {
 
 				Swal.fire({
 					title: "We'll send verifiction link to your email",
-					text: "Please check your gmail",
+					text: "Please check your gmail if you are not already verified",
 					icon: "success",
 					showConfirmButton: true,
 					confirmButtonText: "Close",
