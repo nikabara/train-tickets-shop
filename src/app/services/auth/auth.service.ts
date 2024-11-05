@@ -10,13 +10,20 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  saveSignIn() : void {
+    if (!!sessionStorage.getItem('accessToken')) {
+      localStorage.setItem('isAuthed', 'true');
+    }
+  }
+
   isAuthenticated() : boolean {
-    return !!localStorage.getItem("accessToken");
+    return localStorage.getItem("isAuthed") === 'true' ? true : false;
   }
 
   signOut() : void {
-    localStorage.removeItem('accessToken')
+    sessionStorage.removeItem('accessToken')
     localStorage.removeItem('userData');
+    localStorage.removeItem('isAuthed');
     window.location.reload();
   }
 
@@ -31,7 +38,7 @@ export class AuthService {
   signInTap(email: string, password: string): Observable<boolean> {
     return this.http.post<{token: string}>(`${this.apiURL}/sign_in`, { email, password }).pipe(
       tap(response => {
-        localStorage.setItem('token', response.token);
+        sessionStorage.setItem('token', response.token);
       }),
       map(() => true)
     );
@@ -50,7 +57,7 @@ export class AuthService {
   }
 
   updateAccessToken(accessToken: string) : void {
-    localStorage.setItem('accessToken', JSON.stringify(accessToken));
+    sessionStorage.setItem('accessToken', JSON.stringify(accessToken));
   }
 
   verifyUserEmail(email: string) : Observable<any> {

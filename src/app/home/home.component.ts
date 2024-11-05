@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
 		return new Promise((resolve, reject) => {
 			this.auth.signIn({ email: _email, password: _password }).subscribe(
 				(response) => {
-					localStorage.setItem('accessToken', JSON.stringify(response));
+					sessionStorage.setItem('accessToken', JSON.stringify(response));
 					resolve(); // Resolve the promise if the API call is successful
 				},
 				(error) => {
@@ -106,6 +106,8 @@ export class HomeComponent implements OnInit {
 		try {
 			await this.getAccessKey(formValues[0], formValues[1]);
 
+			this.auth.saveSignIn();
+
 			// After getAccessKey completes, check if the user is authenticated
 			if (formValues[0] && formValues[1] && this.auth.isAuthenticated()) {
 
@@ -122,7 +124,7 @@ export class HomeComponent implements OnInit {
 							this.saveUserData();
 						}
 					}
-				});
+				})
 
 			} else {
 				Swal.fire({
@@ -135,6 +137,7 @@ export class HomeComponent implements OnInit {
 					denyButtonText: "Close"
 				}).then((result) => {
 					if (result.isConfirmed) {
+						localStorage.removeItem('isAuthed');
 						this.swalSignIn();
 					}
 				});
@@ -156,7 +159,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	saveUserData() : void {
-		const token: string = JSON.parse(localStorage.getItem('accessToken') ?? '').access_token;
+		const token: string = JSON.parse(sessionStorage.getItem('accessToken') ?? '').access_token;
 
 		this.auth.getUser(token).subscribe(
 			(response) => {
@@ -169,7 +172,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		// const token: string = JSON.parse(localStorage.getItem('accessToken') ?? '').access_token;
+		// const token: string = JSON.parse(sessionStorage.getItem('accessToken') ?? '').access_token;
 		// console.log(token);
 		// this.auth.getUser(token).subscribe(
 		// 	(response) => {
