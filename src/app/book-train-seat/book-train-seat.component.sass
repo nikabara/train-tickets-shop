@@ -32,11 +32,11 @@
 
                 h5
                     color: #afafaf
-                
-                background-color: #fafafa
-                width: 75%
-                padding: 10px 15px
-                border-radius: 15px
+
+                    background-color: #fafafa
+                    width: 75%
+                    padding: 10px 15px
+                    border-radius: 15px
 
             .ticket-price-wrapper
                 background-color: #fafafa
@@ -53,12 +53,20 @@
             height: 85%
             display: flex
             justify-content: space-between
-            
+
             .selection-info
                 width: 30%
                 display: flex
                 flex-direction: column
                 // border: solid black 1px
+
+                .selected-tickets-wrapper
+                    margin-top: 10px
+                    height: 70%
+                    overflow: auto
+
+                .total-price
+                    margin-top: auto
 
                 #place_reservation
                     background-color: #3fa9f5
@@ -67,19 +75,16 @@
                     font-weight: 700
                     font-size: 18px
                     margin-top: auto
-                    color: #fff 
+                    color: #fff
                     border: none
                     border-radius: 15px
-
 
                 .train-id
                     color: #838383
 
-
                 .selected-seats
                     margin-top: 15px
                     width: 100%
-
 
                     .selected-seat
                         display: flex
@@ -92,7 +97,6 @@
                         .place
                             color: #afafaf
 
-        
             .book-seats
                 width: 520px // original width 430px
                 padding-left: 150px !important
@@ -132,7 +136,6 @@
 
                     .first-class-rows, .second-class-rows
                         margin-top: 110px
-            
 
                     .vagon-seat
                         font-size: 30px
@@ -155,26 +158,23 @@
                     flex-wrap: wrap
                     overflow: auto
 
-
-
-
 /* Target the scrollbar container */
 ::-webkit-scrollbar
-    width: 15px !important 
-    height: 10px !important 
+    width: 15px !important
+    height: 10px !important
 
 /* Style the scrollbar track (background) */
 ::-webkit-scrollbar-track
-    background: #f1f1f1 
-    border-radius: 5px !important 
+    background: #f1f1f1
+    border-radius: 5px !important
 
 /* Style the scrollbar thumb (scrolling handle) */
 ::-webkit-scrollbar-thumb
-    background-color: #dadada !important 
+    background-color: #dadada !important
     border-radius: 5px !important
-    border: 2px solid #f1f1f1 !important 
+    border: 2px solid #f1f1f1 !important
 
 /* Optional: Change the thumb color on hover */
 ::-webkit-scrollbar-thumb:hover
     transition: ease-in-out .2s
-    background-color: #a7a6a6 !important 
+    background-color: #a7a6a6 !important

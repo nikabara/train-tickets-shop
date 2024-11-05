@@ -46,19 +46,19 @@ import { RegisterTicket } from '../Interfaces/RegisterTicket.interface';
     return this.http.post<RegisterTicket>(`${this.apiURL}/tickets/register`, ticket);
   }
 
-  CheckTicketStatus(ticketId: string) : Observable<any> {
+  checkTicketStatus(ticketId: string) : Observable<any> {
     return this.http.get<any>(`${this.apiURL}/tickets/checkstatus/${ticketId}`)
   }
 
-  ConfirmTicket(ticketId: string) : Observable<Ticket> {
+  confirmTicket(ticketId: string) : Observable<Ticket> {
     return this.http.get<Ticket>(`${this.apiURL}/tickets/confirm/${ticketId}`);
   }
 
-  CancelTicket(ticketId: string) : Observable<Ticket> {
+  cancelTicket(ticketId: string) : Observable<Ticket> {
     return this.http.delete<Ticket>(`${this.apiURL}/tickets/cancel/${ticketId}`);
   }
 
-  CancelAllTickets() : Observable<any> {
+  cancelAllTickets() : Observable<any> {
     return this.http.delete<any>(`${this.apiURL}/tickets/cancelAll`);
   }
 }

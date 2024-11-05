@@ -1,3 +1,4 @@
+import { RegisterTicket } from './../Interfaces/RegisterTicket.interface';
 import { SwaggerAPIService } from './../services/swagger-api.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -6,18 +7,18 @@ import { Seat } from '../Interfaces/Seat.interface';
 import { Vagon } from '../Interfaces/Vagon.interface';
 import { SeatComponent } from "./seat/seat.component";
 import { CommonModule } from '@angular/common';
+import { SelectedTicketInfoComponent } from "./selected-ticket-info/selected-ticket-info.component";
+import Swal from 'sweetalert2';
+import { People } from '../Interfaces/People.interface';
 
 @Component({
   selector: 'app-book-train-seat',
   standalone: true,
-  imports: [SeatComponent, CommonModule],
+  imports: [SeatComponent, CommonModule, SelectedTicketInfoComponent],
   templateUrl: './book-train-seat.component.html',
   styleUrl: './book-train-seat.component.sass'
 })
 export class BookTrainSeatComponent implements OnInit, OnDestroy {
-  dataLog() {
-    throw new Error('Method not implemented.');
-  }
   private activatedRoutSubscription!: Subscription;
   private getVagonSeatsSubscription!: Subscription;
 
@@ -125,6 +126,54 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     this.clickedSeatData = data;
     this.seatPrice = data.price;
     this.seatNumber = data.number;
+  }
+
+  selectcedSeats: Seat[] = [];
+
+  seatClicked() : void {
+    if (!this.selectcedSeats.some((seat: Seat) => seat.seatId === this.clickedSeatData.seatId)) {
+      this.selectcedSeats.unshift(this.clickedSeatData);
+    }
+    else {
+      this.selectcedSeats = this.selectcedSeats.filter((seat: Seat) => seat.seatId !== this.clickedSeatData.seatId);
+    }
+    console.log(this.selectcedSeats);
+  }
+
+
+  peopleSeatData: People[] = [{
+		seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
+		name: 'Nick',
+		surname: 'Bara',
+		idNumber: '34050',
+		status: 'Completed',
+		payoutCompleted: true
+	}]
+
+	ticketData: RegisterTicket = {
+		trainId: 4,
+		date: '2024-10-18T15:34:38.647Z',
+		email: 'niko@gamil.com',
+		phoneNumber: '+995577899422',
+		people: this.peopleSeatData
+	}
+
+  bookSelectedTickets() : void {
+    if (this.selectcedSeats.length != 0 && this.selectcedSeats.length <= 10) { xz
+
+      Swal.fire({
+        title: "Are you sure you want to proceed?",
+        text: "Transaction in irreversable and is not 100% refundable",
+        icon: "question",
+        showConfirmButton: true,
+        confirmButtonText: "Proceed",
+        showCancelButton: true,
+        cancelButtonText: "Cancel",
+        preConfirm: () => {
+          // this.swaggerAPIService.postTicket()
+        }
+      })
+    }
   }
 
   ngOnDestroy(): void {
