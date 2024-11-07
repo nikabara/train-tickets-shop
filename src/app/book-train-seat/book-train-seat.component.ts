@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { SelectedTicketInfoComponent } from "./selected-ticket-info/selected-ticket-info.component";
 import Swal from 'sweetalert2';
 import { People } from '../Interfaces/People.interface';
+import { Ticket } from '../Interfaces/Ticket.interface';
 
 @Component({
   selector: 'app-book-train-seat',
@@ -130,7 +131,7 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
 
   selectcedSeats: Seat[] = [];
 
-  seatClicked() : void {
+  seatClicked(): void {
     if (!this.selectcedSeats.some((seat: Seat) => seat.seatId === this.clickedSeatData.seatId)) {
       this.selectcedSeats.unshift(this.clickedSeatData);
     }
@@ -142,24 +143,61 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
 
 
   peopleSeatData: People[] = [{
-		seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
-		name: 'Nick',
-		surname: 'Bara',
-		idNumber: '34050',
-		status: 'Completed',
-		payoutCompleted: true
-	}]
+    seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
+    name: 'Nick',
+    surname: 'Bara',
+    idNumber: '34050',
+    status: 'Completed',
+    payoutCompleted: true
+  }]
 
-	ticketData: RegisterTicket = {
-		trainId: 4,
-		date: '2024-10-18T15:34:38.647Z',
-		email: 'niko@gamil.com',
-		phoneNumber: '+995577899422',
-		people: this.peopleSeatData
-	}
+  ticketData: RegisterTicket = {
+    trainId: 4,
+    date: '2024-10-18T15:34:38.647Z',
+    email: 'niko@gamil.com',
+    phoneNumber: '+995577899422',
+    people: this.peopleSeatData
+  }
 
-  bookSelectedTickets() : void {
-    if (this.selectcedSeats.length != 0 && this.selectcedSeats.length <= 10) { xz
+  createReservationObject(): RegisterTicket {
+    let seatsToRegister: People[] = [];
+
+    for (let i = 0; i < this.selectcedSeats.length; i++) {
+      let seat: People = {
+        seatId: this.selectcedSeats[i].seatId,
+        name: JSON.parse(localStorage.getItem('userData') ?? '').firstName,
+        surname: JSON.parse(localStorage.getItem('userData') ?? '').lastName,
+        idNumber: Math.floor(Math.random() * 10000).toString(),
+        status: "Completed",
+        payoutCompleted: true
+      }
+
+      seatsToRegister.push(seat);
+    }
+
+    // const today = new Date();
+    // const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
+    // const formattedDate = today.toLocaleDateString('en-US', options);
+
+    // console.log(formattedDate); // Example output: "Thursday, 7 November"
+
+    let dateNow = new Date().getDate();
+    console.log(dateNow);
+    let registrableObject: any = {
+      trainId: this._queryParams.number,
+      date: dateNow,
+      email: JSON.parse(localStorage.getItem('userData') ?? '').email,
+      phoneNumber: JSON.parse(localStorage.getItem('userData') ?? '').phone,
+      people: seatsToRegister
+    }
+
+    console.log(registrableObject);
+
+    return registrableObject;
+  }
+
+  bookSelectedTickets(): void {
+    if (this.selectcedSeats.length != 0 && this.selectcedSeats.length <= 10) {
 
       Swal.fire({
         title: "Are you sure you want to proceed?",
@@ -170,7 +208,12 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
         showCancelButton: true,
         cancelButtonText: "Cancel",
         preConfirm: () => {
-          // this.swaggerAPIService.postTicket()
+          console.log(this.createReservationObject());
+          this.swaggerAPIService.postTicket(this.createReservationObject()).subscribe(
+            (response) => {
+              console.log(response);
+            }
+          )
         }
       })
     }

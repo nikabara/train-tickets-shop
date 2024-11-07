@@ -159,7 +159,7 @@ export class SaveDataService implements OnDestroy {
   }
   
   public getTicketStatus(ticketId: string) : void {
-    this.checkTicketStatusSubscription = this.swaggerApiService.CheckTicketStatus(ticketId).subscribe(
+    this.checkTicketStatusSubscription = this.swaggerApiService.checkTicketStatus(ticketId).subscribe(
       (response) => {
         console.log(response)
         return response;
@@ -182,7 +182,7 @@ export class SaveDataService implements OnDestroy {
   }
 
   public confirmTicket(ticketId: string) : void {
-    this.confrirmTicketSubscription = this.swaggerApiService.ConfirmTicket(ticketId).subscribe(
+    this.confrirmTicketSubscription = this.swaggerApiService.confirmTicket(ticketId).subscribe(
       (response) => {
         console.log(response.confirmed)
         return response.confirmed;
@@ -195,7 +195,7 @@ export class SaveDataService implements OnDestroy {
   }
 
   public cancelTicket(ticketId: string) : void{
-    this.cancelTicketSubscription = this.swaggerApiService.CancelTicket(ticketId).subscribe(
+    this.cancelTicketSubscription = this.swaggerApiService.cancelTicket(ticketId).subscribe(
       (response) => {
         return response.confirmed;
       },
@@ -206,7 +206,7 @@ export class SaveDataService implements OnDestroy {
   }
 
   public cancelTicketAll() : void {
-    this.cancelAllTicketsSubscription = this.swaggerApiService.CancelAllTickets().subscribe(
+    this.cancelAllTicketsSubscription = this.swaggerApiService.cancelAllTickets().subscribe(
       (response) => {
         return response;
       },
