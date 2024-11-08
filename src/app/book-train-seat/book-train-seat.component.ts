@@ -48,6 +48,11 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     )
 
     this.getSeatsByVagonId(this._queryParams.id);
+
+    if (sessionStorage.getItem('showSuccessWindow') === 'true') {
+      sessionStorage.removeItem('showSuccessWindow');
+      this.showSuccessWindow();
+    }
   }
 
   sortSeatNames = (a: string, b: string): number => {
@@ -167,7 +172,7 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
         seatId: this.selectcedSeats[i].seatId,
         name: JSON.parse(localStorage.getItem('userData') ?? '').firstName,
         surname: JSON.parse(localStorage.getItem('userData') ?? '').lastName,
-        idNumber: Math.floor(Math.random() * 10000).toString(),
+        idNumber: Math.floor(Math.random() * 100000).toString(),
         status: "Completed",
         payoutCompleted: true
       }
@@ -175,17 +180,12 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
       seatsToRegister.push(seat);
     }
 
-    // const today = new Date();
-    // const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
-    // const formattedDate = today.toLocaleDateString('en-US', options);
+    const today = new Date();
+    const formattedDate = today.toISOString(); // Example output: "Thursday, 7 November"
 
-    // console.log(formattedDate); // Example output: "Thursday, 7 November"
-
-    let dateNow = new Date().getDate();
-    console.log(dateNow);
     let registrableObject: any = {
-      trainId: this._queryParams.number,
-      date: dateNow,
+      trainId: this._queryParams.id,
+      date: formattedDate,
       email: JSON.parse(localStorage.getItem('userData') ?? '').email,
       phoneNumber: JSON.parse(localStorage.getItem('userData') ?? '').phone,
       people: seatsToRegister
@@ -194,6 +194,24 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     console.log(registrableObject);
 
     return registrableObject;
+  }
+
+  showSuccessWindow() : void {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 4500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Seat(s) have been booked successfully"
+    });
   }
 
   bookSelectedTickets(): void {
@@ -212,8 +230,13 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
           this.swaggerAPIService.postTicket(this.createReservationObject()).subscribe(
             (response) => {
               console.log(response);
+            },
+            (error) => {
+              console.log("");
             }
           )
+          window.location.reload();
+          sessionStorage.setItem('showSuccessWindow', 'true');
         }
       })
     }
