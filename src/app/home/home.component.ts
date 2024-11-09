@@ -8,17 +8,18 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core'
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [HttpClientModule, CommonModule],
+	imports: [HttpClientModule, CommonModule, TranslateModule],
 	providers: [SwaggerAPIService, SaveDataService],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.sass'
 })
 export class HomeComponent implements OnInit {
-	constructor(private saveDataService: SaveDataService, public auth: AuthService) { }
+	constructor(private saveDataService: SaveDataService, public auth: AuthService, private translateModule: TranslateModule) { }
 
 	peopleSeatData: People[] = [{
 		seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',

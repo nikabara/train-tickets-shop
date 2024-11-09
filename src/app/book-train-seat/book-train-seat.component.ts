@@ -11,7 +11,7 @@ import { SelectedTicketInfoComponent } from "./selected-ticket-info/selected-tic
 import Swal from 'sweetalert2';
 import { People } from '../Interfaces/People.interface';
 import { Ticket } from '../Interfaces/Ticket.interface';
-import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core'
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-train-seat',
@@ -253,6 +253,6 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     // this.activatedRoutSubscription.unsubscribe();
-    this.getVagonSeatsSubscription.unsubscribe();
+    // this.getVagonSeatsSubscription.unsubscribe();
   }
 }

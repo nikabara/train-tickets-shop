@@ -1,5 +1,31 @@
 {
-    "BOOK-TRAIN-SEAT" : {
+    "SIDEBAR": {
+        "HOME": "Home",
+        "SEARCH-TRAINS": "Search Trains",
+        "SEARCH-PLAINS": "Search Plains",
+        "SEARCH-BUSSES": "Search Busses",
+        "MY-BOOKINGS": "My Bookings",
+        "HISTORY": "History",
+        "SETTINGS": "Settings"
+    },
+    "HOME": {
+        "CONTACT-US": "Contact Us",
+        "SIGN-IN": "Sign In",
+        "TITLE": "Our railways go everywhere",
+        "CAROUSEL-TBILISI": "Tbilisi",
+        "CAROUSEL-BATUMI": "Batumi",
+        "CAROUSEL-FOTI": "Foti",
+        "TITLE-2": "Advantages of Travelling by Train",
+        "PERK-TITLE-1": "Safe",
+        "PERK-TITLE-1-TEXT": "Traveling by train is the safest, compared to the other type of transport.",
+        "PERK-TITLE-2": "Quick",
+        "PERK-TITLE-2-TEXT": "Apart from the plane, the train has the highest average speed.",
+        "PERK-TITLE-3": "Cheap",
+        "PERK-TITLE-3-TEXT": "Traveling by train is the cheapest, compared to other transport for the same distance.",
+        "PERK-TITLE-4": "Comfortable",
+        "PERK-TITLE-4-TEXT": "Compared to all other transport, when traveling by train, you sit more freely and comfortably."
+    },
+    "BOOK-TRAIN-SEAT": {
         "FILLER-TEXT-H2": "Window or corridor?",
         "FILLER-TEXT-H5": "Book in advance so you won't be dissapointed later.",
         "TICKET-PRICE-WRAPPER-H6": "Currently selected",

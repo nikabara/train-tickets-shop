@@ -4,29 +4,29 @@
 
     <div class="nav-options">
         <a class="contact-us" href="https://mail.google.com/mail/?view=cm&fs=1&to=baratashvilinick@gmail.com&su=Hello&body=Hi%20there,%20I%20wanted%20to%20reach%20out%20to%20you%20about : " target="_blank">
-            <i class="bi bi-envelope-at-fill"></i> Contact Us</a>
+            <i class="bi bi-envelope-at-fill"></i> {{ 'HOME.CONTACT-US' | translate }}</a>
             
           <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()" >
-            <i class="bi bi-person-circle"></i> Sign In</a>
+            <i class="bi bi-person-circle"></i> {{ 'HOME.SIGN-IN' | translate }}</a>
 
           <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
             <i class="bi bi-person-circle"></i></a>
     </div>
 </nav>
 
-<h2 class="slogan">Our railways go everywhere</h2>
+<h2 class="slogan">{{ 'HOME.TITLE' | translate }}</h2>
 
 <section class="section-1">
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item item1 active">
-            <h3>Tbilisi</h3>
+            <h3>{{ 'HOME.CAROUSEL-TBILISI' | translate }}</h3>
           </div>
           <div class="carousel-item item2">
-            <h3>Batumi</h3>
+            <h3>{{ 'HOME.CAROUSEL-BATUMI' | translate }}</h3>
           </div>
           <div class="carousel-item item3">
-            <h3>Foti</h3>
+            <h3>{{ 'HOME.CAROUSEL-FOTI' | translate }}</h3>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -40,30 +40,30 @@
       </div>
 </section>
 
-<h2 class="slogan slogan2">Advantages of Travelling by Train</h2>
+<h2 class="slogan slogan2">{{ 'HOME.TITLE-2' | translate }}</h2>
 
 <section class="advantages-section">
     <div class="advantage-card card1">
         <div class="background-divs background-div1"></div>
-        <h4 class="advantage-type">Safe</h4>
-        <p class="about-advantage">Traveling by train is the safest, compared to the other type of transport.</p>
+        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-1' | translate }}</h4>
+        <p class="about-advantage">{{ 'HOME.PERK-TITLE-1-TEXT' | translate }}</p>
     </div>
 
     <div class="advantage-card card2">
         <div class="background-divs background-div2"></div>
-        <h4 class="advantage-type">Quick</h4>
-        <p class="about-advantage">Apart from the plane, the train has the highest average speed.</p>
+        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-2' | translate }}</h4>
+        <p class="about-advantage">{{ 'HOME.PERK-TITLE-2-TEXT' | translate }}</p>
     </div>
 
     <div class="advantage-card card3">
         <div class="background-divs background-div3"></div>
-        <h4 class="advantage-type">Cheap</h4>
-        <p class="about-advantage">Traveling by train is the cheapest, compared to other transport for the same distance.</p>
+        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-3' | translate }}</h4>
+        <p class="about-advantage">{{ 'HOME.PERK-TITLE-3-TEXT' | translate }}</p>
     </div>
 
     <div class="advantage-card card4">
         <div class="background-divs background-div4"></div>
-        <h4 class="advantage-type">Comfortable</h4>
-        <p class="about-advantage">Compared to all other transport, when traveling by train, you sit more freely and comfortably.</p>
+        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-4' | translate }}</h4>
+        <p class="about-advantage">{{ 'HOME.PERK-TITLE-4-TEXT' | translate }}</p>
     </div>
 </section>
