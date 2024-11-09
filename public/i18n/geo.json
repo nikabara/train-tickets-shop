@@ -1,0 +1,13 @@
+{
+    "BOOK-TRAIN-SEAT" : {
+        "FILLER-TEXT-H2": "ფანჯარა თუ გასასვლელი?",
+        "FILLER-TEXT-H5": "დაჯავშნე წინასწარ",
+        "TICKET-PRICE-WRAPPER-H6": "არჩეული",
+        "SELECTION-INFO-TRAIN-ID": "მატარებელი",
+        "BOOK-SEATS-VAGON-CLASS-NAME": "ბიზნეს კლასი",
+        "TICKET-CLASS-NAME-I": "I კლასი",
+        "TICKET-CLASS-NAME-II": "II კლასი",
+        "TICKET-CLASS-NAME-BUSINESS": "ბიზნესი",
+        "CONFIRM-SEAT-RESERVATION": "დაჯავშნა"
+    }
+}

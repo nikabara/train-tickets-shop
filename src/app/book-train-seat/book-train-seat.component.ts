@@ -11,11 +11,12 @@ import { SelectedTicketInfoComponent } from "./selected-ticket-info/selected-tic
 import Swal from 'sweetalert2';
 import { People } from '../Interfaces/People.interface';
 import { Ticket } from '../Interfaces/Ticket.interface';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core'
 
 @Component({
   selector: 'app-book-train-seat',
   standalone: true,
-  imports: [SeatComponent, CommonModule, SelectedTicketInfoComponent],
+  imports: [SeatComponent, CommonModule, SelectedTicketInfoComponent, TranslateModule],
   templateUrl: './book-train-seat.component.html',
   styleUrl: './book-train-seat.component.sass'
 })
@@ -31,9 +32,17 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   firstClassSeats!: Seat[];
   secondClassSeats!: Seat[];
 
-  constructor(private activatedRout: ActivatedRoute, private swaggerAPIService: SwaggerAPIService) { }
+  selectedLanguage: string = 'ka';
+
+  constructor(private activatedRout: ActivatedRoute, private swaggerAPIService: SwaggerAPIService, private translateService: TranslateService) { }
+
+  switchLanguage(language: string) {
+    this.translateService.use(language);
+    localStorage.setItem('language', language);
+  }
 
   ngOnInit(): void {
+    this.translateService.use(localStorage.getItem('language') ?? 'eng');
     this.activatedRoutSubscription = this.activatedRout.queryParamMap.subscribe(
       (response) => {
         const data = response.get('data');
@@ -243,7 +252,7 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.activatedRoutSubscription.unsubscribe();
+    // this.activatedRoutSubscription.unsubscribe();
     this.getVagonSeatsSubscription.unsubscribe();
   }
 }

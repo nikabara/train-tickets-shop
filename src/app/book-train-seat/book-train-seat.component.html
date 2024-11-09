@@ -1,21 +1,24 @@
+<button (click)="switchLanguage('eng')">English</button>
+<button (click)="switchLanguage('geo')">Georgian</button>
+
 <section class="book-train-wrapper">
     <div class="book-train">
         <div class="row-1">
             <div class="filler-text">
-                <h2>Window or corridor?</h2>
-                <h5>Book in advance so you won't be dissapointed later.</h5>
+                <h2>{{ 'BOOK-TRAIN-SEAT.FILLER-TEXT-H2' | translate }}</h2>
+                <h5>{{ 'BOOK-TRAIN-SEAT.FILLER-TEXT-H5' | translate }}</h5>
             </div>
     
             <div class="ticket-price-wrapper">
                 <h2 id="selected-ticket-price">GEL {{ seatPrice }}</h2>
-                <h6>Currently selected</h6>
+                <h6>{{ 'BOOK-TRAIN-SEAT.TICKET-PRICE-WRAPPER-H6' | translate }}</h6>
             </div>
 
             
         </div>
         <div class="row-2">
             <div class="selection-info">
-                <h6 class="train-id">Train #{{ _queryParams.number }}</h6>
+                <h6 class="train-id">{{ 'BOOK-TRAIN-SEAT.SELECTION-INFO-TRAIN-ID' | translate }} #{{ _queryParams.number }}</h6>
                 <h3 class="train-from-to-info">{{ _queryParams.name }}</h3>
 
                 <!-- <div class="selected-seats">
@@ -30,7 +33,7 @@
                         </app-selected-ticket-info>
                 </div>
 
-                <button (click)="bookSelectedTickets(); createReservationObject()" id="place_reservation">Confirm seats reservation</button>
+                <button (click)="bookSelectedTickets(); createReservationObject()" id="place_reservation">{{ 'BOOK-TRAIN-SEAT.CONFIRM-SEAT-RESERVATION' | translate }}</button>
 
             </div>
             <div class="book-seats">
@@ -75,7 +78,7 @@
 
 
                 <!-- Business class -->
-                <h3 class="vagon-class-name vagon-class-business">Business Class</h3>
+                <h3 class="vagon-class-name vagon-class-business">{{ 'BOOK-TRAIN-SEAT.TICKET-CLASS-NAME-BUSINESS' | translate }}</h3>
                 
                 <div class="seat-alphabetic-names">
                     <h4 class="column-alp column-alp1">A</h4>
@@ -90,14 +93,14 @@
                 </div>
 
                 <!-- Economy I class -->
-                <h3 class="vagon-class-name vagon-class-first">I Class</h3>
+                <h3 class="vagon-class-name vagon-class-first">{{ 'BOOK-TRAIN-SEAT.TICKET-CLASS-NAME-I' | translate }}</h3>
                 <div class="first-class-wrapper vagon-class-wrapper">
                     <app-seat (click)="seatClicked()" *ngFor="let seat of firstClassSeats" [vagonClass]="'I'" [seatInfo]="seat" (onSeatData)="getSeatData($event)">
                     </app-seat>
                 </div>
 
                 <!-- Economy II class -->
-                <h3 class="vagon-class-name vagon-class-second">II Class</h3>
+                <h3 class="vagon-class-name vagon-class-second">{{ 'BOOK-TRAIN-SEAT.TICKET-CLASS-NAME-II' | translate }}</h3>
                 <div class="second-class-wrapper vagon-class-wrapper">
                     <app-seat (click)="seatClicked()" *ngFor="let seat of secondClassSeats" [vagonClass]="'II'" [seatInfo]="seat" (onSeatData)="getSeatData($event)">
                     </app-seat>

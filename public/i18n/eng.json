@@ -1,0 +1,13 @@
+{
+    "BOOK-TRAIN-SEAT" : {
+        "FILLER-TEXT-H2": "Window or corridor?",
+        "FILLER-TEXT-H5": "Book in advance so you won't be dissapointed later.",
+        "TICKET-PRICE-WRAPPER-H6": "Currently selected",
+        "SELECTION-INFO-TRAIN-ID": "Train",
+        "BOOK-SEATS-VAGON-CLASS-NAME": "Business Class",
+        "TICKET-CLASS-NAME-I": "I Class",
+        "TICKET-CLASS-NAME-II": "II Class",
+        "TICKET-CLASS-NAME-BUSINESS": "Business",
+        "CONFIRM-SEAT-RESERVATION": "Confirm seat reservation"
+    }
+}
