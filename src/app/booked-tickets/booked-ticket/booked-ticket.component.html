@@ -1,0 +1,34 @@
+<div class="ticket" id="print_ticket">
+  <div class="ticket-left">
+    <img class="train-manufactorer-logo" src="/stadler.png" alt="">
+    <div class="details">
+      <h2 class="price">Fastest</h2>
+      <p>Tax included</p>
+    </div>
+  </div>
+
+  <div class="ticket-right">
+    <div class="travel-times-wrapper">
+      <h2 class="departure-time">{{ departureTime }}</h2>
+
+      <div class="travel-times-decoration">
+        <div class="line"></div> 
+        <h6 class="travel-duration"> {{ travelDuration }} </h6> 
+        <div class="line"></div>
+      </div>
+
+      <h2 class="arrival-time">{{ arrivalTime }}</h2>
+    </div>
+
+    <div class="departure-from-to-wrapper">
+      <h5 class="departure-from">{{ departureFrom }} <span class="destination-span">(from)</span></h5>
+      <h5 class="departure-to"><span class="destination-span">(to)</span> {{ departureTo }}</h5>
+    </div>
+
+    <div class="train-details">
+        <h6 class="train-type"><span>Fast</span>, 2 storey #{{ trainNumber }}</h6>
+        <button (click)="downloadTicket()" id="select_train_ticket" type="submit">Download Ticket</button>
+    </div>
+  </div>
+</div>
+

@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy{
   
   isBarHidden:boolean = true;
 
-  constructor(public loaderService: LoaderService, private breakpointObserver: BreakpointObserver) { }
+  constructor(public loaderService: LoaderService, private breakpointObserver: BreakpointObserver, private translateService: TranslateService) { }
 
   onThemeChange(theme: string) {
     console.log("Main " + theme + " Color theme " + this.colorTheme);
@@ -46,6 +47,14 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() : void {
+    if (!localStorage.getItem('language')) {
+      this.translateService.use('eng');
+      localStorage.setItem('language', 'eng');
+    }
+    else {
+      this.translateService.use(localStorage.getItem('language') ?? 'eng');
+    }
+
     this.breakpointObserver.observe(['(max-width: 1000px)']).subscribe(result => {
       if (result.matches) {
         this.isBarHidden = !this.isBarHidden;

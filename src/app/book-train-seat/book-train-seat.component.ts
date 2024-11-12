@@ -32,17 +32,15 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   firstClassSeats!: Seat[];
   secondClassSeats!: Seat[];
 
-  selectedLanguage: string = 'ka';
-
   constructor(private activatedRout: ActivatedRoute, private swaggerAPIService: SwaggerAPIService, private translateService: TranslateService) { }
 
-  switchLanguage(language: string) {
-    this.translateService.use(language);
-    localStorage.setItem('language', language);
-  }
+  // switchLanguage(language: string) {
+  //   this.translateService.use(language);
+  //   localStorage.setItem('language', language);
+  // }
 
   ngOnInit(): void {
-    this.translateService.use(localStorage.getItem('language') ?? 'eng');
+    // this.translateService.use(localStorage.getItem('language') ?? 'eng');
     this.activatedRoutSubscription = this.activatedRout.queryParamMap.subscribe(
       (response) => {
         const data = response.get('data');

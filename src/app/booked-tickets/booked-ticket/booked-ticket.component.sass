@@ -1,0 +1,108 @@
+.ticket
+    width: 100%
+    height: 170px
+    background-color: transparent
+    border: solid var(--border-color)
+    display: flex
+    border-radius: 10px
+    
+
+    .ticket-left
+        width: 170px
+        background-color: #fbfbfb
+        border-right: dotted #e9e9e9
+        border-radius: 10px 0 0 10px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        padding: 15px 15px
+
+        img
+            width: 100px
+            height: 25px
+            border: solid #d8d8d8 2px
+            background-color: white
+            border-radius: 15px
+            padding: 5px
+
+        .details
+            height: 60px
+
+            p
+                color: #656565
+                font-weight: 600 !important
+
+            .price
+                width: 200px
+                // color: var(--ticket-price-color)
+                color: #6dd4b5
+
+
+    .ticket-right
+        // background-color: beige
+        width: 100%
+        height: 100%
+        padding: 20px 15px
+        display: flex
+        flex-direction: column
+
+        .travel-times-wrapper
+            display: flex
+            align-items: center
+            justify-content: space-between
+
+            .departure-time, .arrival-time
+                color: var(--bi-hover-color)
+                // color: #181818
+
+            .travel-times-decoration
+                display: flex
+                align-items: center
+                width: 215px
+                justify-content: space-between
+
+                .travel-duration
+                    color: #c7c7c7
+
+                .line
+                    width: 65px
+                    height: 1.5px
+                    background-color: #c7c7c7
+        
+        .departure-from-to-wrapper
+            display: flex
+            justify-content: space-between
+
+            .departure-from, .departure-to
+                color: #656565
+
+            .destination-span
+                font-size: 15px
+                color: #c7c7c7
+    
+        .train-details
+            display: flex
+            margin-top: auto
+            justify-content: space-between
+            align-items: flex-end
+
+            .train-type
+                // background-color: #f4f4f4
+                // padding: 5px 5px
+                // border-radius: 8px
+                // border: none
+
+                & > span
+                    font-weight: 600
+
+            #select_train_ticket
+                padding: 6px 20px
+                border-radius: 15px
+                border: none
+                font-size: 18px
+                color: white
+                background-color: #ea580b
+
+                &:hover
+                    background-color: #ff5900
+                    
