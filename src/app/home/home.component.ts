@@ -19,7 +19,7 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 	styleUrl: './home.component.sass'
 })
 export class HomeComponent implements OnInit {
-	constructor(private saveDataService: SaveDataService, public auth: AuthService, private translateModule: TranslateModule) { }
+	constructor(private saveDataService: SaveDataService, public auth: AuthService, private translateService: TranslateService) { }
 
 	peopleSeatData: People[] = [{
 		seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
@@ -36,6 +36,21 @@ export class HomeComponent implements OnInit {
 		email: 'niko@gamil.com',
 		phoneNumber: '+995577899422',
 		people: this.peopleSeatData
+	}
+
+	changeLanguage() : void {
+		if (localStorage.getItem('language') === 'eng') {
+			this.translateService.use('geo');
+			localStorage.setItem('language', 'geo');
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-georgian')
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-english')
+		}
+		else {
+			this.translateService.use('eng');
+			localStorage.setItem('language', 'eng');
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-english')
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-georgian')
+		}
 	}
 
 	btnClick(): void {
@@ -183,6 +198,15 @@ export class HomeComponent implements OnInit {
 		// 		console.log(error);
 		// 	}
 		// )
+
+		if (localStorage.getItem('language') === 'eng') {
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-georgian')
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-english')
+		}
+		else {
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-georgian')
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-english')
+		}
 	}
 
 	swalSignOut() : void {
