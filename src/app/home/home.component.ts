@@ -21,22 +21,22 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 export class HomeComponent implements OnInit {
 	constructor(private saveDataService: SaveDataService, public auth: AuthService, private translateService: TranslateService) { }
 
-	peopleSeatData: People[] = [{
-		seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
-		name: 'Nick',
-		surname: 'Bara',
-		idNumber: '34050',
-		status: 'Completed',
-		payoutCompleted: true
-	}]
+	// peopleSeatData: People[] = [{
+	// 	seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
+	// 	name: 'Nick',
+	// 	surname: 'Bara',
+	// 	idNumber: '34050',
+	// 	status: 'Completed',
+	// 	payoutCompleted: true
+	// }]
 
-	ticketData: RegisterTicket = {
-		trainId: 4,
-		date: '2024-10-18T15:34:38.647Z',
-		email: 'niko@gamil.com',
-		phoneNumber: '+995577899422',
-		people: this.peopleSeatData
-	}
+	// ticketData: RegisterTicket = {
+	// 	trainId: 4,
+	// 	date: '2024-10-18T15:34:38.647Z',
+	// 	email: 'niko@gamil.com',
+	// 	phoneNumber: '+995577899422',
+	// 	people: this.peopleSeatData
+	// }
 
 	changeLanguage() : void {
 		if (localStorage.getItem('language') === 'eng') {

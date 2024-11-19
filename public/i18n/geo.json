@@ -35,5 +35,14 @@
         "TICKET-CLASS-NAME-II": "II კლასი",
         "TICKET-CLASS-NAME-BUSINESS": "ბიზნესი",
         "CONFIRM-SEAT-RESERVATION": "დაჯავშნა"
+    },
+    "BOOKED-TICKETS": {
+        "MY-TICKETS": "ჩემი ჯავშნები",
+        "PRICE": "ფასი",
+        "CLASS": "კლასი",
+        "ROW": "მწკრივი",
+        "COLUMN": "სვეტი",
+        "DEPARTURE": "გამგზავრება",
+        "ARRIVAL": "ჩასვლა"
     }
 }

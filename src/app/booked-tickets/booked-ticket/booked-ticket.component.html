@@ -1,16 +1,19 @@
 <div class="seats-wrapper">
   <div class="ticket-info">
-    <h4 class="trip-name">#{{ ticketData[0].train.number }} {{ ticketData[0].train.name }}</h4>
-    <h4 class="trip-train-departure">Departure - {{ ticketData[0].train.date }} {{ ticketData[0].train.departure }}</h4>
-    <h4 class="trip-train-departure">Arrival - {{ ticketData[0].train.arrive }}</h4>
+    <h4 class="trip-name"><span>#{{ ticketData[0].train.number }}</span> {{ ticketData[0].train.name }}</h4>
+    <h4 class="trip-train-departure">{{ 'BOOKED-TICKETS.DEPARTURE' | translate }} - {{ ticketData[0].train.date }} {{ ticketData[0].train.departure }}</h4>
+    <h4 class="trip-train-departure">{{ 'BOOKED-TICKETS.ARRIVAL' | translate }} - {{ ticketData[0].train.arrive }}</h4>
   </div>
   
-
-
   <!-- <app-seat *ngFor="let seat of ticketData" [seatInfo]="seat"></app-seat> -->
   @for (ticket of ticketData; track $index) {
     @for (person of ticket.persons; track $index) {
       <app-seat [person]="person"></app-seat>
     }
-  }
+  } 
+
+  <div class="option-btns-wrapper">
+    <button class="download-tickets ticket-download-option-btns">Download Tickets</button>
+    <button class="download-invoice ticket-download-option-btns">Download Invoice</button>
+  </div>
 </div>

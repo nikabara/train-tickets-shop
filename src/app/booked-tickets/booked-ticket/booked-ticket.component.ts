@@ -8,11 +8,12 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { CommonModule } from '@angular/common';
 import { SeatComponent } from '../seat/seat.component';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-booked-ticket',
   standalone: true,
-  imports: [CommonModule, SeatComponent],
+  imports: [CommonModule, SeatComponent, TranslateModule],
   templateUrl: './booked-ticket.component.html',
   styleUrl: './booked-ticket.component.sass'
 })

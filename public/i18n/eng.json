@@ -35,5 +35,14 @@
         "TICKET-CLASS-NAME-II": "II Class",
         "TICKET-CLASS-NAME-BUSINESS": "Business",
         "CONFIRM-SEAT-RESERVATION": "Confirm seat reservation"
+    },
+    "BOOKED-TICKETS": {
+        "MY-TICKETS": "My Tickets",
+        "PRICE": "Price",
+        "CLASS": "Class",
+        "ROW": "Row",
+        "COLUMN": "Column",
+        "DEPARTURE": "Departure",
+        "ARRIVAL": "Arrival"
     }
 }
