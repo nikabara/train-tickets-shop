@@ -1,0 +1,40 @@
+.seat 
+    width: 100%
+    height: 100px
+
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 15px
+
+
+    .qr-code
+        width: 100px
+        height: 100px
+        background-color: grey
+
+        qrcode
+            width: 100%
+            height: 100%
+
+    .seat-info
+
+        background-color: #f4f5ff
+        height: 100%
+        width: 70%
+        display: grid
+        grid-template-rows: 1fr
+        grid-template-columns: repeat(4, 1fr)
+        place-items: center
+        border-radius: 8px
+
+        .seat-info-boxes
+            display: flex
+            flex-direction: column
+            align-items: center
+
+            .gotten-seat-info
+                color: #2c2f59
+
+            .template-seat-info
+                color: #6c5494
