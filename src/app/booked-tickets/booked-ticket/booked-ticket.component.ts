@@ -9,6 +9,7 @@ import html2canvas from 'html2canvas';
 import { CommonModule } from '@angular/common';
 import { SeatComponent } from '../seat/seat.component';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { HiddenTicketService } from '../../services/hidden-ticket.service';
 
 @Component({
   selector: 'app-booked-ticket',
@@ -67,8 +68,25 @@ export class BookedTicketComponent implements OnInit {
   // }
 
 
+  constructor(private router: Router, private hiddenTicketService: HiddenTicketService) { }
+
+  passData() : void {
+    this.hiddenTicketService.setData(this.ticketData);
+  }
+
+  passDataNav() : void {
+    this.hiddenTicketService.setData(this.ticketData);
+    this.router.navigate(['/ticket-pdf'])
+  }
+
+  generatePdf() : void {
+    this.hiddenTicketService.generatePdf();
+  }
+
 
   ngOnInit(): void {
     console.log(this.ticketData, 'tkt data')
   }
+
+
 }

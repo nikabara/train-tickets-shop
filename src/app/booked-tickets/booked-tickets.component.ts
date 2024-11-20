@@ -5,12 +5,13 @@ import { Ticket } from '../Interfaces/Ticket.interface';
 import { BookedTicketComponent } from "./booked-ticket/booked-ticket.component";
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TicketPdfComponent } from "../ticket-pdf/ticket-pdf.component";
 
 
 @Component({
   selector: 'app-booked-tickets',
   standalone: true,
-  imports: [BookedTicketComponent, CommonModule, TranslateModule],
+  imports: [BookedTicketComponent, CommonModule, TranslateModule, TicketPdfComponent],
   templateUrl: './booked-tickets.component.html',
   styleUrl: './booked-tickets.component.sass'
 })

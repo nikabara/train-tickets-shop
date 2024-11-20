@@ -13,7 +13,7 @@
   } 
 
   <div class="option-btns-wrapper">
-    <button class="download-tickets ticket-download-option-btns">Download Tickets</button>
-    <button class="download-invoice ticket-download-option-btns">Download Invoice</button>
+    <button class="download-tickets ticket-download-option-btns" (click)="passData(); generatePdf()">Download Tickets</button>
+    <button class="download-invoice ticket-download-option-btns" (click)="passDataNav()">Download Invoice</button>
   </div>
 </div>

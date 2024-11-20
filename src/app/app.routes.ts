@@ -4,6 +4,7 @@ import { SearchTrainsComponent } from './search-trains/search-trains.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BookTrainSeatComponent } from './book-train-seat/book-train-seat.component';
 import { BookedTicketsComponent } from './booked-tickets/booked-tickets.component';
+import { TicketPdfComponent } from './ticket-pdf/ticket-pdf.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path: 'settings', component: SettingsComponent, title: 'Settings'},
     {path: 'book-train-seats', component: BookTrainSeatComponent, title: 'Book Train Seat'},
     {path: 'my-tickets', component: BookedTicketsComponent, title: 'My tickets'},
+    {path: 'ticket-pdf', component: TicketPdfComponent, title: 'Ticket PDF'},
     {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

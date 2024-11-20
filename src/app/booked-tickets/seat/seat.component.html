@@ -29,11 +29,11 @@
         </div>
         <div class="seat-row seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.ROW' | translate }}</h4>
-            <h4 class="gotten-seat-info">{{ person.seat.number }}</h4>
+            <h4 class="gotten-seat-info">{{ person.seat.number | splitSeatNumber: 'number' }}</h4>
         </div>
         <div class="seat-column seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.COLUMN' | translate }}</h4>
-            <h4 class="gotten-seat-info">{{ person.seat.number }}</h4>
+            <h4 class="gotten-seat-info">{{ person.seat.number | splitSeatNumber: 'letter' }}</h4>
         </div>
     </div>
 </div>
