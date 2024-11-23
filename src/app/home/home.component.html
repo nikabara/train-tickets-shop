@@ -1,71 +1,121 @@
 <!-- <button (click)="btnClick()">CLick me</button> -->
 <nav>
-    <a href=""><img class="webpage-logo" src="/gr-logo.svg" alt=""></a>
+  <a href=""><img class="webpage-logo" src="/gr-logo.svg" alt=""></a>
 
-    <div class="nav-options">
-        <a class="contact-us" href="https://mail.google.com/mail/?view=cm&fs=1&to=baratashvilinick@gmail.com&su=Hello&body=Hi%20there,%20I%20wanted%20to%20reach%20out%20to%20you%20about : " target="_blank">
-            <i class="bi bi-envelope-at-fill"></i> {{ 'HOME.CONTACT-US' | translate }}</a>
-            
-          <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()" >
-            <i class="bi bi-person-circle"></i> {{ 'HOME.SIGN-IN' | translate }}</a>
+  <div class="nav-options">
+    <a class="contact-us"
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=baratashvilinick@gmail.com&su=Hello&body=Hi%20there,%20I%20wanted%20to%20reach%20out%20to%20you%20about : "
+      target="_blank">
+      <i class="bi bi-envelope-at-fill"></i> {{ 'HOME.CONTACT-US' | translate }}</a>
 
-          <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
-            <i class="bi bi-person-circle"></i></a>
+    <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()">
+      <i class="bi bi-person-circle"></i> {{ 'HOME.SIGN-IN' | translate }}</a>
 
-          <button class="language-change-button" (click)="changeLanguage()"></button>
-    </div>
+    <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
+      <i class="bi bi-person-circle"></i></a>
+
+    <button class="language-change-button" (click)="changeLanguage()"></button>
+  </div>
 </nav>
 
 <h2 class="slogan">{{ 'HOME.TITLE' | translate }}</h2>
 
 <section class="section-1">
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item item1 active">
-            <h3>{{ 'HOME.CAROUSEL-TBILISI' | translate }}</h3>
-          </div>
-          <div class="carousel-item item2">
-            <h3>{{ 'HOME.CAROUSEL-BATUMI' | translate }}</h3>
-          </div>
-          <div class="carousel-item item3">
-            <h3>{{ 'HOME.CAROUSEL-FOTI' | translate }}</h3>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item item1 active">
+        <h3>{{ 'HOME.CAROUSEL-TBILISI' | translate }}</h3>
       </div>
+      <div class="carousel-item item2">
+        <h3>{{ 'HOME.CAROUSEL-BATUMI' | translate }}</h3>
+      </div>
+      <div class="carousel-item item3">
+        <h3>{{ 'HOME.CAROUSEL-FOTI' | translate }}</h3>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </section>
 
 <h2 class="slogan slogan2">{{ 'HOME.TITLE-2' | translate }}</h2>
 
 <section class="advantages-section">
-    <div class="advantage-card card1">
-        <div class="background-divs background-div1"></div>
-        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-1' | translate }}</h4>
-        <p class="about-advantage">{{ 'HOME.PERK-TITLE-1-TEXT' | translate }}</p>
-    </div>
+  <div class="advantage-card card1">
+    <div class="background-divs background-div1"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-1' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-1-TEXT' | translate }}</p>
+  </div>
 
-    <div class="advantage-card card2">
-        <div class="background-divs background-div2"></div>
-        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-2' | translate }}</h4>
-        <p class="about-advantage">{{ 'HOME.PERK-TITLE-2-TEXT' | translate }}</p>
-    </div>
+  <div class="advantage-card card2">
+    <div class="background-divs background-div2"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-2' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-2-TEXT' | translate }}</p>
+  </div>
 
-    <div class="advantage-card card3">
-        <div class="background-divs background-div3"></div>
-        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-3' | translate }}</h4>
-        <p class="about-advantage">{{ 'HOME.PERK-TITLE-3-TEXT' | translate }}</p>
-    </div>
+  <div class="advantage-card card3">
+    <div class="background-divs background-div3"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-3' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-3-TEXT' | translate }}</p>
+  </div>
 
-    <div class="advantage-card card4">
-        <div class="background-divs background-div4"></div>
-        <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-4' | translate }}</h4>
-        <p class="about-advantage">{{ 'HOME.PERK-TITLE-4-TEXT' | translate }}</p>
-    </div>
+  <div class="advantage-card card4">
+    <div class="background-divs background-div4"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-4' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-4-TEXT' | translate }}</p>
+  </div>
+</section>
+
+<h2 class="slogan slogan2">Our Destinations</h2>
+
+<section class="popular-destinations-section">
+  <div class="popular-destination destination-tbilisi-batumi">
+    <article>
+      <h2>TBILISI</h2>
+      <h1><i class="bi bi-arrow-right"></i> BATUMI</h1>
+    </article>
+  </div>
+
+  <div class="popular-destination destination-batumi-tbilisi">
+    <article>
+      <h2>BATUMI</h2>
+      <h1><i class="bi bi-arrow-right"></i> TBILISI</h1>
+    </article>
+  </div>
+
+  <div class="popular-destination destination-tbilisi-foti">
+    <article>
+      <h2>TBILISI</h2>
+      <h1><i class="bi bi-arrow-right"></i> FOTI</h1>
+    </article>
+  </div>
+
+  <div class="popular-destination destination-foti-tbilisi">
+    <article>
+      <h2>FOTI</h2>
+      <h1><i class="bi bi-arrow-right"></i> TBILISI</h1>
+    </article>
+  </div>
+</section>
+
+<h2 class="slogan slogan2">Frequently aksed question</h2>
+
+<section class="questions-section">
+  <app-expansion-panel [title]="'How to buy a ticket online?'" [content]="'First, you select the cities of the desired destination, specify the date of departure and return, the number of passengers and search. You select the desired flight in the search list and continue buying tickets. In the next step, you fill in the name, surname and personal number of the passengers and proceed to payment.'">
+  </app-expansion-panel>
+
+  <app-expansion-panel [title]="'What do I need to get on the train?'" [content]="'The passenger will be admitted to the train upon presentation of the travel document and identity card'">
+  </app-expansion-panel>
+
+  <app-expansion-panel [title]="'Is it possible to change the date or time of departure, name and surname or selected seats in an already purchased ticket?'" [content]="'It is not possible to adjust the details of an already purchased ticket. In this case, you have to cancel the ticket and buy it again.'">
+  </app-expansion-panel>
+
+  <app-expansion-panel [title]="'Can I buy tickets with one ID?'" [content]="'A maximum of 8 tickets can be purchased in one direction with one ID document. It is necessary that the person in whose name all the tickets are issued is one of the passengers.'">
+  </app-expansion-panel>
 </section>

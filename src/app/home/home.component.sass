@@ -134,7 +134,7 @@ nav
     display: grid
     grid-template-columns: repeat(4, 1fr)
     column-gap: 20px
-    grid-auto-rows: 1fr
+    grid-template-rows: 1fr
     margin-bottom: 100px
 
     .advantage-card
@@ -180,12 +180,87 @@ nav
     display: flex !important
     flex-direction: column !important
 
-@media (max-width: 940px)
+
+.popular-destinations-section
+    margin: 0 40px
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(2, 1fr)
+    column-gap: 20px
+    row-gap: 20px
+    height: auto
+    min-height: 600px
+    margin-bottom: 50px
+
+    .popular-destination
+        padding: 15px 20px
+        border-radius: 12px
+        background-color: beige
+        color: white
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+        position: relative
+
+        article
+            position: absolute
+            z-index: 5
+
+        &::after
+            content: ''
+            background: rgb(0,0,0)
+            background: linear-gradient(0deg, #00000030 0%, rgba(0, 0, 0, 0.13) 100%)
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 100%
+            height: 40%
+            border-radius: inherit
+            transition: 0.2s
+
+        &:hover
+            &::after
+                height: 100%
+
+
+    .destination-tbilisi-batumi
+        background-image: url('/batumi.jpg')
+
+    .destination-batumi-tbilisi
+        background-image: url('/tbilisi2.png')
+
+    .destination-tbilisi-foti
+        background-image: url('/foti2.jpg')
+
+    .destination-foti-tbilisi
+        background-image: url('/tbilisi3.jpg')
+
+
+.questions-section
+    min-height: auto
+    margin: 0 40px
+    // display: grid
+    // grid-template-rows: repeat(2, 1fr)
+    // row-gap: 20px
+    // column-gap: 20px
+    display: flex
+    gap: 15px
+    flex-direction: column
+    justify-content: space-between
+    margin-bottom: 100px
+
+// 940px
+@media (max-width: 1185px)
     .advantages-section
         grid-template-columns: repeat(2, 1fr) !important
         grid-template-rows: repeat(2, 1fr) !important
         column-gap: 15px
         row-gap: 15px
+        height: auto !important
+        margin-bottom: 0px !important
 
 @media (max-width: 600px)
     .advantages-section
@@ -193,3 +268,8 @@ nav
         grid-template-rows: repeat(2, 1fr) !important
         column-gap: 0px
         row-gap: 15px
+
+    .popular-destinations-section
+        grid-template-columns: 1fr !important
+        grid-template-rows: repeat(4, 1fr)
+

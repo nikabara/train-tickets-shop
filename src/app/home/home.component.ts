@@ -9,11 +9,12 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core'
+import { ExpansionPanelComponent } from "./expansion-panel/expansion-panel.component";
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [HttpClientModule, CommonModule, TranslateModule],
+	imports: [HttpClientModule, CommonModule, TranslateModule, ExpansionPanelComponent],
 	providers: [SwaggerAPIService, SaveDataService],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.sass'
