@@ -32,6 +32,10 @@ nav
     .webpage-logo
         width: 170px
 
+    .webpage-logo2
+        width: 80px
+        display: none
+
     .nav-options
         height: 100%
         display: flex
@@ -256,7 +260,7 @@ nav
     margin-bottom: 40px
 
     ::ng-deep .mat-expansion-panel
-        padding: 10px 0 10px 5px !important
+        padding: 10px 0 10px 5px
 
     ::ng-deep .mat-expansion-panel-header-title
         font-size: 18px
@@ -293,33 +297,33 @@ nav
         .bi-facebook, .bi-messenger
             color: #000000bc
 
-footer
-    background-color: #222222
-    padding: 40px 40px
-    min-height: 300px
-    display: grid
-    grid-template-columns: repeat(4, 1fr)
-    justify-items: center
+// footer
+//     background-color: #222222
+//     padding: 40px 40px
+//     min-height: 300px
+//     display: grid
+//     grid-template-columns: repeat(4, 1fr)
+//     justify-items: center
 
-    .footer-column
-        display: flex
-        flex-direction: column
+//     .footer-column
+//         display: flex
+//         flex-direction: column
 
-        h5, h6, a
-            color: #ffffff
+//         h5, h6, a
+//             color: #ffffff
 
-        .footer-column-top
-            margin-bottom: 20px
+//         .footer-column-top
+//             margin-bottom: 20px
 
-        .footer-column-middle
-            margin-bottom: 10px
+//         .footer-column-middle
+//             margin-bottom: 10px
 
-        .terms-and-conditions
-            margin-bottom: 15px
+//         .terms-and-conditions
+//             margin-bottom: 15px
 
-        .footer-column-help
-            display: flex
-            gap: 15px
+//         .footer-column-help
+//             display: flex
+//             gap: 15px
 
 // 940px
 @media (max-width: 1200px)
@@ -343,6 +347,22 @@ footer
         column-gap: 20px
         row-gap: 20px
 
+@media (max-width: 630px)
+    ::ng-deep .mat-expansion-panel
+        padding: 27px 0 27px 5px !important
+
+    ::ng-deep .mat-expansion-panel-body
+        padding: 33px 24px 16px !important
+
+    .webpage-logo
+        display: none
+
+    .webpage-logo2
+        display: block !important
+
+    nav
+        z-index: 9 !important
+
 @media (max-width: 600px)
     .advantages-section
         grid-template-columns: 1fr !important
@@ -359,4 +379,5 @@ footer
         grid-template-rows: repeat(4, 1fr) !important
         row-gap: 20px
 
-
+    .contact-us
+        display: none

@@ -11,7 +11,7 @@ nav
     position: sticky
     top: 0
     left: 0
-    z-index: 5
+    z-index: 50
 
     &:before
         content: ""
@@ -41,7 +41,7 @@ nav
 
         &:hover
             background-color: var(--dimmed-white-hover-color)
-            
+
             .bi
                 color: var(--bi-hover-color)
                 transform: rotate(40deg)
@@ -66,12 +66,41 @@ nav
 
         &:hover
             background-color: var(--dimmed-white-hover-color)
-            
+
             .bi
                 color: var(--bi-hover-color)
                 transition: ease-in-out 0.5s
 
+    .navbar-mid-options-toggled-menu
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: flex-start
+        flex-direction: column
+        gap: 50px
+        padding-top: 50px
+        padding-left: 45px
 
+        .aside-mid-link
+            font-family: Calibri-bold
+            font-weight: 600
+            text-decoration: none
+            color: var(--secondary-text-color)
+            font-size: 18px
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 50px
+
+    &:hover
+        border-radius: 15px
+        color: var(--main-text-color)
+        background-color: var(--dimmed-white-hover-color)
+        padding-left: 0px !important
+        text-align: center
+
+    .bi
+        margin-right: 0px
 
     .navbar-mid-options
         // border: solid black 1px
@@ -101,12 +130,10 @@ nav
 
             &:hover
                 background-color: var(--dimmed-white-hover-color)
-            
+
                 .bi
                     color: var(--bi-hover-color)
                     transition: ease-in-out 0.5s
-
-
 
 .options
     position: fixed
@@ -114,10 +141,14 @@ nav
     top: -100%
     width: 100%
     height: calc(100% - 60px)
-    border-top: solid var(--secondary-text-color) 2px 
+    border-top: solid var(--secondary-text-color) 2px
     background-color: #f4f4f4ae
     z-index: 8888
     backdrop-filter: blur(10px)
 
 .navbar-toggled
     top: calc( 0% + 60px ) !important
+
+@media (max-width: 630px)
+    .navbar-mid-options
+        display: none !important

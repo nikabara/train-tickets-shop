@@ -1,3 +1,4 @@
+import { FooterComponent } from './footer/footer.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -13,19 +14,19 @@ import { InterceptorService } from './services/interceptor.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
-    SweetAlert2Module, 
-    SidebarComponent, 
-    NavbarComponent, 
-    SettingsComponent, 
-    MatProgressBarModule, 
+    RouterOutlet,
+    SweetAlert2Module,
+    SidebarComponent,
+    NavbarComponent,
+    SettingsComponent,
+    MatProgressBarModule,
     CommonModule,
-  ],
+    FooterComponent
+],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
   ],
