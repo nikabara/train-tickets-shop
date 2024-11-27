@@ -200,11 +200,11 @@ export class HomeComponent implements OnInit {
 		// 	}
 		// )
 
-		if (localStorage.getItem('language') === 'eng') {
+		if (typeof localStorage !== 'undefined' && localStorage.getItem('language') === 'eng') {
 			document.querySelector('.language-change-button')?.classList.remove('language-button-image-georgian')
 			document.querySelector('.language-change-button')?.classList.add('language-button-image-english')
 		}
-		else {
+		else if (typeof localStorage !== 'undefined') {
 			document.querySelector('.language-change-button')?.classList.add('language-button-image-georgian')
 			document.querySelector('.language-change-button')?.classList.remove('language-button-image-english')
 		}

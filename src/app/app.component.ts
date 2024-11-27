@@ -48,11 +48,11 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() : void {
-    if (!localStorage.getItem('language')) {
+    if (typeof localStorage !== 'undefined' && !localStorage.getItem('language')) {
       this.translateService.use('eng');
       localStorage.setItem('language', 'eng');
     }
-    else {
+    else if (typeof localStorage !== 'undefined') {
       this.translateService.use(localStorage.getItem('language') ?? 'eng');
     }
 
