@@ -42,9 +42,10 @@
   <ng-template #noTrainsFound>
     <div class="nothing-found-div">
       <h1 class="trains-not-found">No trains found yet...</h1>
-
-      <video class="train-go-video" autoplay loop>
-        <source class="heree" src="/train-go-animation.webm" type="video/webm">
+      
+      <video class="train-go-video" autoplay loop muted playsinline>
+        <source src="/train-go-animation.webm" type="video/webm">
+        Your browser does not support the video tag.
       </video>
     </div>
   </ng-template>

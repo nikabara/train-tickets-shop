@@ -1,4 +1,0 @@
-[[redirects]]
-  from = "/*"
-  to = "/home"
-  status = 200

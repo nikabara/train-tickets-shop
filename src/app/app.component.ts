@@ -58,10 +58,10 @@ export class AppComponent implements OnInit, OnDestroy{
 
     this.breakpointObserver.observe(['(max-width: 1000px)']).subscribe(result => {
       if (result.matches) {
-        this.isBarHidden = !this.isBarHidden;
+        this.isBarHidden = true;
       }
       else {
-        this.isBarHidden = !this.isBarHidden;
+        this.isBarHidden = false;
       }
     })
   }
