@@ -9,8 +9,9 @@
         "SETTINGS": "პარამეტრები"
     },
     "HOME": {
-        "CONTACT-US": "დაგვიკარშიდით",
-        "SIGN-IN": "ავტორიზაცია",
+        "CONTACT-US": "დაგვიკ.",
+        "SIGN-IN": "ავტორ.",
+        "SIGN-UP": "რეგისტრ.",
         "TITLE": "ჩვენი რკინიგზა",
         "CAROUSEL-TBILISI": "თბილისი",
         "CAROUSEL-BATUMI": "ბათუმი",

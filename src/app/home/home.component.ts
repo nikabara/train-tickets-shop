@@ -4,7 +4,7 @@ import { SaveDataService } from '../services/save-data.service';
 import { SwaggerAPIService } from '../services/swagger-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule\
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
@@ -14,13 +14,13 @@ import { ExpansionPanelComponent } from "./expansion-panel/expansion-panel.compo
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [HttpClientModule, CommonModule, TranslateModule, ExpansionPanelComponent],
+	imports: [HttpClientModule, CommonModule, TranslateModule, ExpansionPanelComponent, RouterModule],
 	providers: [SwaggerAPIService, SaveDataService],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.sass'
 })
 export class HomeComponent implements OnInit {
-	constructor(private saveDataService: SaveDataService, public auth: AuthService, private translateService: TranslateService) { }
+	constructor(private saveDataService: SaveDataService, public auth: AuthService, private translateService: TranslateService, private router: Router) { }
 
 	// peopleSeatData: People[] = [{
 	// 	seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
@@ -111,7 +111,7 @@ export class HomeComponent implements OnInit {
 
 				return [emailInput.value, passwordInput.value];
 			}
-		});
+		})
 
 		return formValues;
 	}

@@ -1,1 +1,128 @@
-<p>sign-up works!</p>
+<section class="sign-up-wrapper">
+    <!-- <div carousel-wrapper>
+        <div id="carouselExampleCaptions" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div> -->
+
+    <div class="sign-up-right">
+        <h1>Create an account</h1>
+        <p>Already have an account? <a routerLink="/home">Log In</a></p>
+
+        <form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
+
+            <div class="first-name-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['firstName'].invalid && signUpForm.controls['firstName'].touched">
+                    <small class="error">First-name is required.</small>
+                </div>
+                <input formControlName="firstName" class="sign-up-input first-name" type="text" placeholder="Name here">
+            </div>
+
+            <div class="last-name-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['lastName'].invalid && signUpForm.controls['lastName'].touched">
+                    <small class="error">Last-name is required</small>
+                </div>
+                <input formControlName="lastName" class="sign-up-input last-name" type="text" placeholder="Last-name here">
+            </div>
+
+            <div class="age-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['age'].invalid && signUpForm.controls['age'].touched">
+                    <small class="error">Age is required</small>
+                </div>
+                <input formControlName="age" class="sign-up-input age" type="number" placeholder="Age here">
+            </div>
+
+            <div class="email-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched">
+                    <small class="error">Email is required</small>
+                </div>
+                <input formControlName="email" class="sign-up-input email" type="mail" placeholder="Your email">
+            </div>
+
+            <div class="password-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched">
+                    <small class="error">Password is required</small>
+                </div>
+                <input formControlName="password" class="sign-up-input password" type="password" placeholder="Your password">
+            </div>
+
+            <div class="phone-number-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['phone'].invalid && signUpForm.controls['phone'].touched">
+                    <small class="error">Phone number is required</small>
+                </div>
+                <input formControlName="phone" class="sign-up-input phone-number" type="text" placeholder="Your phone number">
+            </div>
+
+            <div class="address-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['address'].invalid && signUpForm.controls['address'].touched">
+                    <small class="error">Address is required</small>
+                </div>
+                <input formControlName="address" class="sign-up-input address" type="text" placeholder="Your address">
+            </div>
+
+            <div class="zip-code-wrapper input-wrappers">
+                <div class="validator-div" *ngIf="signUpForm.controls['zipcode'].invalid && signUpForm.controls['zipcode'].touched">
+                    <small class="error">Zip-code is required</small>
+                </div>
+                <input formControlName="zipcode" class="sign-up-input zip-code" type="text" placeholder="Zip-code here">
+            </div>
+
+            <div class="complex-options">
+                <p>Choose your gender</p>
+                <select formControlName="gender" class="gender-choices" id="gender_choices" name="choices">
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE" selected>Female</option>
+                    <option value="MALE">Other</option>
+                </select>
+
+                <div class="terms-and-conditions-wrapper">
+                    <input class="terms-and-conditions" type="checkbox">
+                    <p>I agree to the <a href="https://tre.ge/en/privacy" target="_blank">Terms &  Conditions</a></p>
+                </div>
+            </div>
+            <button class="subbmit-button" id="create_account" [disabled]="signUpForm.invalid">
+                <p>Create account</p>
+            </button>
+        </form>
+    </div>
+</section>
