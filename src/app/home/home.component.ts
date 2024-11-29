@@ -62,6 +62,10 @@ export class HomeComponent implements OnInit {
 		this.saveDataService.confirmTicket("8fc2a0f3-e420-4db1-b8de-03c7b078a820");
 	}
 
+	refreshWebPage() : void {
+		window.location.reload();
+	}
+
 	// testing email/password --> email: "stepproject@gmail.com", password: "Stepproject123"
 	getAccessKey(_email: string, _password: string): Promise<void> {
 		return new Promise((resolve, reject) => {

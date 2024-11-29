@@ -8,7 +8,7 @@ import { TicketPdfComponent } from './ticket-pdf/ticket-pdf.component';
 import { authGuardGuard } from './guards/auth-guard/auth-guard.guard';
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '', component: HomeComponent, title: 'Home'},
     {path: 'home', component: HomeComponent, title: 'Home'},
     {path: 'search-trains', component: SearchTrainsComponent, title: 'Train Tickets Search', canActivate: [authGuardGuard]},
     {path: 'settings', component: SettingsComponent, title: 'Settings'},

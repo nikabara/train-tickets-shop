@@ -16,9 +16,17 @@
         </div>
       </div>
 
-      <app-week-day-select (dayChange)="getDepartureDay($event)" [purpose]="'Departure day'"></app-week-day-select>
-      <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker>
-      <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker>
+      <app-week-day-select class="dissapearing-input-on-615" (dayChange)="getDepartureDay($event)" [purpose]="'Departure day'"></app-week-day-select>
+      <app-datepicker class="dissapearing-input-on-615" #dateDeparture [purpose]="'departure'"></app-datepicker>
+      <app-datepicker class="dissapearing-input-on-615" #dateReturn [purpose]="'return'"></app-datepicker>
+
+      <div class="dates-wrapper">
+        <app-week-day-select (dayChange)="getDepartureDay($event)" [purpose]="'Departure day'"></app-week-day-select>
+        <app-datepicker #dateDeparture [purpose]="'departure'"></app-datepicker>
+        <app-datepicker #dateReturn [purpose]="'return'"></app-datepicker>
+      </div>
+
+      
 
 
       <button class="submit-btn" (click)="onSubbmit()"><i class="bi bi-search"></i></button>
