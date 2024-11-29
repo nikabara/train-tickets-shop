@@ -6,10 +6,12 @@ import { BookTrainSeatComponent } from './book-train-seat/book-train-seat.compon
 import { BookedTicketsComponent } from './booked-tickets/booked-tickets.component';
 import { TicketPdfComponent } from './ticket-pdf/ticket-pdf.component';
 import { authGuardGuard } from './guards/auth-guard/auth-guard.guard';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, title: 'Home'},
     {path: 'home', component: HomeComponent, title: 'Home'},
+    {path: 'sign-up', component: SignUpComponent, title: 'Sign Up'},
     {path: 'search-trains', component: SearchTrainsComponent, title: 'Train Tickets Search', canActivate: [authGuardGuard]},
     {path: 'settings', component: SettingsComponent, title: 'Settings'},
     {path: 'book-train-seats', component: BookTrainSeatComponent, title: 'Book Train Seat', canActivate: [authGuardGuard]},

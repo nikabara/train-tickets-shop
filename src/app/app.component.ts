@@ -1,5 +1,5 @@
 import { FooterComponent } from './footer/footer.component';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { SidebarComponent } from "./sidebar/sidebar.component";
@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,16 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
   styleUrl: './app.component.sass'
 })
 export class AppComponent implements OnInit, OnDestroy{
+  @ViewChild(HomeComponent) homeComponent!: HomeComponent;
+
+  callHomeFunction(): void {
+    if (this.homeComponent) {
+      this.homeComponent.swalSignInWindow(); // Call the specific function
+    } else {
+      console.warn('HomeComponent is not initialized');
+    }
+  }
+
   title = 'train-tickets-shop';
 
   colorTheme: string = 'light';

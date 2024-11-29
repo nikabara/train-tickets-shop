@@ -2,7 +2,7 @@ import { RegisterTicket } from './../Interfaces/RegisterTicket.interface';
 import { People } from '../Interfaces/People.interface';
 import { SaveDataService } from '../services/save-data.service';
 import { SwaggerAPIService } from '../services/swagger-api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule\
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
 		return formValues;
 	}
 
-	async swalSignIn(): Promise<void> {
+	public async swalSignIn(): Promise<void> {
 		let formValues: string[] = await this.swalSignInWindow();
 
 		// If formValues is undefined (e.g., user closes the modal), skip the rest
