@@ -1,10 +1,15 @@
 .sign-up-wrapper
+    display: grid
+    grid-template-columns: 0.9fr 1.1fr
+    column-gap: 25px
     min-height: 500px
-    padding: 40px 40px 40px 30px
+    padding: 30px 40px 40px 30px
+    max-width: 1140px
+    margin: auto
 
     .sign-up-form
-        width: 50%
-        margin-top: 50px
+        width: 100%
+        margin-top: 30px
         display: grid
         grid-template-areas: 'inp1 inp2 inp2' 'inp3 inp3 inp3' 'inp5 inp5 inp4' 'inp6 inp7 inp8' 'inp9 inp9 inp9' 'inp10 inp10 inp10'
         row-gap: 25px
@@ -69,7 +74,7 @@
 
             .terms-and-conditions-wrapper
                 margin-top: 25px
-                margin-bottom: 8px
+                margin-bottom: 0px
                 display: flex
                 gap: 15px
 
@@ -137,16 +142,82 @@
             border: 1px solid #ccc
             border-radius: 4px
 
+    .carousel-wrapper
+        background-color: whitesmoke
+        border-radius: 10px
+        overflow: hidden
+
+        .d-md-block
+            display: block !important
+            background-color: #c1c1c164
+            padding-bottom: 10px
+            border-radius: 10px
+
+        .carousel-indicators
+            bottom: 5px !important
+
+        .slide
+            width: 100%
+            height: 100%
+
+            .carousel-inner
+                width: 100%
+                height: 100%
+
+                .carousel-item
+                    width: 100%
+                    height: 100%
+                    background-size: cover
+                    background-position: center
+                    background-repeat: no-repeat
+
+                    .w-100
+                        width: 100% !important
+                        height: 662px
+
+                    h3
+                        // backdrop-filter: blur(10px)
+                        width: 100%
+                        text-align: center
+                        margin-top: 0px
+                        padding-right: 20px
+                        padding-top: 3px
+                        padding-bottom: 3px
+                        font-size: 25px
+                        color: white
+                        background-color: #e6e6e61d
+                        transition: 0.5s ease-in-out
+
+                .item1
+                    background-image: url('/tbilisi.jpg')
+
+                .item2
+                    background-image: url('/batumi3.jpg')
+
+                .item3
+                    background-image: url('/foti.jpg')
 
 @media (max-width: 950px)
     .sign-up-form
         width: 100% !important
 
-@media (max-width: 669px)
+    .w-100
+        width: 100% !important
+        height: 100% !important
+        object-fit: cover
+
+// 669px
+@media (max-width: 950px)
     .sign-up-form
         grid-template-areas: none !important
         display: flex !important
         flex-direction: column
         // grid-template-areas: 'inp1 inp1 inp1' 'inp2 inp2 inp2' 'inp3 inp3 inp3' 'inp41 inp41 inp41' 'inp5 inp5 inp5' 'inp6 inp6 inp6' 'inp7 inp7 inp7' 'inp8 inp8 inp8' 'inp9 inp9 inp9' 'inp10 inp10 inp10' !important
-    
 
+@media (max-width: 740px)
+    .sign-up-wrapper
+        display: grid
+        grid-template-columns: 1fr
+
+    .carousel-wrapper
+        display: none
