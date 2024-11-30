@@ -32,11 +32,11 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('showSuccessWindowTrue') === 'true') {
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('showSuccessWindowTrue') === 'true') {
       sessionStorage.removeItem('showSuccessWindow');
       this.showSuccessWindow();
     }
-    else if (sessionStorage.getItem('showSuccessWindowTrue') === 'false') {
+    else if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('showSuccessWindowTrue') === 'false') {
       sessionStorage.removeItem('showSuccessWindow');
       this.showErrorMessage();
     }

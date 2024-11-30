@@ -7,6 +7,8 @@ import { BookedTicketsComponent } from './booked-tickets/booked-tickets.componen
 import { TicketPdfComponent } from './ticket-pdf/ticket-pdf.component';
 import { authGuardGuard } from './guards/auth-guard/auth-guard.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UnderDevelopmentComponent } from './under-development/under-development.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, title: 'Home'},
@@ -17,5 +19,7 @@ export const routes: Routes = [
     {path: 'book-train-seats', component: BookTrainSeatComponent, title: 'Book Train Seat', canActivate: [authGuardGuard]},
     {path: 'my-tickets', component: BookedTicketsComponent, title: 'My tickets', canActivate: [authGuardGuard]},
     {path: 'ticket-pdf', component: TicketPdfComponent, title: 'Ticket PDF', canActivate: [authGuardGuard]},
-    {path: '**', redirectTo: 'home', pathMatch: 'full'}
+    {path: 'under-development', component: UnderDevelopmentComponent, title: 'Under Development'},
+    {path: 'error', component: PageNotFoundComponent, title: 'Page Not Found'},
+    {path: '**', redirectTo: 'error', pathMatch: 'full'}
 ];
