@@ -46,82 +46,86 @@
     </div> -->
 
     <div class="sign-up-right">
-        <h1>Create an account</h1>
-        <p>Already have an account? <a routerLink="/home">Log In</a></p>
+        <h1>{{ "SIGN-UP.CREATE-AN-ACCOUNT" | translate }}</h1>
+        <p>{{ "SIGN-UP.ALREADY-HAVE-AN-ACCOUNT" | translate }} 
+            <a routerLink="/home">{{ "SIGN-UP.LOG-IN" | translate }}</a>
+        </p>
 
         <form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
 
             <div class="first-name-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['firstName'].invalid && signUpForm.controls['firstName'].touched">
-                    <small class="error">First-name is required.</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-FIRST-NAME" | translate }}</small>
                 </div>
-                <input formControlName="firstName" class="sign-up-input first-name" type="text" placeholder="Name here">
+                <input formControlName="firstName" class="sign-up-input first-name" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.FIRST-NAME' | translate }}" />
             </div>
 
             <div class="last-name-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['lastName'].invalid && signUpForm.controls['lastName'].touched">
-                    <small class="error">Last-name is required</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-LAST-NAME" | translate }}</small>
                 </div>
-                <input formControlName="lastName" class="sign-up-input last-name" type="text" placeholder="Last-name here">
+                <input formControlName="lastName" class="sign-up-input last-name" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.LAST-NAME' | translate }}">
             </div>
 
             <div class="age-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['age'].invalid && signUpForm.controls['age'].touched">
-                    <small class="error">Age is required</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-AGE" | translate }}</small>
                 </div>
-                <input formControlName="age" class="sign-up-input age" type="number" placeholder="Age here">
+                <input formControlName="age" class="sign-up-input age" type="number" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.AGE' | translate }}">
             </div>
 
             <div class="email-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched">
-                    <small class="error">Email is required</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-EMAIL" | translate }}</small>
                 </div>
-                <input formControlName="email" class="sign-up-input email" type="mail" placeholder="Your email">
+                <input formControlName="email" class="sign-up-input email" type="mail" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.EMAIL' | translate }}">
             </div>
 
             <div class="password-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched">
-                    <small class="error">Password is required</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-PASSWORD" | translate }}</small>
                 </div>
-                <input formControlName="password" class="sign-up-input password" type="password" placeholder="Your password">
+                <input formControlName="password" class="sign-up-input password" type="password" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.PASSWORD' | translate }}">
             </div>
 
             <div class="phone-number-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['phone'].invalid && signUpForm.controls['phone'].touched">
-                    <small class="error">Phone number is required</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-PHONE-NUMBER" | translate }}</small>
                 </div>
-                <input formControlName="phone" class="sign-up-input phone-number" type="text" placeholder="Your phone number">
+                <input formControlName="phone" class="sign-up-input phone-number" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.PHONE-NUMBER' | translate }}">
             </div>
 
             <div class="address-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['address'].invalid && signUpForm.controls['address'].touched">
-                    <small class="error">Address is required</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-ADDRESS" | translate }}</small>
                 </div>
-                <input formControlName="address" class="sign-up-input address" type="text" placeholder="Your address">
+                <input formControlName="address" class="sign-up-input address" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.ADDRESS' | translate }}">
             </div>
 
             <div class="zip-code-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['zipcode'].invalid && signUpForm.controls['zipcode'].touched">
-                    <small class="error">Zip-code is required</small>
+                    <small class="error">{{ "SIGN-UP.INVALID-ZIP-CODE" | translate }}</small>
                 </div>
-                <input formControlName="zipcode" class="sign-up-input zip-code" type="text" placeholder="Zip-code here">
+                <input formControlName="zipcode" class="sign-up-input zip-code" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.ZIP-CODE' | translate }}">
             </div>
 
             <div class="complex-options">
-                <p>Choose your gender</p>
+                <p>{{ "SIGN-UP.CHOOSE-YOUR-GENDER" | translate }}</p>
                 <select formControlName="gender" class="gender-choices" id="gender_choices" name="choices">
-                    <option value="MALE">Male</option>
-                    <option value="FEMALE" selected>Female</option>
-                    <option value="MALE">Other</option>
+                    <option value="MALE">{{ "SIGN-UP.GENDER-MALE" | translate }}</option>
+                    <option value="FEMALE" selected>{{ "SIGN-UP.GENDER-FEMALE" | translate }}</option>
+                    <option value="MALE">{{ "SIGN-UP.GENDER-OTHER" | translate }}</option>
                 </select>
 
                 <div class="terms-and-conditions-wrapper">
                     <input class="terms-and-conditions" type="checkbox">
-                    <p>I agree to the <a href="https://tre.ge/en/privacy" target="_blank">Terms &  Conditions</a></p>
+                    <p>{{ "SIGN-UP.I-AGREE-TO-THE" | translate }} 
+                        <a href="https://tre.ge/en/privacy" target="_blank">{{ "SIGN-UP.TERMS-AND-CONDITIONS" | translate }}</a>
+                    </p>
                 </div>
             </div>
             <button class="subbmit-button" id="create_account" [disabled]="signUpForm.invalid">
-                <p>Create account</p>
+                <p>{{ "SIGN-UP.CREATE-ACCOUNT" | translate }}</p>
             </button>
         </form>
     </div>

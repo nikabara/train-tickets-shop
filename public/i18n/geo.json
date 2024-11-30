@@ -45,5 +45,36 @@
         "COLUMN": "სვეტი",
         "DEPARTURE": "გამგზავრება",
         "ARRIVAL": "ჩასვლა"
+    },
+    "SIGN-UP": {
+        "CREATE-AN-ACCOUNT": "რეგისტრაცია",
+        "ALREADY-HAVE-AN-ACCOUNT": "უკვე გაქვთ ანგარიში?",
+        "LOG-IN": "ავტორიზაცია",
+        "INVALID-FIRST-NAME": "არავალიდური სახელი",
+        "INVALID-LAST-NAME": "არავალიდური გვარი",
+        "INVALID-AGE": "არავალიდური ასაკი",
+        "INVALID-EMAIL": "არავალიდური ფოსტა",
+        "INVALID-PASSWORD": "არავალიდური პაროლი",
+        "INVALID-PHONE-NUMBER": "არავალიდური ტელ. ნომერი",
+        "INVALID-ADDRESS": "არავალიდური ადრესი",
+        "INVALID-ZIP-CODE": "არავალიდური ზიპ-კოდი",
+        "CHOOSE-YOUR-GENDER": "თქვენი სქესი",
+        "GENDER-MALE": "მამრ.",
+        "GENDER-FEMALE": "მდედრ.",
+        "GENDER-OTHER": "სხვა",
+        "I-AGREE-TO-THE": "ვეთანხმები",
+        "TERMS-AND-CONDITIONS": "წესებსა და პირობებს",
+        "CREATE-ACCOUNT": "ანგარიშის შექმნა",
+
+        "INPUT-PLACEHOLDERS": {
+            "FIRST-NAME": "თქვენი სახელი...",
+            "LAST-NAME": "თქვენი გვარი...",
+            "AGE": "თქვენი ასაკი...",
+            "EMAIL": "თქვენი ელ.ფოსტა...",
+            "PASSWORD": "თქვენი პაროლი...",
+            "PHONE-NUMBER": "ტელ.ნომერი...",
+            "ADDRESS": "თქვენი ადრესი...",
+            "ZIP-CODE": "თქვენი ზიპ-კოდი..."
+        }
     }
 }

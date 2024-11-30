@@ -12,7 +12,7 @@
     <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()">
       <i class="bi bi-person-circle"></i> {{ 'HOME.SIGN-IN' | translate }}</a>
     
-    <a class="log-in" routerLink="/sign-up" > {{ 'HOME.SIGN-UP' | translate }}</a>
+    <a class="sign-up" routerLink="/sign-up" > {{ 'HOME.SIGN-UP' | translate }}</a>
 
     <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
       <i class="bi bi-person-circle"></i></a>

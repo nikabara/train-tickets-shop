@@ -45,5 +45,36 @@
         "COLUMN": "Column",
         "DEPARTURE": "Departure",
         "ARRIVAL": "Arrival"
+    },
+    "SIGN-UP": {
+        "CREATE-AN-ACCOUNT": "Create an account",
+        "ALREADY-HAVE-AN-ACCOUNT": "Already have an account?",
+        "LOG-IN": "Log In",
+        "INVALID-FIRST-NAME": "Invalid first-name",
+        "INVALID-LAST-NAME": "Invalid last-name",
+        "INVALID-AGE": "Invalid age",
+        "INVALID-EMAIL": "Invalid email",
+        "INVALID-PASSWORD": "Invalid password",
+        "INVALID-PHONE-NUMBER": "Invalid phone number",
+        "INVALID-ADDRESS": "Invalid address",
+        "INVALID-ZIP-CODE": "Invalid zip-code",
+        "CHOOSE-YOUR-GENDER": "Choose your gender",
+        "GENDER-MALE": "Male",
+        "GENDER-FEMALE": "Female",
+        "GENDER-OTHER": "Other",
+        "I-AGREE-TO-THE": "I agree to the",
+        "TERMS-AND-CONDITIONS": "Terms & Conditions",
+        "CREATE-ACCOUNT": "Create account",
+
+        "INPUT-PLACEHOLDERS": {
+            "FIRST-NAME": "Name here...",
+            "LAST-NAME": "Last-name here...",
+            "AGE": "Age here...",
+            "EMAIL": "Your email...",
+            "PASSWORD": "Your Password...",
+            "PHONE-NUMBER": "Your phone number...",
+            "ADDRESS": "Your address...",
+            "ZIP-CODE": "Zip-code here..."
+        }
     }
 }
