@@ -17,7 +17,10 @@ export class AuthService {
   }
 
   isAuthenticated() : boolean {
-    return localStorage.getItem("isAuthed") === 'true' ? true : false;
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem("isAuthed") === 'true' ? true : false;
+    }
+    return false;
   }
 
   signOut() : void {

@@ -1,0 +1,5 @@
+<section class="booked-tickets-wrapper">
+    <h1 class="my-bookings-text">{{ 'BOOKED-TICKETS.MY-TICKETS' | translate}}</h1>
+    <app-booked-ticket *ngFor="let ticket of groupedTickets" [ticketData]="ticket"></app-booked-ticket>
+    <app-ticket-pdf></app-ticket-pdf>
+</section>
