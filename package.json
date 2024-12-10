@@ -24,6 +24,7 @@
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.4",
+    "@nguniversal/express-engine": "^7.0.1",
     "@ngx-translate/core": "^16.0.3",
     "@ngx-translate/http-loader": "^16.0.0",
     "@sweetalert2/ngx-sweetalert2": "^12.4.0",
