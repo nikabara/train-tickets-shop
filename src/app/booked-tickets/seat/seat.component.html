@@ -1,0 +1,39 @@
+<div class="seat">
+    <div class="qr-code">
+        <qrcode
+        [qrdata]="person.seat.seatId"
+        [allowEmptyString]="true"
+        [ariaLabel]="'QR Code image with the following content...'"
+        [cssClass]="'center'"
+        [colorDark]="'#000000ff'"
+        [colorLight]="'#ffffffff'"
+        [elementType]="'canvas'"
+        [errorCorrectionLevel]="'Q'"
+        [imageSrc]=""
+        [imageHeight]="70"
+        [imageWidth]="70"
+        [margin]="1"
+        [scale]="1"
+        [title]="'A custom title attribute'"
+        [width]="100"
+      ></qrcode>
+    </div>
+    <div class="seat-info">
+        <div class="seat-price seat-info-boxes">
+            <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.PRICE' | translate }}</h4>
+            <h4 class="gotten-seat-info">{{ person.seat.price }}₾</h4>
+        </div>
+        <div class="seat-class seat-info-boxes">
+            <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.CLASS' | translate }}</h4>
+            <h4 class="gotten-seat-info">II</h4>
+        </div>
+        <div class="seat-row seat-info-boxes">
+            <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.ROW' | translate }}</h4>
+            <h4 class="gotten-seat-info">{{ person.seat.number | splitSeatNumber: 'number' }}</h4>
+        </div>
+        <div class="seat-column seat-info-boxes">
+            <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.COLUMN' | translate }}</h4>
+            <h4 class="gotten-seat-info">{{ person.seat.number | splitSeatNumber: 'letter' }}</h4>
+        </div>
+    </div>
+</div>

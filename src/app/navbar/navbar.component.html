@@ -1,19 +1,26 @@
 <nav>
-    <button class="menu-toggler" (click)="toggleSideBar()"><i class="bi bi-list"></i></button>
+    <button class="menu-toggler" (click)="toggleNavBar()"><i class="bi bi-list"></i></button>
 
     <div class="navbar-mid-options">
         <a class="aside-mid-link" routerLink="/home"><i class="bi bi-house-fill"></i></a>
         <a class="aside-mid-link" routerLink="/search-trains"><i class="bi bi-train-front-fill"></i></a>
-        <a class="aside-mid-link" routerLink="/search-plains"><i class="bi bi-airplane-fill"></i></a>
-        <a class="aside-mid-link" routerLink="/search-bus"><i class="bi bi-bus-front"></i></a>
-        <a class="aside-mid-link" routerLink="/my-bookings"><i class="bi bi-ticket-perforated-fill"></i></a>
-        <a class="aside-mid-link" routerLink="/history"><i class="bi bi-clock-history"></i></a>
-    </div> 
+        <a class="aside-mid-link" routerLink="/under-development"><i class="bi bi-airplane-fill"></i></a>
+        <a class="aside-mid-link" routerLink="/under-development"><i class="bi bi-bus-front"></i></a>
+        <a class="aside-mid-link" routerLink="/my-tickets"><i class="bi bi-ticket-perforated-fill"></i></a>
+        <a class="aside-mid-link" routerLink="/error"><i class="bi bi-clock-history"></i></a>
+    </div>
 
     <button routerLink="/settings" class="settings aside-bottom-option"><i class="bi bi-gear-fill"></i></button>
 
 
 
-    <div class="options" [class.navbar-toggled]="navbarToggled"></div>
+    <div class="options" [class.navbar-toggled]="navbarToggled">
+        <a class="aside-mid-link" (click)="toggleNavBar()" routerLink="/home"><i class="bi bi-house-fill"></i> <p>{{ 'SIDEBAR.HOME' | translate }}</p></a>
+        <a class="aside-mid-link" (click)="toggleNavBar()" routerLink="/search-trains"><i class="bi bi-train-front-fill"></i> <p>{{ 'SIDEBAR.SEARCH-TRAINS' | translate }}</p></a>
+        <a class="aside-mid-link" (click)="toggleNavBar()" routerLink="/under-development"><i class="bi bi-airplane-fill"></i> <p>{{ 'SIDEBAR.SEARCH-PLAINS' | translate }}</p></a>
+        <a class="aside-mid-link" (click)="toggleNavBar()" routerLink="/under-development"><i class="bi bi-bus-front"></i> <p>{{ 'SIDEBAR.SEARCH-BUSSES' | translate }}</p></a>
+        <a class="aside-mid-link" (click)="toggleNavBar()" routerLink="/my-tickets"><i class="bi bi-ticket-perforated-fill"></i> <p>{{ 'SIDEBAR.MY-BOOKINGS' | translate }}</p></a>
+        <a class="aside-mid-link" (click)="toggleNavBar()" routerLink="/news"><i class="bi bi-newspaper"></i> <p>{{ 'SIDEBAR.NEWS' | translate }}</p></a>
+    </div>
 </nav>
 

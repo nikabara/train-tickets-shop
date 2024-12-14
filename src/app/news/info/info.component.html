@@ -1,0 +1,13 @@
+<section class="main-section">
+  <article>
+    <h1 class="title"> {{ data.info.title }} </h1>
+    <h4 class="description">{{ data.info.description }}</h4>
+    <div class="date-wrapper">
+      <p class="topic">Railway</p>
+      <div class="divider">|</div>
+      <p class="date-1">{{ data.info.occured.toDate() | date: 'd MMM y - HH:mm' }}</p>
+<!--      <p class="date-2">{{ data.info.estimatedRenewal?.toDate() | date: 'd MMM y - HH:mm' }}</p>-->
+    </div>
+  </article>
+  <div class="background-image-div" [style.background-image]="'url(' + data.info.imageUrl + ')'"></div>
+</section>
