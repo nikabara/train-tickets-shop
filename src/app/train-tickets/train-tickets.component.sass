@@ -56,14 +56,17 @@
             .travel-times-decoration
                 display: flex
                 align-items: center
-                width: 215px
-                justify-content: space-between
+                max-width: 600px
+                width: 100%
+                margin: 0 15px
+                gap: 15px
+                justify-content: center
 
                 .travel-duration
                     color: #c7c7c7
 
                 .line
-                    width: 65px
+                    flex-grow: 1
                     height: 1.5px
                     background-color: #c7c7c7
         
@@ -99,3 +102,7 @@
                 &:hover
                     background-color: #ff5900
                     
+
+@media (max-width: 615px)
+    .ticket-left
+        display: none !important
