@@ -25,7 +25,7 @@
         </div>
         <div class="seat-class seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.CLASS' | translate }}</h4>
-            <h4 class="gotten-seat-info">II</h4>
+            <h4 class="gotten-seat-info">{{ person.seat.price | priceToVagonClass }}</h4>
         </div>
         <div class="seat-row seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.ROW' | translate }}</h4>

@@ -1,7 +1,6 @@
 .seat 
     width: 100%
     height: 100px
-
     display: flex
     justify-content: space-between
     align-items: center
@@ -37,4 +36,19 @@
                 color: #2c2f59
 
             .template-seat-info
-                color: #6c5494
+                color: #6c5494    
+
+
+@media (max-width: 573px)
+    .seat
+        flex-direction: column
+        height: auto !important
+        gap: 15px
+        align-items: flex-start
+        border-bottom: solid var(--border-color) 2px
+        padding-bottom: 20px
+
+    .seat-info
+        width: 100% !important
+        padding: 20px 0
+        padding-right: 15px

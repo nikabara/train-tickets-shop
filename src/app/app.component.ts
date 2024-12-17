@@ -24,7 +24,7 @@ import { Meta, Title } from '@angular/platform-browser';
     SweetAlert2Module,
     SidebarComponent,
     NavbarComponent,
-    SettingsComponent,
+    // SettingsComponent,
     MatProgressBarModule,
     CommonModule,
     FooterComponent

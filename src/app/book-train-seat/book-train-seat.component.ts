@@ -171,6 +171,7 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     people: this.peopleSeatData
   }
 
+  // Custom user name and lastname can be modified here
   createReservationObject(): RegisterTicket {
     let seatsToRegister: People[] = [];
 
@@ -237,9 +238,6 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
           this.swaggerAPIService.postTicket(this.createReservationObject()).subscribe(
             (response) => {
               console.log(response);
-            },
-            (error) => {
-              console.log("");
             }
           )
           window.location.reload();

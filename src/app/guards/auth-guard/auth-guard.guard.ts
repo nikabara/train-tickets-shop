@@ -7,7 +7,7 @@ import { AppComponent } from '../../app.component';
 export const authGuardGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
-  if (localStorage.getItem('isAuthed') && localStorage.getItem('isAuthed') === 'true') {
+  if (typeof localStorage !== 'undefined' && localStorage.getItem('isAuthed') && localStorage.getItem('isAuthed') === 'true') {
     return true;
   }
 
