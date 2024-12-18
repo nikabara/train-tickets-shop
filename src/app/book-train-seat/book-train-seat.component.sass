@@ -97,33 +97,61 @@
                             color: #afafaf
 
             .book-seats
-                width: 520px // original width 430px
-                padding-left: 150px !important
-                height: 100%
+                // width: 520px // original width 430px
+                // padding-left: 150px !important
+                // height: 100%
+                // background-color: #fafafa
+                // border-radius: 10px
+                // padding: 20px
+                // display: flex
+                // gap: 10px
+                // justify-content: center
+                // align-items: flex-start
+                // flex-wrap: wrap
+                // overflow: auto
+                // position: relative
+
+                // width: 520px
+                /* padding-left: 150px !important; */
+                /* height: 100%; */
                 background-color: #fafafa
                 border-radius: 10px
-                padding: 20px
-                display: flex
+                padding: 20px 20px 20px 80px
+                /* display: flex; */
                 gap: 10px
                 justify-content: center
+                flex-direction: row
                 align-items: flex-start
-                flex-wrap: wrap
+                /* flex-wrap: wrap; */
                 overflow: auto
                 position: relative
+                flex-direction: column
+
 
                 .seat-alphabetic-names
+                    // display: flex
+                    // align-items: center
+                    // justify-content: space-between
+                    // width: 250px
+                    // position: absolute
+                    // top: 75px
+                    // right: 75px
+
+                    gap: 71.5px
                     display: flex
                     align-items: center
-                    justify-content: space-between
-                    width: 250px
-                    position: absolute
+                    justify-content: center
+                    /* width: 250px; */
+                    /* position: absolute; */
                     top: 75px
                     right: 75px
+                    margin-bottom: 15px
+
 
                 .seat-row-numbers
                     position: absolute
-                    top: 140px
-                    left: 80px
+                    top: 130px
+                    left: 25px
                     z-index: 2
 
                     .number-rows
@@ -134,28 +162,33 @@
                         justify-content: space-between
 
                     .first-class-rows, .second-class-rows
-                        margin-top: 110px
+                        margin-top: 98px
 
                     .vagon-seat
                         font-size: 30px
 
                 .vagon-class-name
-                    margin-right: 55px
+                    // margin-right: 55px
                     margin-bottom: 15px
                     color: #959595
+                    text-align: center
 
                 .vagon-class-business
-                    margin-bottom: 60px
+                    // margin-bottom: 60px
+                    margin-bottom: 28px
 
                 .vagon-class-second, .vagon-class-first
                     margin-top: 15px
 
                 .vagon-class-wrapper
-                    display: flex
-                    gap: 10px
-                    align-items: flex-start
-                    flex-wrap: wrap
-                    overflow: auto
+                    // display: flex
+                    // gap: 10px
+                    // align-items: flex-start
+                    // flex-wrap: wrap
+                    // overflow: auto
+                    display: grid
+                    grid-template-columns: repeat(4, 1fr)
+                    gap: 15px 
 
 /* Target the scrollbar container */
 ::-webkit-scrollbar
@@ -177,3 +210,20 @@
 ::-webkit-scrollbar-thumb:hover
     transition: ease-in-out .2s
     background-color: #a7a6a6 !important
+
+
+@media ( max-width: 845px )
+    .row-2
+        margin-top: 15px
+        width: 100%
+        height: 85%
+        display: flex
+        flex-direction: column-reverse
+        justify-content: space-between
+
+    .book-train-wrapper
+        width: 100%
+        height: auto
+
+    .book-seats
+        height: 400px
