@@ -5,6 +5,11 @@
                 <h2>{{ 'BOOK-TRAIN-SEAT.FILLER-TEXT-H2' | translate }}</h2>
                 <h5>{{ 'BOOK-TRAIN-SEAT.FILLER-TEXT-H5' | translate }}</h5>
             </div>
+
+            <div class="post-responsive-train-info">
+                <h6 class="train-id">{{ 'BOOK-TRAIN-SEAT.SELECTION-INFO-TRAIN-ID' | translate }} #{{ _queryParams.number }}</h6>
+                <h3 class="train-from-to-info">{{ _queryParams.name }}</h3>
+            </div>
     
             <div class="ticket-price-wrapper">
                 <h2 id="selected-ticket-price">GEL {{ seatPrice }}</h2>

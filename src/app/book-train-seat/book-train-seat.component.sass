@@ -38,6 +38,9 @@
                     // padding: 10px 15px
                     border-radius: 15px
 
+            .post-responsive-train-info
+                display: none
+
             .ticket-price-wrapper
                 background-color: #fafafa
                 width: 24.5%
@@ -150,12 +153,12 @@
 
                 .seat-row-numbers
                     position: absolute
-                    top: 130px
+                    top: 140px
                     left: 25px
                     z-index: 2
 
                     .number-rows
-                        gap: 45px
+                        gap: 49px
                         display: flex
                         flex-direction: column
                         align-items: center
@@ -189,6 +192,8 @@
                     display: grid
                     grid-template-columns: repeat(4, 1fr)
                     gap: 15px 
+                    justify-items: center
+
 
 /* Target the scrollbar container */
 ::-webkit-scrollbar
@@ -227,3 +232,65 @@
 
     .book-seats
         height: 400px
+        padding: 20px 100px 20px 120px !important
+
+    .seat-alphabetic-names
+        justify-content: space-between !important
+        padding: 0 40px
+
+    .post-responsive-train-info
+        display: inline-block !important
+
+    .filler-text
+        display: none
+
+    .selection-info
+        .train-id, .train-from-to-info
+            display: none
+
+    .first-class-rows, .second-class-rows
+        margin-top: 90px !important
+
+    .seat-row-numbers
+        position: absolute
+        left: 50px !important
+        z-index: 2
+
+    #place_reservation
+        margin-top: 20px !important
+    
+
+
+@media (max-width: 648px)
+    .book-seats
+        padding: 0 0 0 0 !important
+        margin: 0 -22px
+
+    .vagon-class-wrapper
+        padding: 0 20px 0 60px
+
+    .seat-row-numbers
+        position: absolute
+        top: 116px !important
+        left: 18px !important
+        z-index: 2
+
+    .seat-alphabetic-names
+        gap: 0px !important
+        padding: 0 36px 0 75px !important
+
+    .vagon-seat
+        font-size: 22px !important
+
+@media (max-width: 498px)
+    .seat-row-numbers
+        top: 110px !important
+        left: 18px !important
+        z-index: 2
+
+    .number-rows
+        gap: 38px !important
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
