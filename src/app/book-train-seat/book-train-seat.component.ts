@@ -12,11 +12,14 @@ import Swal from 'sweetalert2';
 import { People } from '../Interfaces/People.interface';
 import { Ticket } from '../Interfaces/Ticket.interface';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { LoaderService } from '../services/loader.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-book-train-seat',
   standalone: true,
-  imports: [SeatComponent, CommonModule, SelectedTicketInfoComponent, TranslateModule],
+  imports: [SeatComponent, CommonModule, SelectedTicketInfoComponent, TranslateModule, MatProgressSpinnerModule],
   templateUrl: './book-train-seat.component.html',
   styleUrl: './book-train-seat.component.sass'
 })
@@ -32,7 +35,12 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   firstClassSeats!: Seat[];
   secondClassSeats!: Seat[];
 
-  constructor(private activatedRout: ActivatedRoute, private swaggerAPIService: SwaggerAPIService, private translateService: TranslateService) { }
+  constructor(
+    private activatedRout: ActivatedRoute, 
+    private swaggerAPIService: SwaggerAPIService, 
+    private translateService: TranslateService,
+    public loaderService: LoaderService
+  ) { }
 
   // switchLanguage(language: string) {
   //   this.translateService.use(language);

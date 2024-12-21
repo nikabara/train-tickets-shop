@@ -14,12 +14,28 @@ import {NewsComponent} from "./news/news.component";
 export const routes: Routes = [
   {path: '', component: HomeComponent, title: 'Home'},
   {path: 'home', component: HomeComponent, title: 'Home'},
-  {path: 'news', component: NewsComponent, title: 'News'},
+  {
+    path: 'news', 
+    title: 'News',
+    loadComponent: () => import('./news/news.component')
+      .then((m) => m.NewsComponent), 
+  },
   {path: 'sign-up', component: SignUpComponent, title: 'Sign Up'},
   {path: 'search-trains', component: SearchTrainsComponent, title: 'Train Tickets Search', canActivate: [authGuardGuard]},
-  {path: 'settings', component: SettingsComponent, title: 'Settings'},
-  {path: 'book-train-seats', component: BookTrainSeatComponent, title: 'Book Train Seat', canActivate: [authGuardGuard]},
-  {path: 'my-tickets', component: BookedTicketsComponent, title: 'My tickets', canActivate: [authGuardGuard]},
+  {path: 'settings', component: SettingsComponent, title: 'Settings', canActivate: [authGuardGuard]},
+  {
+    path: 'book-train-seats', 
+    title: 'Book Train Seat', 
+    canActivate: [authGuardGuard],
+    loadComponent: () => import('./book-train-seat/book-train-seat.component')
+      .then((m) => m.BookTrainSeatComponent), 
+  },
+  {
+    path: 'my-tickets', 
+    loadComponent: () => import('./booked-tickets/booked-tickets.component').then((m) => m.BookedTicketsComponent), 
+    title: 'My tickets', 
+    canActivate: [authGuardGuard]
+  },
   {path: 'ticket-pdf', component: TicketPdfComponent, title: 'Ticket PDF', canActivate: [authGuardGuard]},
   {path: 'under-development', component: UnderDevelopmentComponent, title: 'Under Development'},
   {path: 'error', component: PageNotFoundComponent, title: 'Page Not Found'},
