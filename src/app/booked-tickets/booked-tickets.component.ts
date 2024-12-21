@@ -6,18 +6,20 @@ import { BookedTicketComponent } from "./booked-ticket/booked-ticket.component";
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { TicketPdfComponent } from "../ticket-pdf/ticket-pdf.component";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderService } from '../services/loader.service';
 
 
 @Component({
   selector: 'app-booked-tickets',
   standalone: true,
-  imports: [BookedTicketComponent, CommonModule, TranslateModule, TicketPdfComponent],
+  imports: [BookedTicketComponent, CommonModule, TranslateModule, TicketPdfComponent, MatProgressSpinnerModule],
   templateUrl: './booked-tickets.component.html',
   styleUrl: './booked-tickets.component.sass'
 })
 export class BookedTicketsComponent implements OnInit {
 
-  constructor(private swaggerAPIService: SwaggerAPIService) { }
+  constructor(private swaggerAPIService: SwaggerAPIService, public loaderService: LoaderService) { }
 
   myTickets!: any[];
 
