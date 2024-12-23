@@ -73,7 +73,10 @@
     "ROW": "Row",
     "COLUMN": "Column",
     "DEPARTURE": "Departure",
-    "ARRIVAL": "Arrival"
+    "ARRIVAL": "Arrival",
+    "NO-BOOKINGS-YET": "No bookings yet!...",
+    "YOU-CAN-ALWAYS-SEARCH-FOR": "You can always search for",
+    "TRAIN-TRIPS": "train trips"
   },
   "SIGN-UP": {
     "CREATE-AN-ACCOUNT": "Create an account",

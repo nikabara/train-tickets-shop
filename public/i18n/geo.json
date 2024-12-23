@@ -73,7 +73,10 @@
     "ROW": "მწკრივი",
     "COLUMN": "სვეტი",
     "DEPARTURE": "გამგზავრება",
-    "ARRIVAL": "ჩასვლა"
+    "ARRIVAL": "ჩასვლა",
+    "NO-BOOKINGS-YET": "ჯავშნები არ მოიძებნა",
+    "YOU-CAN-ALWAYS-SEARCH-FOR": "გადასვლა",
+    "TRAIN-TRIPS": "მატარებლის ძიება"
   },
   "SIGN-UP": {
     "CREATE-AN-ACCOUNT": "რეგისტრაცია",

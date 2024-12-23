@@ -8,12 +8,13 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 import { TicketPdfComponent } from "../ticket-pdf/ticket-pdf.component";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderService } from '../services/loader.service';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-booked-tickets',
   standalone: true,
-  imports: [BookedTicketComponent, CommonModule, TranslateModule, TicketPdfComponent, MatProgressSpinnerModule],
+  imports: [BookedTicketComponent, CommonModule, TranslateModule, TicketPdfComponent, MatProgressSpinnerModule, RouterModule],
   templateUrl: './booked-tickets.component.html',
   styleUrl: './booked-tickets.component.sass'
 })

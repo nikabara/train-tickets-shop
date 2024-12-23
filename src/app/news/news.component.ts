@@ -22,7 +22,7 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() : void {
     this.infoFbService.getInfo().subscribe(info => {
-      this.firebaseInfo = info.reverse();
+      this.firebaseInfo = info;
       console.log(this.firebaseInfo);
     })
 

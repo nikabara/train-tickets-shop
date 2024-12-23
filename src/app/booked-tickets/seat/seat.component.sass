@@ -17,7 +17,6 @@
             height: 100%
 
     .seat-info
-
         background-color: #f4f5ff
         height: 100%
         width: 70%
@@ -26,6 +25,8 @@
         grid-template-columns: repeat(4, 1fr)
         place-items: center
         border-radius: 8px
+        margin-left: auto
+        margin-right: 18px
 
         .seat-info-boxes
             display: flex
@@ -38,8 +39,15 @@
             .template-seat-info
                 color: #6c5494    
 
+#cancle_button
+    height: 100%
+    width: 40px
+    border-radius: 6px
+    border: none
+    background-color: #e63946
+    color: white
 
-@media (max-width: 573px)
+@media (max-width: 645px)
     .seat
         flex-direction: column
         height: auto !important
@@ -52,3 +60,22 @@
         width: 100% !important
         padding: 20px 0
         padding-right: 15px
+
+    #cancle_button
+        height: 45px !important
+        width: 200px !important
+        border-radius: 6px
+        border: none
+        background-color: #e63946
+        color: white
+
+@media ( max-width: 430px )
+    #cancle_button
+        height: 45px !important
+        width: 100% !important
+
+    .h4, h4 
+        font-size: 17px !important
+
+    
+    

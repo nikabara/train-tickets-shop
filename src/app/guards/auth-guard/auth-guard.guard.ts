@@ -11,21 +11,21 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  Swal.fire({
-    icon: "warning",
-    title: "You are not Signed In",
-    showConfirmButton: true,
-    confirmButtonText: "Sign In",
-    showDenyButton: true,
-    denyButtonText: "Sign Up",
-  }).then(result => {
-    if (result.isConfirmed) {
-      router.navigate(['/home'])
-    }
-    else if (result.isDenied) {
-      router.navigate(['/sign-up'])
-    }
-  })
+  // Swal.fire({
+  //   icon: "warning",
+  //   title: "You are not Signed In",
+  //   showConfirmButton: true,
+  //   confirmButtonText: "Sign In",
+  //   showDenyButton: true,
+  //   denyButtonText: "Sign Up",
+  // }).then(result => {
+  //   if (result.isConfirmed) {
+  //     router.navigate(['/home'])
+  //   }
+  //   else if (result.isDenied) {
+  //     router.navigate(['/sign-up'])
+  //   }
+  // })
 
   return false;
 };
