@@ -12,6 +12,7 @@
         </p>
     </div>
     
-    <app-booked-ticket *ngFor="let ticket of groupedTickets" [ticketData]="ticket"></app-booked-ticket>
-    <app-ticket-pdf></app-ticket-pdf>
+    <app-booked-ticket *ngFor="let ticket of groupedTickets" [ticketData]="ticket">
+        <app-ticket-pdf [ticketData]="ticket"></app-ticket-pdf>
+    </app-booked-ticket>
 </section>

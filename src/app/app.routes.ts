@@ -20,7 +20,12 @@ export const routes: Routes = [
     loadComponent: () => import('./news/news.component')
       .then((m) => m.NewsComponent), 
   },
-  {path: 'sign-up', component: SignUpComponent, title: 'Sign Up'},
+  {
+    path: 'sign-up', 
+    title: 'Sign Up',
+    loadComponent: () => import('./sign-up/sign-up.component')
+      .then((m) => m.SignUpComponent), 
+  },
   {path: 'search-trains', component: SearchTrainsComponent, title: 'Train Tickets Search', canActivate: [authGuardGuard]},
   {path: 'settings', component: SettingsComponent, title: 'Settings', canActivate: [authGuardGuard]},
   {

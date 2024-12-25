@@ -11,13 +11,13 @@ export class HiddenTicketService {
     this.ticketPdfComponent = component;
   }
 
-  setData(data: any) {
-    this.ticketPdfComponent.setData(data); // Pass data to the hidden component
-  }
+  // setData(data: any) {
+  //   this.ticketPdfComponent.setData(data); // Pass data to the hidden component
+  // }
 
-  generatePdf() {
-    this.ticketPdfComponent.generatePdf(); // Trigger PDF generation
-  }
+  // generatePdf() {
+  //   this.ticketPdfComponent.generatePdf(); // Trigger PDF generation
+  // }
 
   constructor() { }
 }

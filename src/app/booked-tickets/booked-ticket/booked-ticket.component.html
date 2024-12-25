@@ -1,4 +1,4 @@
-<div class="seats-wrapper">
+<div class="seats-wrapper" #pdfContent>
   <div class="ticket-info">
     <h4 class="trip-name"><span>#{{ ticketData[0].train.number }}</span> {{ ticketData[0].train.name }}</h4>
     <h4 class="trip-train-departure">{{ 'BOOKED-TICKETS.DEPARTURE' | translate }} - {{ ticketData[0].train.date }} {{ ticketData[0].train.departure }}</h4>
@@ -13,7 +13,10 @@
   } 
 
   <div class="option-btns-wrapper">
-    <button class="download-tickets ticket-download-option-btns" (click)="passData(); generatePdf()">Download Tickets</button>
-    <button class="download-invoice ticket-download-option-btns" (click)="passDataNav()">Download Invoice</button>
+    <!-- <button class="download-tickets ticket-download-option-btns" (click)="passData(); generatePdf()">Download Tickets</button>
+    <button class="download-invoice ticket-download-option-btns" (click)="passDataNav()">Download Invoice</button> -->
+
+    <button class="download-tickets ticket-download-option-btns exclude-from-pdf" (click)="generatePDF()">Download Tickets</button>
+    <button class="download-invoice ticket-download-option-btns exclude-from-pdf" (click)="underDevelopment()">Download Invoice</button>
   </div>
 </div>
