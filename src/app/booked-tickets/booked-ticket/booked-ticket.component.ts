@@ -27,30 +27,35 @@ export class BookedTicketComponent implements OnInit {
 
   @ViewChild('pdfContent', { static: false }) pdfContent!: ElementRef;
 
-  generatePDF() {
+  async generatePDF() {
     const element = this.pdfContent.nativeElement;
+    const tickets = element.querySelectorAll('app-seat'); // Wrapper for each ticket
+    const pdf = new jsPDF('p', 'mm', 'a4');
 
-    html2canvas(element, {
-      ignoreElements: (node) => {
-        return node.classList && node.classList.contains('exclude-from-pdf');
-      },
-    }).then((canvas) => {
+    for (let i = 0; i < tickets.length; i++) {
+      const ticket = tickets[i] as HTMLElement;
+
+      // Use html2canvas to render the current ticket
+      const canvas = await html2canvas(ticket, {
+        ignoreElements: (node) =>
+          node.classList && node.classList.contains('exclude-from-pdf'),
+      });
+
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = 190; // A4 page width in mm
-      const pageHeight = 277; // A4 page height in mm
+      const imgWidth = 190; // A4 width in mm
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-      let position = 20;
+      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
 
-      // Add the image to the PDF
-      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+      // Add a new page if this is not the last ticket
+      if (i < tickets.length - 1) {
+        pdf.addPage();
+      }
+    }
 
-      // Save the PDF
-      pdf.save('invoice.pdf');
-    });
+    // Save the PDF after processing all tickets
+    pdf.save('tickets.pdf');
   }
-
   underDevelopment(): void {
     Swal.fire({
       icon: "info",
