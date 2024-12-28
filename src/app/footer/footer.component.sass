@@ -1,0 +1,43 @@
+footer
+    background-color: #222222
+    padding: 40px 40px
+    min-height: 300px
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    justify-items: center
+
+    .footer-column
+        display: flex
+        flex-direction: column
+
+        h5, h6, a
+            color: #ffffff
+
+        .footer-column-top
+            margin-bottom: 20px
+
+        .footer-column-middle
+            margin-bottom: 10px
+
+        .terms-and-conditions
+            margin-bottom: 15px
+
+        .footer-column-help
+            display: flex
+            gap: 15px
+
+@media (max-width: 1200px)
+    footer
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(2, 1fr)
+        justify-items: flex-start !important
+        column-gap: 20px
+        row-gap: 20px
+
+@media (max-width: 600px)
+    footer
+        grid-template-columns: 1fr
+        grid-template-rows: repeat(4, 1fr)
+        justify-items: flex-start !important
+        column-gap: 20px
+        row-gap: 20px

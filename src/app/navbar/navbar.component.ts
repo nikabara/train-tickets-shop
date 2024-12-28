@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterEvent, RouterModule } from '@angular/router';
+import { SidebarComponent } from "../sidebar/sidebar.component";
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core'
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, SidebarComponent, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.sass'
 })
@@ -33,7 +35,7 @@ export class NavbarComponent implements OnInit {
 
   navbarToggled: boolean = false;
 
-  toggleSideBar() : void {
+  toggleNavBar() : void {
     this.navbarToggled = !this.navbarToggled;
   }
 

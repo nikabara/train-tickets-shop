@@ -24,7 +24,10 @@ export class ThemeOptionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const theme = localStorage.getItem("theme");
+    let theme!: string | null;
+    if (typeof localStorage !== 'undefined') {
+      theme = localStorage.getItem("theme");  
+    }
     this.selected = theme ? `${theme[0].toUpperCase()}${theme.slice(1)}` : '';
   }
 

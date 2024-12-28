@@ -28,39 +28,39 @@ export class SaveDataService implements OnDestroy {
   error: string | null = null;
 
   constructor(private swaggerApiService: SwaggerAPIService) { 
-    this.putStationsToLocalStorage();
-    this.putTrainsToLocalStorage();
-    this.putVagonsToLocalStorage();
-    this.putDeparturesToLocalStorage();
-    this.putTicketsToLocalStorage();
+    // this.putStationsToLocalStorage();
+    // this.putTrainsToLocalStorage();
+    // this.putVagonsToLocalStorage();
+    // this.putDeparturesToLocalStorage();
+    // this.putTicketsToLocalStorage();
   }
     
-  public putStationsToLocalStorage() : void {
-    if (!localStorage.getItem('stations')) {
-      this.putStationsSubscription = this.swaggerApiService.getStations().subscribe(
-        (response) => {
-          localStorage.setItem('stations', JSON.stringify(response));
-        },
-        (error) => {
-          this.error = `Failed to fetch .../api/stations | ${error}`;
-        }
-      );
-    }
-  }
+  // public putStationsToLocalStorage() : void {
+  //   if (!localStorage.getItem('stations')) {
+  //     this.putStationsSubscription = this.swaggerApiService.getStations().subscribe(
+  //       (response) => {
+  //         localStorage.setItem('stations', JSON.stringify(response));
+  //       },
+  //       (error) => {
+  //         this.error = `Failed to fetch .../api/stations | ${error}`;
+  //       }
+  //     );
+  //   }
+  // }
 
-  public putTrainsToLocalStorage() : void {
-    console.log("yeah");
-    if (!sessionStorage.getItem('trains')) {
-      this.putTrainsSubscription = this.swaggerApiService.getTrains().subscribe(
-        (response) => {
-          sessionStorage.setItem('trains', JSON.stringify(response));
-        },
-        (error) => {
-          this.error = `Failed to fetch .../api/trains | ${error}`;
-        }
-      )
-    }
-  }
+  // public putTrainsToLocalStorage() : void {
+  //   console.log("yeah");
+  //   if (!sessionStorage.getItem('trains')) {
+  //     this.putTrainsSubscription = this.swaggerApiService.getTrains().subscribe(
+  //       (response) => {
+  //         sessionStorage.setItem('trains', JSON.stringify(response));
+  //       },
+  //       (error) => {
+  //         this.error = `Failed to fetch .../api/trains | ${error}`;
+  //       }
+  //     )
+  //   }
+  // }
 
   public fetchTrainsFromAPI() : Observable<Train[]> {
     return this.swaggerApiService.getTrains().pipe(
@@ -70,44 +70,44 @@ export class SaveDataService implements OnDestroy {
     )
   }
 
-  public putVagonsToLocalStorage() : void {
-    if (!sessionStorage.getItem('vagons')) {
-      this.putVagonsSubscription = this.swaggerApiService.getVagons().subscribe(
-        (response) => {
-          sessionStorage.setItem('vagons', JSON.stringify(response));
-        },
-        (error) => {
-          this.error = `Failed to fetch .../api/vagons | ${error}`;
-        }
-      )
-    }
-  }
+  // public putVagonsToLocalStorage() : void {
+  //   if (!sessionStorage.getItem('vagons')) {
+  //     this.putVagonsSubscription = this.swaggerApiService.getVagons().subscribe(
+  //       (response) => {
+  //         sessionStorage.setItem('vagons', JSON.stringify(response));
+  //       },
+  //       (error) => {
+  //         this.error = `Failed to fetch .../api/vagons | ${error}`;
+  //       }
+  //     )
+  //   }
+  // }
 
-  public putDeparturesToLocalStorage() : void {
-    if (!sessionStorage.getItem('departures')) {
-      this.putDeparturesSubscription = this.swaggerApiService.getDepartures().subscribe(
-        (response) => {
-          sessionStorage.setItem('departures', JSON.stringify(response));
-        },
-        (error) => {
-          this.error = `Failed to fetch .../api/departures | ${error}`;
-        }
-      )
-    }
-  }
+  // public putDeparturesToLocalStorage() : void {
+  //   if (!sessionStorage.getItem('departures')) {
+  //     this.putDeparturesSubscription = this.swaggerApiService.getDepartures().subscribe(
+  //       (response) => {
+  //         sessionStorage.setItem('departures', JSON.stringify(response));
+  //       },
+  //       (error) => {
+  //         this.error = `Failed to fetch .../api/departures | ${error}`;
+  //       }
+  //     )
+  //   }
+  // }
 
-  public putTicketsToLocalStorage() : void {
-    if (!sessionStorage.getItem('tickets')) {
-      this.putTicketsSubscription = this.swaggerApiService.getTickets().subscribe(
-        (response) => {
-          sessionStorage.setItem('tickets', JSON.stringify(response));
-        },
-        (error) => {
-          this.error = `Failed to fetch .../api/tickets | ${error}`
-        }
-      )
-    }
-  }
+  // public putTicketsToLocalStorage() : void {
+  //   if (!sessionStorage.getItem('tickets')) {
+  //     this.putTicketsSubscription = this.swaggerApiService.getTickets().subscribe(
+  //       (response) => {
+  //         sessionStorage.setItem('tickets', JSON.stringify(response));
+  //       },
+  //       (error) => {
+  //         this.error = `Failed to fetch .../api/tickets | ${error}`
+  //       }
+  //     )
+  //   }
+  // }
 
   public postTicket(ticket: RegisterTicket) : void {
     this.putTicketsSubscription = this.swaggerApiService.postTicket(ticket).subscribe(

@@ -1,0 +1,62 @@
+<div #pdfContent class="ticket-info" *ngIf="ticketData">
+    <div class="row-1 rows">
+        <h4>Travel info</h4>
+        <article>
+            <p class="ticket-id">Ticket id : {{ ticketData.id }}</p>
+            <p class="issue-date">Issue date : {{ ticketData.date }}</p>
+        </article>
+    </div>
+
+    <div class="row-2 rows">
+        <div class="column-1">
+            <p>Departure : {{ ticketData.train.from }} {{ ticketData.train.departure }}-ზე</p>
+        </div>
+        <div class="column-2">
+            <p>Arrival : {{ ticketData.train.to }} {{ ticketData.train.arrive }}-ზე</p>
+        </div>
+        <div class="column-3">
+            <p>Departure date : {{ ticketData.date }}</p>
+        </div>
+    </div>
+
+    <div class="row-3 rows">
+        <h4>Contact info</h4>
+        <article>
+            <p class="email">Email : {{ ticketData.email }}</p>
+            <p class="phone-number">Phone number : {{ ticketData.phone }}</p>
+        </article>
+    </div>
+
+    <div class="row-4 rows">
+        <h4>Passengers</h4>
+        <article>
+            <div class="passenger" *ngFor="let person of ticketData.persons">
+                <div class="column-1">
+                    <p class="passenger-name">Name : {{ person.name }}</p>
+                </div>
+
+                <div class="column-2">
+                    <p class="passenger-last-name">Surname : {{ person.surname }}</p>
+                </div>
+
+                <div class="column-3">
+                    <p class="passenger-private-id">Id number : {{ person.id }}</p>
+                </div>
+
+                <div class="column-4">
+                    <p class="passenger-private-id">Set number : {{ person.seat.number }}</p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="row-5 rows">
+        <h2>Total price : {{ totalPrice() }}₾</h2>
+    </div>
+
+    <div class="row-6 rows">
+        <p>ინვოისი იქმნება კომპიუტერის მიერ და ვალიდურია ბეჭედის და ხელმოწერის გარეშე</p>
+        <p style="color: red;">გადმოწერეთ ბილეთი ან შეინახეთ ბილეთის ნომერი ადგილზე წარსადგენად.</p>
+    </div>
+
+</div>

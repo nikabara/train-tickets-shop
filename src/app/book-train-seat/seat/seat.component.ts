@@ -31,3 +31,6 @@ export class SeatComponent {
     console.log(this.seatInfo);
   }
 }
+
+
+

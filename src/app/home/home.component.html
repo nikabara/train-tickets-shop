@@ -1,69 +1,153 @@
 <!-- <button (click)="btnClick()">CLick me</button> -->
 <nav>
-    <a href=""><img class="webpage-logo" src="/gr-logo.svg" alt=""></a>
+  <a (click)="refreshWebPage()"><img class="webpage-logo" src="/gr-logo.svg" alt=""></a>
+  <a (click)="refreshWebPage()"><img class="webpage-logo2" src="/gr-logo-icon-removebg.png" alt=""></a>
 
-    <div class="nav-options">
-        <a class="contact-us" href="https://mail.google.com/mail/?view=cm&fs=1&to=baratashvilinick@gmail.com&su=Hello&body=Hi%20there,%20I%20wanted%20to%20reach%20out%20to%20you%20about : " target="_blank">
-            <i class="bi bi-envelope-at-fill"></i> Contact Us</a>
-            
-          <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()" >
-            <i class="bi bi-person-circle"></i> Sign In</a>
+  <div class="nav-options">
+    <a class="contact-us"
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=baratashvilinick@gmail.com&su=Hello&body=Hi%20there,%20I%20wanted%20to%20reach%20out%20to%20you%20about : "
+      target="_blank">
+      <i class="bi bi-envelope-at-fill"></i> {{ 'HOME.CONTACT-US' | translate }}</a>
 
-          <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
-            <i class="bi bi-person-circle"></i></a>
-    </div>
+    <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()">
+      <i class="bi bi-person-circle"></i> {{ 'HOME.SIGN-IN' | translate }}</a>
+
+    <a class="sign-up" routerLink="/sign-up" > {{ 'HOME.SIGN-UP' | translate }}</a>
+
+    <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
+      <i class="bi bi-person-circle"></i></a>
+
+    <button class="language-change-button" (click)="changeLanguage()"></button>
+  </div>
 </nav>
 
-<h2 class="slogan">Our railways go everywhere</h2>
+<h2 class="slogan">{{ 'HOME.TITLE' | translate }}</h2>
 
 <section class="section-1">
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item item1 active">
-            <h3>Tbilisi</h3>
-          </div>
-          <div class="carousel-item item2">
-            <h3>Batumi</h3>
-          </div>
-          <div class="carousel-item item3">
-            <h3>Foti</h3>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item item1 active">
+        <h3>{{ 'HOME.CAROUSEL-TBILISI' | translate }}</h3>
       </div>
+      <div class="carousel-item item2">
+        <h3>{{ 'HOME.CAROUSEL-BATUMI' | translate }}</h3>
+      </div>
+      <div class="carousel-item item3">
+        <h3>{{ 'HOME.CAROUSEL-FOTI' | translate }}</h3>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </section>
 
-<h2 class="slogan slogan2">Advantages of Travelling by Train</h2>
+<h2 class="slogan slogan2">{{ 'HOME.TITLE-2' | translate }}</h2>
 
 <section class="advantages-section">
-    <div class="advantage-card card1">
-        <div class="background-divs background-div1"></div>
-        <h4 class="advantage-type">Safe</h4>
-        <p class="about-advantage">Traveling by train is the safest, compared to the other type of transport.</p>
-    </div>
+  <div class="advantage-card card1">
+    <div class="background-divs background-div1"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-1' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-1-TEXT' | translate }}</p>
+  </div>
 
-    <div class="advantage-card card2">
-        <div class="background-divs background-div2"></div>
-        <h4 class="advantage-type">Quick</h4>
-        <p class="about-advantage">Apart from the plane, the train has the highest average speed.</p>
-    </div>
+  <div class="advantage-card card2">
+    <div class="background-divs background-div2"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-2' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-2-TEXT' | translate }}</p>
+  </div>
 
-    <div class="advantage-card card3">
-        <div class="background-divs background-div3"></div>
-        <h4 class="advantage-type">Cheap</h4>
-        <p class="about-advantage">Traveling by train is the cheapest, compared to other transport for the same distance.</p>
-    </div>
+  <div class="advantage-card card3">
+    <div class="background-divs background-div3"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-3' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-3-TEXT' | translate }}</p>
+  </div>
 
-    <div class="advantage-card card4">
-        <div class="background-divs background-div4"></div>
-        <h4 class="advantage-type">Comfortable</h4>
-        <p class="about-advantage">Compared to all other transport, when traveling by train, you sit more freely and comfortably.</p>
-    </div>
+  <div class="advantage-card card4">
+    <div class="background-divs background-div4"></div>
+    <h4 class="advantage-type">{{ 'HOME.PERK-TITLE-4' | translate }}</h4>
+    <p class="about-advantage">{{ 'HOME.PERK-TITLE-4-TEXT' | translate }}</p>
+  </div>
+</section>
+
+<h2 class="slogan slogan2">{{ 'HOME.OUR-DESTINATIONS' | translate }}</h2>
+
+<section class="popular-destinations-section">
+  <div class="popular-destination destination-tbilisi-batumi">
+    <article>
+      <h2>{{ 'HOME.CAROUSEL-TBILISI' | translate }}</h2>
+      <h1><i class="bi bi-arrow-right"></i> {{ 'HOME.CAROUSEL-BATUMI' | translate }}</h1>
+    </article>
+  </div>
+
+  <div class="popular-destination destination-batumi-tbilisi">
+    <article>
+      <h2>{{ 'HOME.CAROUSEL-BATUMI' | translate }}</h2>
+      <h1><i class="bi bi-arrow-right"></i> {{ 'HOME.CAROUSEL-TBILISI' | translate }}</h1>
+    </article>
+  </div>
+
+  <div class="popular-destination destination-tbilisi-foti">
+    <article>
+      <h2>{{ 'HOME.CAROUSEL-TBILISI' | translate }}</h2>
+      <h1><i class="bi bi-arrow-right"></i> {{ 'HOME.CAROUSEL-FOTI' | translate }}</h1>
+    </article>
+  </div>
+
+  <div class="popular-destination destination-foti-tbilisi">
+    <article>
+      <h2>{{ 'HOME.CAROUSEL-FOTI' | translate }}</h2>
+      <h1><i class="bi bi-arrow-right"></i> {{ 'HOME.CAROUSEL-TBILISI' | translate }}</h1>
+    </article>
+  </div>
+</section>
+
+<h2 class="slogan slogan2">{{ 'HOME.FREQUENTLY-ASKED-QUESTIONS-TEXT' | translate }}</h2>
+
+<section class="questions-section">
+  <app-expansion-panel [title]="'HOME.FREQUENTLY-ASKED-QUESTIONS.HOT-TO-BUY-A-TICKET-ONLINE-TITLE' | translate"
+                       [content]="'HOME.FREQUENTLY-ASKED-QUESTIONS.HOT-TO-BUY-A-TICKET-ONLINE-CONTENT' | translate">
+  </app-expansion-panel>
+
+  <app-expansion-panel [title]="'HOME.FREQUENTLY-ASKED-QUESTIONS.WHAT-DO-I-NEED-TO-GET-ON-THE-TRAIN-TITLE' | translate"
+                       [content]="'HOME.FREQUENTLY-ASKED-QUESTIONS.WHAT-DO-I-NEED-TO-GET-ON-THE-TRAIN-CONTENT' | translate">
+  </app-expansion-panel>
+
+  <!-- <app-expansion-panel [title]="'Is it possible to change the date or time of departure, name and surname or selected seats in an already purchased ticket?'" [content]="'It is not possible to adjust the details of an already purchased ticket. In this case, you have to cancel the ticket and buy it again.'">
+  </app-expansion-panel> -->
+
+  <app-expansion-panel [title]="'HOME.FREQUENTLY-ASKED-QUESTIONS.CAN-I-CHANGE-CREDENTIALS-OF-BOOKED-TICKETS-TITLE' | translate"
+                       [content]="'HOME.FREQUENTLY-ASKED-QUESTIONS.CAN-I-CHANGE-CREDENTIALS-OF-BOOKED-TICKETS-CONTENT' | translate">
+  </app-expansion-panel>
+
+  <app-expansion-panel [title]="'HOME.FREQUENTLY-ASKED-QUESTIONS.CAN-I-BUY-TICKETS-WITH-ONE-ID-TITLE' | translate"
+                       [content]="'HOME.FREQUENTLY-ASKED-QUESTIONS.CAN-I-BUY-TICKETS-WITH-ONE-ID-CONTENT' | translate">
+  </app-expansion-panel>
+</section>
+
+<h2 class="slogan slogan2">{{ 'HOME.CUSTOMER-SERVICES' | translate }}</h2>
+
+<section class="customer-services">
+  <div class="service service-number">
+    <i class="bi bi-telephone"></i>
+    <h3>032 2 42 04 05</h3>
+  </div>
+  <a class="service service-gmail" href="https://mail.google.com/mail/?view=cm&fs=1&to=baratashvilinick@gmail.com&su=Hello&body=Hi%20there,%20I%20wanted%20to%20reach%20out%20to%20you%20about : "
+    target="_blank">
+      <i class="bi bi-envelope"></i>
+      <h3>support{{'@'}}gmail.com</h3>
+  </a>
+  <a href="https://www.messenger.com/t/100430632734629/?messaging_source=source%3Apages%3Amessage_shortlink&source_id=1441792&recurring_notification=0" target="_blank" class="service service-number">
+    <i class="bi bi-messenger"></i>
+    <h3>{{ 'HOME.MESSENGER' | translate }}</h3>
+  </a>
+  <a href="https://www.facebook.com/TRE.Tickets" target="_blank" class="service service-gmail">
+    <i class="bi bi-facebook"></i>
+    <h3>{{ 'HOME.FACEBOOK' | translate }}</h3>
+  </a>
 </section>

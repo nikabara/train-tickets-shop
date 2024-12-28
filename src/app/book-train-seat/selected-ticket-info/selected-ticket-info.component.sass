@@ -1,14 +1,44 @@
 .selected-seats
     margin-top: 15px
     width: 100%
+    border: solid var(--border-color)
+    border-radius: 10px
+    padding: 10px 10px
 
     .selected-seat
         display: flex
         align-items: center
         justify-content: space-between
-        border: solid var(--border-color)
-        border-radius: 10px
-        padding: 10px 10px
 
         .place
             color: #afafaf
+
+    .user-inputs
+        display: grid
+        column-gap: 5px
+        row-gap: 5px
+        grid-template-areas: "name last-name" "user-id user-id"
+        margin-top: 16px
+
+        .user-input
+            padding: 5px 2px 5px 8px
+            border: none
+            font-size: 15px
+            font-weight: 600
+            color: #474747
+            border-radius: 5px
+
+        .name-input
+            grid-area: name
+
+        .last-name-input
+            grid-area: last-name
+
+        .personal-id-input
+            grid-area: user-id
+
+
+@media ( max-width: 430px )
+    .user-inputs
+        grid-template-areas: "name name" "last-name last-name" "user-id user-id" !important
+    

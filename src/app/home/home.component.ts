@@ -2,39 +2,56 @@ import { RegisterTicket } from './../Interfaces/RegisterTicket.interface';
 import { People } from '../Interfaces/People.interface';
 import { SaveDataService } from '../services/save-data.service';
 import { SwaggerAPIService } from '../services/swagger-api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule\
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core'
+import { ExpansionPanelComponent } from "./expansion-panel/expansion-panel.component";
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [HttpClientModule, CommonModule],
+	imports: [HttpClientModule, CommonModule, TranslateModule, ExpansionPanelComponent, RouterModule],
 	providers: [SwaggerAPIService, SaveDataService],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.sass'
 })
 export class HomeComponent implements OnInit {
-	constructor(private saveDataService: SaveDataService, public auth: AuthService) { }
+	constructor(private saveDataService: SaveDataService, public auth: AuthService, private translateService: TranslateService, private router: Router) { }
 
-	peopleSeatData: People[] = [{
-		seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
-		name: 'Nick',
-		surname: 'Bara',
-		idNumber: '34050',
-		status: 'Completed',
-		payoutCompleted: true
-	}]
+	// peopleSeatData: People[] = [{
+	// 	seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
+	// 	name: 'Nick',
+	// 	surname: 'Bara',
+	// 	idNumber: '34050',
+	// 	status: 'Completed',
+	// 	payoutCompleted: true
+	// }]
 
-	ticketData: RegisterTicket = {
-		trainId: 4,
-		date: '2024-10-18T15:34:38.647Z',
-		email: 'niko@gamil.com',
-		phoneNumber: '+995577899422',
-		people: this.peopleSeatData
+	// ticketData: RegisterTicket = {
+	// 	trainId: 4,
+	// 	date: '2024-10-18T15:34:38.647Z',
+	// 	email: 'niko@gamil.com',
+	// 	phoneNumber: '+995577899422',
+	// 	people: this.peopleSeatData
+	// }
+
+	changeLanguage() : void {
+		if (localStorage.getItem('language') === 'eng') {
+			this.translateService.use('geo');
+			localStorage.setItem('language', 'geo');
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-georgian')
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-english')
+		}
+		else {
+			this.translateService.use('eng');
+			localStorage.setItem('language', 'eng');
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-english')
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-georgian')
+		}
 	}
 
 	btnClick(): void {
@@ -43,6 +60,10 @@ export class HomeComponent implements OnInit {
 		// this.saveDataService.getVagon(15, 'II კლასი');
 		// this.saveDataService.postTicket(this.ticketData);
 		this.saveDataService.confirmTicket("8fc2a0f3-e420-4db1-b8de-03c7b078a820");
+	}
+
+	refreshWebPage() : void {
+		window.location.reload();
 	}
 
 	// testing email/password --> email: "stepproject@gmail.com", password: "Stepproject123"
@@ -90,12 +111,12 @@ export class HomeComponent implements OnInit {
 
 				return [emailInput.value, passwordInput.value];
 			}
-		});
+		})
 
 		return formValues;
 	}
 
-	async swalSignIn(): Promise<void> {
+	public async swalSignIn(): Promise<void> {
 		let formValues: string[] = await this.swalSignInWindow();
 
 		// If formValues is undefined (e.g., user closes the modal), skip the rest
@@ -182,6 +203,15 @@ export class HomeComponent implements OnInit {
 		// 		console.log(error);
 		// 	}
 		// )
+
+		if (typeof localStorage !== 'undefined' && localStorage.getItem('language') === 'eng') {
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-georgian')
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-english')
+		}
+		else if (typeof localStorage !== 'undefined') {
+			document.querySelector('.language-change-button')?.classList.add('language-button-image-georgian')
+			document.querySelector('.language-change-button')?.classList.remove('language-button-image-english')
+		}
 	}
 
 	swalSignOut() : void {

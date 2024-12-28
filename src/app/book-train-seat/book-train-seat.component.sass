@@ -15,6 +15,7 @@
         border-radius: 15px
         display: flex
         flex-direction: column
+        position: relative
 
         .row-1
             width: 100%
@@ -33,10 +34,13 @@
                 h5
                     color: #afafaf
 
-                    background-color: #fafafa
-                    width: 75%
-                    padding: 10px 15px
+                    // background-color: #fafafa
+                    width: 100%
+                    // padding: 10px 15px
                     border-radius: 15px
+
+            .post-responsive-train-info
+                display: none
 
             .ticket-price-wrapper
                 background-color: #fafafa
@@ -55,7 +59,6 @@
             justify-content: space-between
 
             .selection-info
-                width: 30%
                 display: flex
                 flex-direction: column
                 // border: solid black 1px
@@ -85,6 +88,7 @@
                 .selected-seats
                     margin-top: 15px
                     width: 100%
+                    
 
                     .selected-seat
                         display: flex
@@ -98,65 +102,113 @@
                             color: #afafaf
 
             .book-seats
-                width: 520px // original width 430px
-                padding-left: 150px !important
-                height: 100%
+                // width: 520px // original width 430px
+                // padding-left: 150px !important
+                // height: 100%
+                // background-color: #fafafa
+                // border-radius: 10px
+                // padding: 20px
+                // display: flex
+                // gap: 10px
+                // justify-content: center
+                // align-items: flex-start
+                // flex-wrap: wrap
+                // overflow: auto
+                // position: relative
+
+                // width: 520px
+                /* padding-left: 150px !important; */
+                /* height: 100%; */
                 background-color: #fafafa
                 border-radius: 10px
-                padding: 20px
-                display: flex
+                padding: 20px 20px 20px 80px
+                /* display: flex; */
                 gap: 10px
                 justify-content: center
+                flex-direction: row
                 align-items: flex-start
-                flex-wrap: wrap
+                /* flex-wrap: wrap; */
                 overflow: auto
                 position: relative
+                flex-direction: column
+
 
                 .seat-alphabetic-names
+                    // display: flex
+                    // align-items: center
+                    // justify-content: space-between
+                    // width: 250px
+                    // position: absolute
+                    // top: 75px
+                    // right: 75px
+
+                    gap: 71.5px
                     display: flex
                     align-items: center
-                    justify-content: space-between
-                    width: 250px
-                    position: absolute
+                    justify-content: center
+                    /* width: 250px; */
+                    /* position: absolute; */
                     top: 75px
                     right: 75px
+                    margin-bottom: 15px
+
 
                 .seat-row-numbers
                     position: absolute
                     top: 140px
-                    left: 80px
+                    left: 25px
                     z-index: 2
 
                     .number-rows
-                        gap: 45px
+                        gap: 49px
                         display: flex
                         flex-direction: column
                         align-items: center
                         justify-content: space-between
 
                     .first-class-rows, .second-class-rows
-                        margin-top: 110px
+                        margin-top: 98px
 
                     .vagon-seat
                         font-size: 30px
 
                 .vagon-class-name
-                    margin-right: 55px
+                    // margin-right: 55px
                     margin-bottom: 15px
                     color: #959595
+                    text-align: center
 
                 .vagon-class-business
-                    margin-bottom: 60px
+                    // margin-bottom: 60px
+                    margin-bottom: 28px
 
                 .vagon-class-second, .vagon-class-first
                     margin-top: 15px
 
                 .vagon-class-wrapper
-                    display: flex
-                    gap: 10px
-                    align-items: flex-start
-                    flex-wrap: wrap
-                    overflow: auto
+                    // display: flex
+                    // gap: 10px
+                    // align-items: flex-start
+                    // flex-wrap: wrap
+                    // overflow: auto
+                    display: grid
+                    grid-template-columns: repeat(4, 1fr)
+                    gap: 15px 
+                    justify-items: center
+
+
+.loader
+    width: 100%
+    height: 100%
+    background-color: #fff
+    border-radius: inherit
+    position: absolute
+    z-index: 5
+    margin-top: -25px
+    margin-left: -25px
+    display: flex
+    align-items: center
+    justify-content:  center
 
 /* Target the scrollbar container */
 ::-webkit-scrollbar
@@ -178,3 +230,113 @@
 ::-webkit-scrollbar-thumb:hover
     transition: ease-in-out .2s
     background-color: #a7a6a6 !important
+
+
+@media ( max-width: 905px )
+    .row-2
+        margin-top: 15px
+        width: 100%
+        height: 85%
+        display: flex
+        flex-direction: column-reverse
+        justify-content: space-between
+
+    .book-train-wrapper
+        width: 100%
+        height: auto
+
+    .book-train
+        margin-bottom: 20px !important
+
+    .book-seats
+        height: 400px
+        padding: 20px 100px 20px 120px !important
+
+    .seat-alphabetic-names
+        justify-content: space-between !important
+        padding: 0 40px
+
+    .post-responsive-train-info
+        display: inline-block !important
+
+    .filler-text
+        display: none
+
+    .selection-info
+        .train-id, .train-from-to-info
+            display: none
+
+    .first-class-rows, .second-class-rows
+        margin-top: 90px !important
+
+    .seat-row-numbers
+        position: absolute
+        left: 50px !important
+        z-index: 2
+
+    #place_reservation
+        margin-top: 20px !important
+
+    .vagon-class-business
+        margin-top: 15px
+    
+
+
+@media (max-width: 648px)
+    .book-seats
+        padding: 0 0 0 0 !important
+        margin: 0 -22px
+
+    .vagon-class-wrapper
+        padding: 0 20px 0 60px
+
+    .seat-row-numbers
+        position: absolute
+        top: 116px !important
+        left: 18px !important
+        z-index: 2
+
+    .seat-alphabetic-names
+        gap: 0px !important
+        padding: 0 36px 0 75px !important
+
+    .vagon-seat
+        font-size: 22px !important
+
+    #place_reservation
+        width: 100% !important
+
+@media (max-width: 498px)
+    .seat-row-numbers
+        top: 130px !important
+        left: 18px !important
+        z-index: 2
+
+    .number-rows
+        gap: 38px !important
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
+
+    #selected-ticket-price
+        font-size: 15px
+
+    .selected-text
+        font-size: 11px
+
+    .vagon-class-business
+        margin-top: 20px
+
+    .vagon-class-second, .vagon-class-first
+        margin-top: 30px !important
+        margin-bottom: 30px !important
+
+    .first-class-rows
+        margin-top: 116px !important
+
+    
+    .ticket-price-wrapper
+        background-color: #fafafa
+        width: 28.5% !important
+        border-radius: 15px

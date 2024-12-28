@@ -1,0 +1,86 @@
+.ticket-info
+    width: 800px
+    display: flex
+    flex-direction: column
+    background-color: #fbfbfb
+    gap: 25px
+    padding: 20px
+
+    .row-1
+        display: flex
+        flex-direction: column
+
+        article
+            margin-top: 15px
+            justify-content: space-between
+            display: grid
+            grid-template-columns: 1fr 1fr
+
+            .row-2
+                display: grid
+                grid-template-columns: repeat(3, 1fr)
+                overflow: hidden
+                border-radius: 8px
+                border: solid black 1px
+
+                .column-1, .column-2, .column-3
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    padding: 5px
+
+                .column-2
+                    border-left: solid black 1px
+                    border-right: solid black 1px
+
+            .row-3
+                display: flex
+                flex-direction: column
+
+                article
+                    border: solid black 1px
+                    border-radius: 8px
+                    margin-top: 15px
+                    justify-content: space-between
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+                    padding: 10px 0
+
+                    .email, .phone-number
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        height: 100%
+
+                    .email
+                        border-right: solid black 2px
+
+            .row-4
+                display: flex
+                flex-direction: column
+
+                article
+                    margin-top: 15px
+                    display: flex
+                    flex-direction: column
+                    gap: 10px
+
+                    .passenger
+                        width: 100%
+                        display: grid
+                        grid-template-columns: repeat(4, 1fr)
+                        border: solid black 1px
+                        border-radius: 8px
+
+                        .column-1, .column-2, .column-3, .column-4
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            padding: 10px 0
+
+            .row-5
+                border-top: solid black 2px
+                padding-top: 15px
+
+            .row-6
+                text-align: center

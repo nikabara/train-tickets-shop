@@ -11,11 +11,15 @@ import { SelectedTicketInfoComponent } from "./selected-ticket-info/selected-tic
 import Swal from 'sweetalert2';
 import { People } from '../Interfaces/People.interface';
 import { Ticket } from '../Interfaces/Ticket.interface';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { LoaderService } from '../services/loader.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-book-train-seat',
   standalone: true,
-  imports: [SeatComponent, CommonModule, SelectedTicketInfoComponent],
+  imports: [SeatComponent, CommonModule, SelectedTicketInfoComponent, TranslateModule, MatProgressSpinnerModule],
   templateUrl: './book-train-seat.component.html',
   styleUrl: './book-train-seat.component.sass'
 })
@@ -31,9 +35,20 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   firstClassSeats!: Seat[];
   secondClassSeats!: Seat[];
 
-  constructor(private activatedRout: ActivatedRoute, private swaggerAPIService: SwaggerAPIService) { }
+  constructor(
+    private activatedRout: ActivatedRoute, 
+    private swaggerAPIService: SwaggerAPIService, 
+    private translateService: TranslateService,
+    public loaderService: LoaderService
+  ) { }
+
+  // switchLanguage(language: string) {
+  //   this.translateService.use(language);
+  //   localStorage.setItem('language', language);
+  // }
 
   ngOnInit(): void {
+    // this.translateService.use(localStorage.getItem('language') ?? 'eng');
     this.activatedRoutSubscription = this.activatedRout.queryParamMap.subscribe(
       (response) => {
         const data = response.get('data');
@@ -164,6 +179,7 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     people: this.peopleSeatData
   }
 
+  // Custom user name and lastname can be modified here
   createReservationObject(): RegisterTicket {
     let seatsToRegister: People[] = [];
 
@@ -230,9 +246,6 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
           this.swaggerAPIService.postTicket(this.createReservationObject()).subscribe(
             (response) => {
               console.log(response);
-            },
-            (error) => {
-              console.log("");
             }
           )
           window.location.reload();
@@ -243,7 +256,7 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.activatedRoutSubscription.unsubscribe();
-    this.getVagonSeatsSubscription.unsubscribe();
+    // this.activatedRoutSubscription.unsubscribe();
+    // this.getVagonSeatsSubscription.unsubscribe();
   }
 }

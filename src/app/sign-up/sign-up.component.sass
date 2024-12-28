@@ -1,0 +1,223 @@
+.sign-up-wrapper
+    display: grid
+    grid-template-columns: 0.9fr 1.1fr
+    column-gap: 25px
+    min-height: 500px
+    padding: 30px 40px 40px 30px
+    max-width: 1140px
+    margin: auto
+
+    .sign-up-form
+        width: 100%
+        margin-top: 30px
+        display: grid
+        grid-template-areas: 'inp1 inp2 inp2' 'inp3 inp3 inp3' 'inp5 inp5 inp4' 'inp6 inp7 inp8' 'inp9 inp9 inp9' 'inp10 inp10 inp10'
+        row-gap: 25px
+        column-gap: 17px
+
+        .sign-up-input
+            width: 100%
+            padding: 15px
+            border: none
+            outline: none
+            border-radius: 8px
+            background-color: var(--dimmed-white-color)
+            border: solid var(--border-color)
+
+            transition: 1s
+            box-sizing: border-box
+
+            &:hover
+                box-shadow: 0px 0px 10px -10px #00000070
+                border: solid var(--border-color)
+
+            &::placeholder
+                color: var(--main-text-color)
+                font-weight: 600
+
+        .input-wrappers
+            position: relative
+
+            .validator-div
+                position: absolute
+                top: -22px
+                color: red
+
+        .first-name-wrapper
+            grid-area: inp1
+
+        .last-name-wrapper
+            grid-area: inp2
+
+        .email-wrapper
+            grid-area: inp3
+
+        .age-wrapper-wrapper
+            grid-area: inp4
+
+        .password-wrapper
+            grid-area: inp5
+
+        .phone-number-wrapper
+            grid-area: inp6
+
+        .address-wrapper
+            grid-area: inp7
+
+        .zip-code-wrapper
+            grid-area: inp8
+
+        .complex-options
+            grid-area: inp9
+            display: flex
+            flex-direction: column
+
+            .terms-and-conditions-wrapper
+                margin-top: 25px
+                margin-bottom: 0px
+                display: flex
+                gap: 15px
+
+                p
+                    margin-bottom: 0 !important
+
+                .terms-and-conditions
+                    background-color: beige
+                    width: auto
+                    height: auto
+
+        .subbmit-button
+            grid-area: inp10
+            padding: 15px
+            border-radius: 8px
+            border: none
+            background-image: url('/railway-bg-desktop.png')
+            background-size: cover
+            background-repeat: no-repeat
+            background-position: 0 -30px
+            position: relative
+            text-align: center
+            display: flex
+            align-items: center
+            justify-content: center
+            border: solid var(--border-color)
+
+            p
+                z-index: 2
+                font-size: 20px
+                font-weight: 600
+                color: #F0F0F0
+                margin-bottom: 0 !important
+                letter-spacing: 1.5px
+
+            &::after
+                content: ''
+                position: absolute
+                width: 100%
+                height: 100%
+                border-radius: inherit
+                top: 0
+                left: 0
+                z-index: 0
+                backdrop-filter: blur(4px)
+
+            &:hover
+                background-position: 0px -45px
+
+                &::after
+                    backdrop-filter: blur(0px)
+
+        .gender-choices
+            width: 200px
+            padding: 10px
+
+            -webkit-appearance: none
+            -moz-appearance: none
+            appearance: none
+            padding-right: 30px
+            // background-image: url('your-arrow-icon.png')
+            background-repeat: no-repeat
+            background-position: right center
+            background-size: 12px
+            border: 1px solid #ccc
+            border-radius: 4px
+
+    .carousel-wrapper
+        background-color: whitesmoke
+        border-radius: 10px
+        overflow: hidden
+
+        .d-md-block
+            display: block !important
+            background-color: #c1c1c164
+            padding-bottom: 10px
+            border-radius: 10px
+
+        .carousel-indicators
+            bottom: 5px !important
+
+        .slide
+            width: 100%
+            height: 100%
+
+            .carousel-inner
+                width: 100%
+                height: 100%
+
+                .carousel-item
+                    width: 100%
+                    height: 100%
+                    background-size: cover
+                    background-position: center
+                    background-repeat: no-repeat
+
+                    .w-100
+                        width: 100% !important
+                        height: 662px
+
+                    h3
+                        // backdrop-filter: blur(10px)
+                        width: 100%
+                        text-align: center
+                        margin-top: 0px
+                        padding-right: 20px
+                        padding-top: 3px
+                        padding-bottom: 3px
+                        font-size: 25px
+                        color: white
+                        background-color: #e6e6e61d
+                        transition: 0.5s ease-in-out
+
+                .item1
+                    background-image: url('/tbilisi.jpg')
+
+                .item2
+                    background-image: url('/batumi3.jpg')
+
+                .item3
+                    background-image: url('/foti.jpg')
+
+@media (max-width: 950px)
+    .sign-up-form
+        width: 100% !important
+
+    .w-100
+        width: 100% !important
+        height: 100% !important
+        object-fit: cover
+
+// 669px
+@media (max-width: 950px)
+    .sign-up-form
+        grid-template-areas: none !important
+        display: flex !important
+        flex-direction: column
+        // grid-template-areas: 'inp1 inp1 inp1' 'inp2 inp2 inp2' 'inp3 inp3 inp3' 'inp41 inp41 inp41' 'inp5 inp5 inp5' 'inp6 inp6 inp6' 'inp7 inp7 inp7' 'inp8 inp8 inp8' 'inp9 inp9 inp9' 'inp10 inp10 inp10' !important
+
+@media (max-width: 740px)
+    .sign-up-wrapper
+        display: grid
+        grid-template-columns: 1fr
+
+    .carousel-wrapper
+        display: none

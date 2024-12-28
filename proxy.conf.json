@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "https://railway.stepprojects.ge",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  
