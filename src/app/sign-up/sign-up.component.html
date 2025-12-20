@@ -1,17 +1,17 @@
 <section class="sign-up-wrapper">
     <div class="sign-up-right">
         <h1>{{ "SIGN-UP.CREATE-AN-ACCOUNT" | translate }}</h1>
-        <p>{{ "SIGN-UP.ALREADY-HAVE-AN-ACCOUNT" | translate }} 
+        <p>{{ "SIGN-UP.ALREADY-HAVE-AN-ACCOUNT" | translate }}
             <a routerLink="/home">{{ "SIGN-UP.LOG-IN" | translate }}</a>
         </p>
 
         <form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
 
             <div class="first-name-wrapper input-wrappers">
-                <div class="validator-div" *ngIf="signUpForm.controls['firstName'].invalid && signUpForm.controls['firstName'].touched">
+                <div class="validator-div" *ngIf="signUpForm.controls['name'].invalid && signUpForm.controls['name'].touched">
                     <small class="error">{{ "SIGN-UP.INVALID-FIRST-NAME" | translate }}</small>
                 </div>
-                <input formControlName="firstName" class="sign-up-input first-name" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.FIRST-NAME' | translate }}" />
+                <input formControlName="name" class="sign-up-input name" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.FIRST-NAME' | translate }}" />
             </div>
 
             <div class="last-name-wrapper input-wrappers">
@@ -43,13 +43,13 @@
             </div>
 
             <div class="phone-number-wrapper input-wrappers">
-                <div class="validator-div" *ngIf="signUpForm.controls['phone'].invalid && signUpForm.controls['phone'].touched">
+                <div class="validator-div" *ngIf="signUpForm.controls['phoneNumber'].invalid && signUpForm.controls['phoneNumber'].touched">
                     <small class="error">{{ "SIGN-UP.INVALID-PHONE-NUMBER" | translate }}</small>
                 </div>
-                <input formControlName="phone" class="sign-up-input phone-number" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.PHONE-NUMBER' | translate }}">
+                <input formControlName="phoneNumber" class="sign-up-input phone-number" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.PHONE-NUMBER' | translate }}">
             </div>
 
-            <div class="address-wrapper input-wrappers">
+            <!-- <div class="address-wrapper input-wrappers">
                 <div class="validator-div" *ngIf="signUpForm.controls['address'].invalid && signUpForm.controls['address'].touched">
                     <small class="error">{{ "SIGN-UP.INVALID-ADDRESS" | translate }}</small>
                 </div>
@@ -61,24 +61,25 @@
                     <small class="error">{{ "SIGN-UP.INVALID-ZIP-CODE" | translate }}</small>
                 </div>
                 <input formControlName="zipcode" class="sign-up-input zip-code" type="text" placeholder="{{ 'SIGN-UP.INPUT-PLACEHOLDERS.ZIP-CODE' | translate }}">
-            </div>
+            </div> -->
 
             <div class="complex-options">
-                <p>{{ "SIGN-UP.CHOOSE-YOUR-GENDER" | translate }}</p>
+                <!-- <p>{{ "SIGN-UP.CHOOSE-YOUR-GENDER" | translate }}</p>
                 <select formControlName="gender" class="gender-choices" id="gender_choices" name="choices">
                     <option value="MALE">{{ "SIGN-UP.GENDER-MALE" | translate }}</option>
                     <option value="FEMALE" selected>{{ "SIGN-UP.GENDER-FEMALE" | translate }}</option>
                     <option value="MALE">{{ "SIGN-UP.GENDER-OTHER" | translate }}</option>
-                </select>
+                </select> -->
 
                 <div class="terms-and-conditions-wrapper">
                     <input class="terms-and-conditions" type="checkbox">
-                    <p>{{ "SIGN-UP.I-AGREE-TO-THE" | translate }} 
+                    <p>{{ "SIGN-UP.I-AGREE-TO-THE" | translate }}
                         <a href="https://tre.ge/en/privacy" target="_blank">{{ "SIGN-UP.TERMS-AND-CONDITIONS" | translate }}</a>
                     </p>
                 </div>
             </div>
-            <button class="subbmit-button" id="create_account" [disabled]="signUpForm.invalid">
+            <!-- [disabled]="signUpForm.invalid" -->
+            <button class="subbmit-button" id="create_account" >
                 <p>{{ "SIGN-UP.CREATE-ACCOUNT" | translate }}</p>
             </button>
         </form>

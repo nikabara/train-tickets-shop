@@ -9,12 +9,14 @@
       target="_blank">
       <i class="bi bi-envelope-at-fill"></i> {{ 'HOME.CONTACT-US' | translate }}</a>
 
-    <a *ngIf="!auth.isAuthenticated()" class="log-in" (click)="swalSignIn()">
+    <!-- *ngIf="!auth.isAuthenticated()" -->
+    <a class="log-in" (click)="swalSignIn()">
       <i class="bi bi-person-circle"></i> {{ 'HOME.SIGN-IN' | translate }}</a>
 
     <a class="sign-up" routerLink="/sign-up" > {{ 'HOME.SIGN-UP' | translate }}</a>
 
-    <a *ngIf="auth.isAuthenticated()" class="log-in" (click)="swalSignOut()">
+    <!-- *ngIf="auth.isAuthenticated()" -->
+    <a class="log-in" (click)="swalSignOut()">
       <i class="bi bi-person-circle"></i></a>
 
     <button class="language-change-button" (click)="changeLanguage()"></button>
