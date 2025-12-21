@@ -1,6 +1,9 @@
+import { CreditCardService } from './../services/AppServices/credit-card.service';
+import { JwtService } from './../services/AppServices/JWT/jwt.service';
+import { TrainService } from './../services/AppServices/train.service';
 import { RegisterTicket } from './../Interfaces/RegisterTicket.interface';
 import { SwaggerAPIService } from './../services/swagger-api.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Seat } from '../Interfaces/Seat.interface';
@@ -10,11 +13,12 @@ import { CommonModule } from '@angular/common';
 import { SelectedTicketInfoComponent } from "./selected-ticket-info/selected-ticket-info.component";
 import Swal from 'sweetalert2';
 import { People } from '../Interfaces/People.interface';
-import { Ticket } from '../Interfaces/Ticket.interface';
-import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { MatProgressBar } from '@angular/material/progress-bar';
+import { TranslateModule } from '@ngx-translate/core';
 import { LoaderService } from '../services/loader.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SeatService } from '../services/AppServices/seat.service';
+import { UserService } from '../services/AppServices/user.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-book-train-seat',
@@ -23,9 +27,17 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   templateUrl: './book-train-seat.component.html',
   styleUrl: './book-train-seat.component.sass'
 })
-export class BookTrainSeatComponent implements OnInit, OnDestroy {
-  private activatedRoutSubscription!: Subscription;
-  private getVagonSeatsSubscription!: Subscription;
+export class BookTrainSeatComponent implements OnInit {
+
+  private readonly route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly trainService: TrainService = inject(TrainService);
+  private readonly seatService: SeatService = inject(SeatService);
+  private readonly jwtService: JwtService = inject(JwtService);
+  private readonly userService: UserService = inject(UserService);
+  private readonly creditCardService: CreditCardService = inject(CreditCardService);
+
+  private trainId: number | undefined;
+  public train: any;
 
   _queryParams!: any;
 
@@ -35,106 +47,99 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   firstClassSeats!: Seat[];
   secondClassSeats!: Seat[];
 
+  allSeats: any[] = [];
+
   constructor(
-    private activatedRout: ActivatedRoute, 
-    private swaggerAPIService: SwaggerAPIService, 
-    private translateService: TranslateService,
+    private swaggerAPIService: SwaggerAPIService,
     public loaderService: LoaderService
   ) { }
 
-  // switchLanguage(language: string) {
-  //   this.translateService.use(language);
-  //   localStorage.setItem('language', language);
-  // }
-
   ngOnInit(): void {
-    // this.translateService.use(localStorage.getItem('language') ?? 'eng');
-    this.activatedRoutSubscription = this.activatedRout.queryParamMap.subscribe(
-      (response) => {
-        const data = response.get('data');
-        if (data) {
-          this._queryParams = JSON.parse(data);
-          console.log(this._queryParams)
-        }
-        else {
-          console.warn('No data found in query params')
-        }
+    this.route.paramMap.subscribe((params) => {
+      const idString = params.get('id');
+
+      if (idString) {
+        let trainId: number = Number.parseInt(idString);
+        this.trainId = trainId;
+
+        this.trainService.GetTrain(this.trainId).subscribe({
+          next: (trainResponse) => {
+            if (trainResponse.isSuccess) {
+              this.train = trainResponse.data;
+              console.log(this.train)
+              this.trainVagons = trainResponse.data.vagons;
+              console.log(this.trainVagons);
+
+              for (let i = 0; i < this.trainVagons.length; i++) {
+                this.seatService.GetAllVagonSeats(this.trainVagons[i].vagonId).subscribe({
+                  next: (seatResponse) => {
+                    this.allSeats = [...this.allSeats, ...seatResponse.data];
+                    console.log(this.allSeats);
+                  }
+                })
+              }
+
+            }
+          }
+        })
       }
-    )
-
-    this.getSeatsByVagonId(this._queryParams.id);
-
-    if (sessionStorage.getItem('showSuccessWindow') === 'true') {
-      sessionStorage.removeItem('showSuccessWindow');
-      this.showSuccessWindow();
-    }
+    })
   }
 
-  sortSeatNames = (a: string, b: string): number => {
-    const rowA = parseInt(a.slice(0, -1)); // Get the numeric part (row)
-    const rowB = parseInt(b.slice(0, -1));
+  trainVagons: any;
 
-    // Compare by row first
-    if (rowA !== rowB) {
-      return rowA - rowB;
-    }
+  getTotalFunds(): number {
+    let sum: number = 0;
 
-    // If rows are the same, compare by seat position
-    return a.charAt(a.length - 1).localeCompare(b.charAt(b.length - 1));
-  };
+    this.selectcedSeats.forEach((seat: any) => {
+      sum += seat.seatPrice
+    });
 
-  private getSeatsByVagonId(_trainId: number) {
-    this.getVagonSeatsSubscription = this.swaggerAPIService.getVagons().subscribe(
-      (response) => {
-        const vagon: Vagon[] = response.filter((x: Vagon) => x.trainId === _trainId);
-        this.firstClassSeats = vagon[0].seats.sort((a, b) => {
-          // Extract the numeric part and letter part from each seat number
-          const [aRow, aSeat] = [parseInt(a.number), a.number.slice(-1)];
-          const [bRow, bSeat] = [parseInt(b.number), b.number.slice(-1)];
+    return sum;
+  }
 
-          // Compare by row (numeric part) first
-          if (aRow !== bRow) {
-            return aRow - bRow;
-          }
+  bookSeats(): void {
+    let decodedToken: any = this.jwtService.decodeToken(localStorage.getItem('jwt_access_token_user')!);
 
-          // If rows are the same, compare by seat letter (alphabetic part)
-          return aSeat.localeCompare(bSeat);
-        })
+    let userStringId = decodedToken.nameid;
 
-        this.secondClassSeats = vagon[1].seats.sort((a, b) => {
-          // Extract the numeric part and letter part from each seat number
-          const [aRow, aSeat] = [parseInt(a.number), a.number.slice(-1)];
-          const [bRow, bSeat] = [parseInt(b.number), b.number.slice(-1)];
+    let userId = Number.parseInt(userStringId);
 
-          // Compare by row (numeric part) first
-          if (aRow !== bRow) {
-            return aRow - bRow;
-          }
+    this.userService.GetUser(userId).subscribe({
+      next: (userResponse) => {
+        if (userResponse.isSuccess && userResponse.data.userBalance >= this.getTotalFunds()) {
+          console.log(`${userResponse.data.userBalance} >= ${this.getTotalFunds()}`)
 
-          // If rows are the same, compare by seat letter (alphabetic part)
-          return aSeat.localeCompare(bSeat);
-        })
+          this.creditCardService.GetUserCreditCards(userId).subscribe({
+            next: (creditCardResponse) => {
+              if (creditCardResponse.isSuccess) {
+                this.selectcedSeats.forEach(seat => {
+                  let bookSeatModel: any = {
+                    transactionAmount: seat.seatPrice,
+                    userId: userId,
+                    seatId: seat.seatId,
+                    currencyId: 1,
+                    creditCardId: creditCardResponse.data[0].creditCardId,
+                    trainScheduleId: 2
+                  }
 
-        this.businessClassSeats = vagon[2].seats.sort((a, b) => {
-          // Extract the numeric part and letter part from each seat number
-          const [aRow, aSeat] = [parseInt(a.number), a.number.slice(-1)];
-          const [bRow, bSeat] = [parseInt(b.number), b.number.slice(-1)];
-
-          // Compare by row (numeric part) first
-          if (aRow !== bRow) {
-            return aRow - bRow;
-          }
-
-          // If rows are the same, compare by seat letter (alphabetic part)
-          return aSeat.localeCompare(bSeat);
-        })
-        console.log("II", this.secondClassSeats, "I", this.firstClassSeats, "BSN", this.businessClassSeats);
-
-      },
-      (error) => {
-        throw new Error(`Error fetching vagon/seat data to book-train-seat component ${error}`);
+                  this.seatService.BookSeat(bookSeatModel).subscribe({
+                    next: (response) => {
+                      if (response.isSuccess) {
+                        Swal.fire({
+                          title: "Seats booked succesfully",
+                          icon: "success"
+                        })
+                      }
+                    }
+                  })
+                });
+              }
+            }
+          })
+        }
       }
-    )
+    })
   }
 
 
@@ -149,11 +154,12 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     this.seatNumber = data.number;
   }
 
-  selectcedSeats: Seat[] = [];
+  selectcedSeats: any[] = [];
 
   seatClicked(): void {
     if (!this.selectcedSeats.some((seat: Seat) => seat.seatId === this.clickedSeatData.seatId)) {
       this.selectcedSeats.unshift(this.clickedSeatData);
+      console.log(this.clickedSeatData)
     }
     else {
       this.selectcedSeats = this.selectcedSeats.filter((seat: Seat) => seat.seatId !== this.clickedSeatData.seatId);
@@ -162,55 +168,6 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
   }
 
 
-  peopleSeatData: People[] = [{
-    seatId: '3afd907f-4e98-48e6-b1ec-17a8f99be306',
-    name: 'Nick',
-    surname: 'Bara',
-    idNumber: '34050',
-    status: 'Completed',
-    payoutCompleted: true
-  }]
-
-  ticketData: RegisterTicket = {
-    trainId: 4,
-    date: '2024-10-18T15:34:38.647Z',
-    email: 'niko@gamil.com',
-    phoneNumber: '+995577899422',
-    people: this.peopleSeatData
-  }
-
-  // Custom user name and lastname can be modified here
-  createReservationObject(): RegisterTicket {
-    let seatsToRegister: People[] = [];
-
-    for (let i = 0; i < this.selectcedSeats.length; i++) {
-      let seat: People = {
-        seatId: this.selectcedSeats[i].seatId,
-        name: JSON.parse(localStorage.getItem('userData') ?? '').firstName,
-        surname: JSON.parse(localStorage.getItem('userData') ?? '').lastName,
-        idNumber: Math.floor(Math.random() * 100000).toString(),
-        status: "Completed",
-        payoutCompleted: true
-      }
-
-      seatsToRegister.push(seat);
-    }
-
-    const today = new Date();
-    const formattedDate = today.toISOString(); // Example output: "Thursday, 7 November"
-
-    let registrableObject: any = {
-      trainId: this._queryParams.id,
-      date: formattedDate,
-      email: JSON.parse(localStorage.getItem('userData') ?? '').email,
-      phoneNumber: JSON.parse(localStorage.getItem('userData') ?? '').phone,
-      people: seatsToRegister
-    }
-
-    console.log(registrableObject);
-
-    return registrableObject;
-  }
 
   showSuccessWindow() : void {
     const Toast = Swal.mixin({
@@ -230,33 +187,29 @@ export class BookTrainSeatComponent implements OnInit, OnDestroy {
     });
   }
 
-  bookSelectedTickets(): void {
-    if (this.selectcedSeats.length != 0 && this.selectcedSeats.length <= 10) {
+  // bookSelectedTickets(): void {
+  //   if (this.selectcedSeats.length != 0 && this.selectcedSeats.length <= 10) {
 
-      Swal.fire({
-        title: "Are you sure you want to proceed?",
-        text: "Transaction in irreversable and is not 100% refundable",
-        icon: "question",
-        showConfirmButton: true,
-        confirmButtonText: "Proceed",
-        showCancelButton: true,
-        cancelButtonText: "Cancel",
-        preConfirm: () => {
-          console.log(this.createReservationObject());
-          this.swaggerAPIService.postTicket(this.createReservationObject()).subscribe(
-            (response) => {
-              console.log(response);
-            }
-          )
-          window.location.reload();
-          sessionStorage.setItem('showSuccessWindow', 'true');
-        }
-      })
-    }
-  }
+  //     Swal.fire({
+  //       title: "Are you sure you want to proceed?",
+  //       text: "Transaction in irreversable and is not 100% refundable",
+  //       icon: "question",
+  //       showConfirmButton: true,
+  //       confirmButtonText: "Proceed",
+  //       showCancelButton: true,
+  //       cancelButtonText: "Cancel",
+  //       preConfirm: () => {
+  //         console.log(this.createReservationObject());
+  //         this.swaggerAPIService.postTicket(this.createReservationObject()).subscribe(
+  //           (response) => {
+  //             console.log(response);
+  //           }
+  //         )
+  //         window.location.reload();
+  //         sessionStorage.setItem('showSuccessWindow', 'true');
+  //       }
+  //     })
+  //   }
+  // }
 
-  ngOnDestroy(): void {
-    // this.activatedRoutSubscription.unsubscribe();
-    // this.getVagonSeatsSubscription.unsubscribe();
-  }
 }

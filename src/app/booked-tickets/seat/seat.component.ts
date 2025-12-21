@@ -15,7 +15,7 @@ import { PriceToVagonClassPipe } from "../../pipes/price-to-vagon-class.pipe";
   styleUrl: './seat.component.sass'
 })
 export class SeatComponent implements OnInit {
-  @Input() person!: any;
+  @Input() data!: any;
 
   constructor(
     private translateService: TranslateService,
@@ -24,12 +24,12 @@ export class SeatComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.person, 'seatInfo');
+    console.log(this.data, 'seatInfo');
   }
 
 
   public cancelTicket(): void {
-    this.swaggerAPIService.cancelTicket(this.person.ticketId).subscribe();
+    // this.swaggerAPIService.cancelTicket(this.data.ticketId).subscribe();
     window.location.reload();
   }
 }

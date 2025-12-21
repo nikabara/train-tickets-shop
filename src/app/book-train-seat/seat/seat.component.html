@@ -1,4 +1,4 @@
-<div (click)="emitSeatData(); toggleSeatCheck()" [ngClass]="['seat', vagonClass]" [class.occupied]="seatInfo.isOccupied">
+<div (click)="emitSeatData(); toggleSeatCheck()" [ngClass]="['seat', vagonClass]" [class.occupied]="seatInfo.seatStatusId == 3">
     <i style="display: none;" class="bi bi-x" [class.isShown]="seatInfo.isOccupied"></i>
     <i style="display: none;" class="bi bi-bookmark-check" [class.isChecked]="seatChecked"></i>
     <div class="selected-overlay" [class.isChecked]="seatChecked"></div>

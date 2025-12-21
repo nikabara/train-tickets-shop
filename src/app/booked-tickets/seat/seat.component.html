@@ -1,7 +1,7 @@
 <div class="seat">
     <div class="qr-code">
         <qrcode
-        [qrdata]="person.seat.seatId"
+        [qrdata]="data.ticketNumber"
         [allowEmptyString]="true"
         [ariaLabel]="'QR Code image with the following content...'"
         [cssClass]="'center'"
@@ -21,19 +21,19 @@
     <div class="seat-info">
         <div class="seat-price seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.PRICE' | translate }}</h4>
-            <h4 class="gotten-seat-info">{{ person.seat.price }}₾</h4>
+            <h4 class="gotten-seat-info">{{ data.ticketPrice }}₾</h4>
         </div>
         <div class="seat-class seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.CLASS' | translate }}</h4>
-            <h4 class="gotten-seat-info">{{ person.seat.price | priceToVagonClass }}</h4>
+            <h4 class="gotten-seat-info">{{ data.seatPrice | priceToVagonClass }}</h4>
         </div>
         <div class="seat-row seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.ROW' | translate }}</h4>
-            <h4 class="gotten-seat-info">{{ person.seat.number | splitSeatNumber: 'number' }}</h4>
+            <h4 class="gotten-seat-info">{{ data.seatNumber | splitSeatNumber: 'number' }}</h4>
         </div>
         <div class="seat-column seat-info-boxes">
             <h4 class="seat-template-info">{{ 'BOOKED-TICKETS.COLUMN' | translate }}</h4>
-            <h4 class="gotten-seat-info">{{ person.seat.number | splitSeatNumber: 'letter' }}</h4>
+            <h4 class="gotten-seat-info">{{ data.seatNumber | splitSeatNumber: 'letter' }}</h4>
         </div>
     </div>
 

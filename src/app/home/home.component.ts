@@ -36,6 +36,8 @@ export class HomeComponent implements OnInit {
 
   private tempJwt: string = '';
 
+  public isLoggedOut: boolean = true;
+
   constructor(
     private saveDataService: SaveDataService,
     public authService: AuthService,
@@ -227,7 +229,7 @@ export class HomeComponent implements OnInit {
               });
           },
         }).then(async (result) => {
-          if (result.isConfirmed) {
+          if (result.isConfirmed && localStorage.getItem('jwt_access_token_user') != null) {
             let formValues: string[] = await this.swalVerificationCodeWindow();
 
             this.verifyCode(formValues[0]);
@@ -302,6 +304,22 @@ export class HomeComponent implements OnInit {
       document
         .querySelector('.language-change-button')
         ?.classList.remove('language-button-image-english');
+    }
+
+
+    // verifying users eligibility
+    const rawToken = localStorage.getItem('jwt_access_token_user') ?? "";
+
+    const decodedToken = this.jwtService.decodeToken(rawToken);
+
+    if (decodedToken && decodedToken.nameid) {
+        let userId = Number.parseInt(decodedToken.nameid);
+
+        this.authService.IsUserVerified(userId).subscribe({
+            next: (authResponse) => {
+                this.isLoggedOut = !authResponse.data;
+            }
+        });
     }
   }
 

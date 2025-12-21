@@ -9,5 +9,5 @@ import { Seat } from '../../Interfaces/Seat.interface';
   styleUrl: './selected-ticket-info.component.sass'
 })
 export class SelectedTicketInfoComponent {
-  @Input() seatData!: Seat;
+  @Input() seatData!: any;
 }

@@ -1,0 +1,124 @@
+<div class="settings-container">
+  <h1>Setting</h1>
+
+  <nav class="settings-tabs">
+    <button class="tab-btn active">Edit Profile</button>
+    <button class="tab-btn">Preferences</button>
+    <button class="tab-btn">Security</button>
+    <button class="tab-btn">Data Privacy</button>
+  </nav>
+
+  <div class="settings-card">
+    <div class="profile-header">
+      <div class="image-wrapper">
+        <img src="https://i.pinimg.com/474x/15/0f/a8/150fa8800b0a0d5633abc1d1c4db3d87.jpg?nii=t" alt="Profile Picture">
+        <div class="camera-icon">📷</div>
+      </div>
+
+      <div class="name-inputs-grid">
+        <div class="input-group">
+          <label>First Name</label>
+          <input type="text" [placeholder]="userModel.name">
+        </div>
+        <div class="input-group">
+          <label>Last Name</label>
+          <input type="text" [placeholder]="userModel.lastName">
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" [placeholder]="userModel.email">
+      </div>
+      <div class="input-group">
+        <label>Phone Number</label>
+        <input type="tel" [placeholder]="userModel.phoneNumber">
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button class="save-btn">Update Details</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <h2 class="section-title">User Balance : {{user.userBalance}}₾</h2>
+    <div class="contact-grid">
+      <div class="input-group">
+        <label>Top Up Amount (₾)</label>
+        <input type="number" placeholder="0.00" [(ngModel)]="addFundsAmount">
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button class="save-btn" (click)="addFunds()">Add Funds</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <h2 class="section-title">Account Access</h2>
+    <form class="contact-grid">
+      <div class="input-group">
+        <label>Old password</label>
+        <input type="password" placeholder="example123$">
+      </div>
+      <div class="input-group">
+        <label>New password</label>
+        <input type="password" placeholder="example123$">
+      </div>
+    </form>
+
+    <div class="button-container">
+      <button class="save-btn">Update Password</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <h2 class="section-title">Personal Address</h2>
+    <div class="address-grid">
+      <div class="input-group">
+        <label>Country</label>
+        <input type="text" placeholder="Vietnam">
+      </div>
+      <div class="input-group">
+        <label>City</label>
+        <input type="text" placeholder="Hai Phong">
+      </div>
+      <div class="input-group">
+        <label>Address</label>
+        <input type="text" placeholder="Hong Bang">
+      </div>
+      <div class="input-group">
+        <label>Zip Code</label>
+        <input type="text" placeholder="180000">
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button class="save-btn">Update Address Details</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <h2 class="section-title">Payment Methods</h2>
+    <div class="cards-list">
+      <div class="credit-card-item" *ngFor="let card of userCreditCards">
+        <div class="card-icon">💳</div>
+        <div class="card-info">
+          <span class="card-number">{{ card.creditCardNumber }}</span>
+          <span class="card-provider">{{ card.creditCardIssuerName }}</span>
+          <span class="card-expiry">Expires {{ card.expirationDate | date: 'MM/yy' }}</span>
+          <span class="card-expiry">CVV {{ card.cvv }}</span>
+        </div>
+        <button (click)="removeCard(card)" class="remove-card-btn">Remove</button>
+      </div>
+
+      <button class="add-card-action">
+        <span class="plus-icon">+</span>
+        Add New Credit Card
+      </button>
+    </div>
+  </div>
+</div>

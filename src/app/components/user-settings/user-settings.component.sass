@@ -1,0 +1,183 @@
+$purple: #7B61FF
+$bg-color: #F4F5F7
+$border-color: #E0E0E0
+$text-dark: #1A1A1A
+
+body
+  background-color: $bg-color
+  font-family: 'Inter', sans-serif
+  margin: 0
+  padding: 40px
+
+.settings-container
+  margin: 0 auto
+  margin: 10px 15px 0
+
+  h1
+    font-size: 32px
+    margin-bottom: 25px
+
+// Tabs styling
+.settings-tabs
+  display: flex
+  gap: 15px
+  margin-bottom: 30px
+
+  .tab-btn
+    background: none
+    border: none
+    padding: 12px 25px
+    font-size: 15px
+    font-weight: 500
+    color: #666
+    cursor: pointer
+    border-radius: 12px
+    transition: 0.3s
+
+    &.active
+      background-color: $purple
+      color: #fff
+      box-shadow: 0 4px 10px rgba(123, 97, 255, 0.3)
+
+// Main Card Container
+.settings-card
+  background-color: #fff
+  padding: 40px
+  border-radius: 24px
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 10%)
+  margin: 0px 0px 10px 0px
+
+  .section-title
+    font-size: 20px
+    font-weight: 700
+    margin: 30px 0 20px 0
+
+  .section-divider
+    border: 0
+    border-top: 1px solid #F0F0F0
+    margin: 40px 0
+
+  // Grids
+  .profile-header
+    display: flex
+    gap: 30px
+    margin-bottom: 30px
+
+    .image-wrapper
+      position: relative
+      img
+        width: 110px
+        height: 110px
+        border-radius: 50%
+        border: 4px solid #fff
+        outline: 2px solid $purple
+
+      .camera-icon
+        position: absolute
+        bottom: 5px
+        right: 5px
+        background: $purple
+        color: white
+        width: 28px
+        height: 28px
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: 14px
+        border: 2px solid #fff
+
+  .name-inputs-grid, .address-grid
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 24px
+    flex-grow: 1
+
+  .contact-grid
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+  // Input styling
+  .input-group
+    display: flex
+    flex-direction: column
+    gap: 10px
+    label
+      font-weight: 600
+      font-size: 14px
+      color: $text-dark
+    input
+      padding: 15px 20px
+      border: 1px solid $border-color
+      border-radius: 15px !important
+      font-size: 15px
+      &:focus
+        border-color: $purple
+        outline: none
+
+  // Credit Card Section Styling
+  .cards-list
+    display: flex
+    flex-direction: column
+    gap: 15px
+
+    .credit-card-item
+      display: flex
+      align-items: center
+      padding: 15px 20px
+      border: 1px solid $border-color
+      border-radius: 15px
+      gap: 15px
+
+      .card-info
+        display: flex
+        flex-direction: column
+        flex-grow: 1
+        // display: flex; flex-direction: row !important; align-items: center; justify-content: space-between;
+        .card-number
+          font-weight: 600
+          color: $text-dark
+        .card-expiry
+          font-size: 12px
+          color: #999
+
+      .remove-card-btn
+        background: none
+        border: none
+        color: #ff4d4d
+        font-weight: 600
+        cursor: pointer
+
+    .add-card-action
+      background: none
+      border: 2px dashed $border-color
+      border-radius: 15px
+      padding: 15px
+      color: $purple
+      font-weight: 600
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 10px
+      transition: 0.2s
+      &:hover
+        background: rgba(123, 97, 255, 0.05)
+        border-color: $purple
+
+  // Save Button Container
+  .button-container
+    display: flex
+    justify-content: flex-end
+    margin-top: 50px
+    .save-btn
+      background-color: $purple
+      color: #fff
+      border: none
+      padding: 16px 50px
+      border-radius: 20px
+      font-size: 16px
+      font-weight: 600
+      cursor: pointer
+      box-shadow: 0 4px 15px rgba(123, 97, 255, 0.3)

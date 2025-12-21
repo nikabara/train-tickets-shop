@@ -9,15 +9,15 @@
 
     <div class="ticket-right">
       <div class="travel-times-wrapper">
-        <h2 class="departure-time">{{ departureTime }}</h2>
+        <h2 class="departure-time">{{ departureTime | date: 'dd MMM, HH:mm' }}</h2>
 
         <div class="travel-times-decoration">
-          <div class="line"></div> 
-          <h6 class="travel-duration"> {{ trvelDuration }} </h6> 
+          <div class="line"></div>
+          <h6 class="travel-duration"> {{ trvelDuration }} </h6>
           <div class="line"></div>
         </div>
 
-        <h2 class="arrival-time">{{ arrivalTime }}</h2>
+        <h2 class="arrival-time">{{ arrivalTime | date: 'dd MMM, HH:mm' }}</h2>
       </div>
 
       <div class="departure-from-to-wrapper">
@@ -27,7 +27,7 @@
 
       <div class="train-details">
           <h6 class="train-type"><span>Fast</span>, 2 storey #{{ trainNumber }}</h6>
-          <button (click)="passSelectedTicketData()" id="select_train_ticket" type="submit">Select</button>
+          <a [routerLink]="['/book-train-seats', scheduleData.trainId]" id="select_train_ticket" type="submit">Select</a>
       </div>
     </div>
 </div>

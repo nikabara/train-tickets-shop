@@ -24,7 +24,7 @@ export const routes: Routes = [
   },
   {path: 'settings', component: SettingsComponent, title: 'Settings', canActivate: [authGuardGuard]},
   {
-    path: 'book-train-seats',
+    path: 'book-train-seats/:id',
     title: 'Book Train Seat',
     canActivate: [authGuardGuard],
     loadComponent: () => import('./book-train-seat/book-train-seat.component')
@@ -43,6 +43,13 @@ export const routes: Routes = [
     canActivate: [authGuardGuard],
     loadComponent: () => import('./search-trains/search-trains.component')
       .then((m) => m.SearchTrainsComponent)
+  },
+  {
+    path: 'user-settings',
+    title: 'Settings',
+    canActivate: [authGuardGuard],
+    loadComponent: () => import('./components/user-settings/user-settings.component')
+      .then((m) => m.UserSettingsComponent)
   },
   {path: 'ticket-pdf', component: TicketPdfComponent, title: 'Ticket PDF', canActivate: [authGuardGuard]},
   {path: 'under-development', component: UnderDevelopmentComponent, title: 'Under Development'},

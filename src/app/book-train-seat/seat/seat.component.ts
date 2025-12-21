@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './seat.component.sass'
 })
 export class SeatComponent {
-  @Input() seatInfo!: Seat; 
+  @Input() seatInfo!: any;
   @Input() vagonClass!: string;
 
   @Output() onSeatData: EventEmitter<Seat> = new EventEmitter();
