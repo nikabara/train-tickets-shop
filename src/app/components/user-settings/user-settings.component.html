@@ -9,38 +9,40 @@
   </nav>
 
   <div class="settings-card">
-    <div class="profile-header">
-      <div class="image-wrapper">
-        <img src="https://i.pinimg.com/474x/15/0f/a8/150fa8800b0a0d5633abc1d1c4db3d87.jpg?nii=t" alt="Profile Picture">
-        <div class="camera-icon">📷</div>
+    <form action="" (ngSubmit)="updateUser()" [formGroup]="updateUserForm">
+      <div class="profile-header">
+        <div class="image-wrapper">
+          <img src="https://i.pinimg.com/474x/15/0f/a8/150fa8800b0a0d5633abc1d1c4db3d87.jpg?nii=t" alt="Profile Picture">
+          <div class="camera-icon">📷</div>
+        </div>
+
+        <div class="name-inputs-grid">
+          <div class="input-group">
+            <label>First Name</label>
+            <input formControlName="name" type="text" [placeholder]="userModel.name">
+          </div>
+          <div class="input-group">
+            <label>Last Name</label>
+            <input formControlName="lastName" type="text" [placeholder]="userModel.lastName">
+          </div>
+        </div>
       </div>
 
-      <div class="name-inputs-grid">
+      <div class="contact-grid">
         <div class="input-group">
-          <label>First Name</label>
-          <input type="text" [placeholder]="userModel.name">
+          <label>Email Address</label>
+          <input formControlName="email" type="email" [placeholder]="userModel.email">
         </div>
         <div class="input-group">
-          <label>Last Name</label>
-          <input type="text" [placeholder]="userModel.lastName">
+          <label>Phone Number</label>
+          <input formControlName="phoneNumber" type="tel" [placeholder]="userModel.phoneNumber">
         </div>
       </div>
-    </div>
 
-    <div class="contact-grid">
-      <div class="input-group">
-        <label>Email Address</label>
-        <input type="email" [placeholder]="userModel.email">
+      <div class="button-container">
+        <button type="submit" class="save-btn">Update Details</button>
       </div>
-      <div class="input-group">
-        <label>Phone Number</label>
-        <input type="tel" [placeholder]="userModel.phoneNumber">
-      </div>
-    </div>
-
-    <div class="button-container">
-      <button class="save-btn">Update Details</button>
-    </div>
+    </form>
 
     <hr class="section-divider">
 

@@ -120,7 +120,7 @@ export class BookTrainSeatComponent implements OnInit {
                     seatId: seat.seatId,
                     currencyId: 1,
                     creditCardId: creditCardResponse.data[0].creditCardId,
-                    trainScheduleId: 2
+                    trainScheduleId: 12
                   }
 
                   this.seatService.BookSeat(bookSeatModel).subscribe({

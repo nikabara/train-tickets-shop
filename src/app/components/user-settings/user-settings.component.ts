@@ -3,7 +3,7 @@ import { AuthService } from './../../services/AppServices/auth.service';
 import { JwtService } from './../../services/AppServices/JWT/jwt.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/AppServices/user.service';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-settings',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './user-settings.component.html',
   styleUrl: './user-settings.component.sass'
 })
@@ -54,25 +54,29 @@ export class UserSettingsComponent implements OnInit {
 
         this.authService.IsUserVerified(userId).subscribe({
           next: (authResponse) => {
-            if (authResponse.data) {
-              this.userModel = {
-                name: decodedToken.unique_name,
-                lastName: decodedToken.last_name,
-                age: decodedToken.age,
-                email: decodedToken.email,
-                phoneNumber: this.jwtService.getClaim(rawToken, "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone"),
-                balance: decodedToken.user_balance,
-                role: decodedToken.role
-              }
-
-              this.creditCardService.GetUserCreditCards(userId).subscribe({
-                next: (cardServiceResponse) => {
-                  if (cardServiceResponse.data) {
-                    this.userCreditCards = cardServiceResponse.data;
+            this.userService.GetUser(userId).subscribe({
+              next: (userResponse) => {
+                if (authResponse.data) {
+                  this.userModel = {
+                    name: userResponse.data.name,
+                    lastName: userResponse.data.lastName,
+                    age: userResponse.data.age,
+                    email: userResponse.data.email,
+                    phoneNumber: userResponse.data.phoneNumber,
+                    balance: decodedToken.user_balance,
+                    role: decodedToken.role
                   }
+
+                  this.creditCardService.GetUserCreditCards(userId).subscribe({
+                    next: (cardServiceResponse) => {
+                      if (cardServiceResponse.data) {
+                        this.userCreditCards = cardServiceResponse.data;
+                      }
+                    }
+                  })
                 }
-              })
-            }
+              }
+            })
           }
         })
     }
@@ -186,5 +190,38 @@ export class UserSettingsComponent implements OnInit {
         })
       }
     });
+  }
+
+  public updateUserForm: FormGroup = new FormGroup({
+    userId: new FormControl(null),
+    name: new FormControl(''),
+    lastnName: new FormControl(''),
+    email: new FormControl(''),
+    phoneNumber: new FormControl('')
+  });
+
+  updateUser(): void {
+    if (this.updateUserForm.valid) {
+      const formData = this.updateUserForm.value;
+
+      let updatedUserForm: any = {
+        userId: this.userId,
+        name: formData.name,
+        lastName: formData.lastName,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber
+      }
+
+      this.userService.UpdateUser(updatedUserForm).subscribe({
+        next: (response) => {
+          if (response.isSuccess) {
+            Swal.fire({
+              title: "User updated",
+              icon: "success"
+            })
+          }
+        }
+      })
+    }
   }
 }
