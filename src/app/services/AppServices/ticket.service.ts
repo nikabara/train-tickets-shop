@@ -1,7 +1,7 @@
+import { ServiceResponse } from './../../Interfaces/common/ServiceResponse.interface';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ServiceResponse } from '../../Interfaces/common/ServiceResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +14,9 @@ export class TicketService {
 
   GetAllUserTickets(userId: number): Observable<ServiceResponse<any>> {
     return this.http.get<ServiceResponse<any>>(`${this.url}/Ticket/get-all-user-tickets/${userId}`);
+  }
+
+  CancelTicket(ticketId: number): Observable<ServiceResponse<any>> {
+    return this.http.delete<ServiceResponse<any>>(`${this.url}/Ticket/cancel-ticket/${ticketId}`);
   }
 }

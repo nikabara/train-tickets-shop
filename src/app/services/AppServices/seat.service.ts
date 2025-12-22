@@ -19,4 +19,12 @@ export class SeatService {
   BookSeat(bookSeatModel: any): Observable<ServiceResponse<true>> {
     return this.http.post<ServiceResponse<true>>(`${this.url}/Seat/book-seat`, bookSeatModel);
   }
+
+  GetSeat(seatId: number): Observable<ServiceResponse<any>> {
+    return this.http.get<ServiceResponse<any>>(`${this.url}/Seat/get-seat/${seatId}`);
+  }
+
+  RemoveSeat(seatId: number): Observable<ServiceResponse<any>> {
+    return this.http.delete<ServiceResponse<any>>(`${this.url}/Seat/remove-seat/${seatId}`);
+  }
 }

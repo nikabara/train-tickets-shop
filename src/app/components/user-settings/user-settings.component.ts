@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/AppServices/user.service';
-import { response } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-settings',
@@ -22,6 +22,8 @@ export class UserSettingsComponent implements OnInit {
   private readonly authService: AuthService = inject(AuthService);
   private readonly creditCardService: CreditCardService = inject(CreditCardService);
   private readonly userService: UserService = inject(UserService);
+
+  private readonly router: Router = inject(Router);
 
   public userModel: any;
   public userCreditCards: any;
@@ -159,5 +161,30 @@ export class UserSettingsComponent implements OnInit {
         })
       }
     })
+  }
+
+  logOut(): void {
+    Swal.fire({
+      title: "Are you sure you want to log out?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Log Out"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("jwt_access_token_user");
+
+        Swal.fire({
+          title: "Logged out successfully",
+          text: "Your file has been deleted.",
+          icon: "success"
+        }).then(() => {
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          }, 100);
+        })
+      }
+    });
   }
 }
